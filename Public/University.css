@@ -1,0 +1,83 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image: repeating-linear-gradient(50deg ,#ffa60082 2px, #ffa60078 2px , white 4px, white 4px);
+}
+.univ-details{
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #ffffff85;
+}
+.univ{
+    display: flex;
+    background: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.icon{
+    margin-left: -15px;
+}
+/* .btn{
+    height: 40px;
+    width: 130px;
+    padding: 10px 0px;
+} */
+.vbuimg{
+    width: 1200px;
+    height: 600px;
+}
+h5{
+    font-size: 13px;
+}
+.u-details{
+    margin-left: 25px;
+}
+.univ-details a{
+    text-decoration: none;
+}
+.about{
+    margin-top: 20px;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+.fa-solid{
+    margin-left: 2px;
+}
+.skmuimg{
+    width: 1040px;
+    height: 600px;
+}
+.ruimg{
+    width: 940px;
+    height: 600px;
+}
+.kolhanimg{
+    width: 1100px;
+    height: 500px;
+}
+.JRSUimg{
+    width: 1120px;
+    height: 700px;
+}
+.nilimg{
+    width: 1060px;
+    height: 800px;
+}
+.dspmuimg{
+    width: 2200px;
+    height: 800px;
+}
+.jwuimg{
+    width: 450px;
+    height: 100px;
+}
+.bbmkuimg{
+    width: 2450px;
+    height: 700px;
+}
+@media(max-width: 707px){
+    .univ{
+        display: block;
+    }
+}

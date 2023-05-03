@@ -1,0 +1,631 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /* background-color: #f2ebad; */
+    /* background-image: repeating-linear-gradient(60deg ,#ffa60082 2px, #ffa60078 2px , white 4px, white 4px); */
+    /* background-image: repeating-linear-gradient(90deg ,#ffa60082 3px, #ffa60078 1px , white 8px, white 1px) */
+    background-image: repeating-linear-gradient(23deg, #eebf6882 5px, #efc57678 1px, white 8px, white 1px);
+}
+
+#header {
+    display: flex;
+    background-color: #3168ba;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: 'Satisfy', cursive;
+    color: #043785;
+    border-bottom: 1px solid #2f5635;
+}
+
+#header img {
+    padding: 5px;
+    width: 130px;
+}
+
+.title {
+    user-select: none;
+}
+
+#disp2 .navbar {
+    border-top: 2px groove white;
+    border-bottom: 2px groove white;
+    height: 42px;
+    /* background-color: #25426b; */
+    background: #08254b;
+}
+
+.p-4 {
+    background-color: #25426be4;
+}
+
+#disp1 {
+    border-top: 1px dotted white;
+    /* background-color: #25426b; */
+    background: #08254b;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: -32px;
+}
+
+.nav a {
+    border-right: 1px solid white;
+    padding: 7px 20px;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background: #073b80;
+}
+
+/* .nav-link:hover{
+    background: #08254b;
+    border: 1px groove white;
+} */
+.active {
+    background: #083878;
+}
+
+/* new */
+#disp2 {
+    background: #08254b;
+}
+
+.nav-container {
+    margin-left: -32px;
+}
+
+.item a {
+    width: 100%;
+    padding: 5px;
+    text-decoration: none;
+    border: none;
+}
+
+.icon-container {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dotted white;
+}
+
+#icon {
+    margin-left: 10px;
+    cursor: pointer;
+    color: white;
+}
+
+#navToggle {
+    display: none;
+}
+
+/* navbar end */
+
+/* image slide start*/
+.img-login {
+    display: flex;
+    margin-top: -20px;
+}
+
+.slide-container {
+    position: relative;
+    width: 74%;
+    margin-top: 5px;
+}
+
+.slide img {
+    width: 100%;
+    height: 442px;
+}
+
+.arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 43%;
+    background-color: rgba(255, 255, 255, 0.146);
+    padding: 8px 15px;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    user-select: none;
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 0.553);
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
+
+.slide {
+    display: none;
+}
+
+/* image slide end */
+
+/* Login start */
+#container {
+    width: 365px;
+    margin-top: 5px;
+    margin-left: 2px;
+    padding: 37px 30px;
+    text-align: center;
+    background-color: #2f5635;
+    color: #f2ebad;
+    border-radius: 2px;
+    box-shadow: 2px 2px 15px #80808090, -2px -2px 13px #80808090;
+    user-select: none;
+}
+
+.inp {
+    padding: 10px;
+}
+
+h2 {
+    margin-top: 50px;
+}
+
+.log-para {
+    margin: 0px;
+}
+
+input {
+    padding: 8px;
+    width: 225px;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type="submit"] {
+    border-radius: 7px;
+    padding: 8px 13px;
+    border: 1px solid #f2ebad;
+    color: #f2ebad;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100px;
+    outline: none;
+}
+
+input[type="submit"]:hover {
+    border: 1px solid #f2ebad;
+}
+
+input:focus {
+    border-color: #efebc1;
+}
+
+a {
+    text-decoration: none;
+}
+
+#signup {
+    margin-top: 60px;
+}
+
+#error {
+    margin: 0px;
+    /* background-color: #F2DEDE; */
+    /* background-color: #0d6efd; */
+    color: red;
+    font-size: 14px;
+    padding: 5px 20px;
+    margin-top: -37px;
+    border-radius: 5px;
+}
+
+/* login end */
+
+#greetBorder {
+    margin-top: 5px;
+    text-align: center;
+    border: 1px groove #08619c82;
+    box-shadow: 1px 1px 3px gray, -1px -1px 3px gray;
+    background-color: steelBlue;
+    user-select: none;
+}
+
+
+#greetBorder .grt {
+    padding: 3px 0px;
+    font-weight: bold;
+    color: white;
+    font-size: 16px;
+}
+
+/* notice section */
+.notice-msg {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #25426be3;
+}
+
+.bdr {
+    width: 15%;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid gray;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.notice {
+    display: flex;
+    justify-content: space-around;
+    background-color: #ffffff85;
+    margin: 0px 10px 0px 10px;
+}
+
+.stu-notice {
+    margin: 1em;
+    background-color: #ffffffde;
+    font-weight: bold;
+    padding: 20px 40px;
+    width: 85vmin;
+    border-radius: 5px;
+}
+
+.dept-notice {
+    margin: 1em;
+    width: 85vmin;
+    background-color: #ffffffde;
+    font-weight: bold;
+    padding: 20px 40px;
+    border-radius: 5px;
+}
+
+.board {
+    background-color: steelBlue;
+    color: white;
+    padding-left: 10px;
+}
+
+.dept-link {
+    font-weight: normal;
+    padding-left: 10px;
+    border-bottom: 1px solid #afaeac5a;
+    padding-bottom: 5px;
+}
+
+.dept-link a {
+    text-decoration: none;
+}
+
+/* notice end */
+
+/* Dashbord start */
+.dash-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(340px, 1fr));
+    grid-column-gap: 3px;
+    grid-row-gap: 5px;
+    margin-top: 10px;
+    justify-items: center;
+    font-weight: bold;
+    color: #25426be3;
+}
+
+@media (max-width: 1368px) {
+    .dash-container {
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    }
+}
+
+.university {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.UItem {
+    background-color: #5fc2d2;
+    padding: 10px 63px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.uicon {
+    color: #5fc2d2;
+    background-color: #5fc3d2a0;
+    margin-left: -10px;
+    width: 80px;
+}
+
+.Dicon {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.num {
+    font-size: 40px;
+    padding: -90px;
+    margin: -8px;
+}
+
+/* ------------- */
+.college-c {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.UCItem {
+    background-color: #1fbdd5;
+    padding: 10px 27px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.fa-regular {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+.cicon {
+    color: #1fbdd5;
+    background-color: #1fbdd59e;
+    margin-left: -10px;
+    width: 80px;
+}
+
+/* ----------- */
+.college-A {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.CAItem {
+    background-color: #ff6b6b;
+    padding: 10px 36px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.caicon {
+    color: #ff6b6b;
+    background-color: #ff6b6b9f;
+    margin-left: -10px;
+    width: 80px;
+}
+
+/* ----------------- */
+.Reg-User {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.RUItem {
+    background-color: #f27371;
+    padding: 10px 37px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.ruicon {
+    color: #f27371;
+    background-color: #f273719f;
+    margin-left: -10px;
+}
+
+/* ----------------- */
+.Appli-UG {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.UGItem {
+    background-color: #e25c9b;
+    padding: 10px 37px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.ugicon {
+    color: #e25c9b;
+    background-color: #f27371b0;
+    margin-left: -10px;
+}
+
+/* ----------------- */
+.Appli-PG {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.PGItem {
+    background-color: #f9bb3c;
+    padding: 10px 37px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.pgicon {
+    color: #f9bb3c;
+    background-color: #f9ba3cb4;
+    margin-left: -10px;
+}
+
+/* ----------------- */
+.Appli-UGY {
+    text-align: center;
+    display: flex;
+    align-self: center;
+}
+
+.UGYItem {
+    background-color: #24c290;
+    padding: 2px 37px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.ugyicon {
+    color: #24c290;
+    background-color: #24c290ab;
+    margin-left: -10px;
+}
+
+/* ----------------- */
+.Appli-PGY {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.PGYItem {
+    background-color: #00dcf8;
+    font-size: 14px;
+    width: 250px;
+}
+
+.pgyicon {
+    color: #00dcf8;
+    background-color: #00dbf8b1;
+    margin-left: -10px;
+    height: 74px;
+}
+
+/* Dashbord end */
+
+/* logo slider start */
+.slides {
+    border: 1px solid rgb(123, 14, 14);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.logo {
+
+    margin-right: 50px;
+    border: 2px solid black;
+}
+
+/* logo slider end */
+/* footer start */
+.termCon {
+    background-color: #ffffff91;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    color: #25426be3;
+}
+
+.termCon div {
+    margin: 5px 10px;
+    font-size: 14px;
+}
+
+.termCon div a {
+    text-decoration: none;
+}
+
+.coypRight {
+    background: white;
+    padding: 20px 10px 20px 10px;
+    font-size: 14px;
+    color: #25426be3;
+}
+
+
+/* footer end */
+
+.error {
+    color: #A94442;
+}
+
+@media(max-width:500px) {
+    #header {
+        font-size: 40px;
+    }
+}
+
+@media(min-width:651px) {
+    #disp2 {
+        display: none;
+    }
+}
+
+@media(max-width: 723px) {
+    #disp1 {
+        display: none;
+    }
+
+    #disp2 {
+        display: block;
+    }
+
+    .slide-container {
+        margin: 20px 0px 0px 0px;
+        width: 100%;
+    }
+
+    .img-login {
+        display: block;
+    }
+
+    #container {
+        width: 100%;
+        margin: 0px;
+    }
+
+    input {
+        width: 60%;
+    }
+
+    .notice {
+        flex-direction: column;
+        padding-top: 5px;
+        align-items: center;
+    }
+}
+
+@media (max-width: 1109px) and (min-width: 650px) {
+    .log-para {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 690px) {
+    .dash-container {
+        display: block;
+
+    }
+
+    .title {
+        margin-top: 10px;
+    }
+
+    .item {
+        width: 100%;
+    }
+
+    .uicon {
+        width: 100px;
+    }
+
+    .cicon {
+        width: 100px;
+    }
+
+    .caicon {
+        width: 100px;
+    }
+}

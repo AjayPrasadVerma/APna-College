@@ -1,0 +1,694 @@
+<%- include('./partials/header'); %>
+
+    <body>
+        <div id="header" class="bg-success1">
+            <img class="img-responsive" src="../../image/c-logo1.png" alt="logo" draggable="false">
+            <span class="title">College Registration</span>
+        </div>
+
+        <%- include('./partials/navbar'); %>
+
+            <div class="container-fluid">
+                <div class="univ-details">
+                    <!-- vbu -->
+                    <div class="univ">
+                        <div class="uimg">
+                            <img class="vbuimg img-thumbnail img-responsive" src="image/slide-2.jpeg" alt="">
+                        </div>
+                        <div class="u-details">
+                            <h5 style="font-size: 17px;">VINOBA BHAVE UNIVERSITY, HAZARIBAGH</h5>
+                            <a href="https://www.vbu.ac.in/login" target="_blank" class="text-info">Explore the
+                                University</a>
+                            <p class="about">
+                                The Vinoba Bhave University is located at Hazaribagh, India, and is funded by the
+                                Government of India. The university came into existence on 17 September 1992[1] after
+                                the bifurcation of Ranchi University as a teaching-cum-affiliating university. The
+                                university offers courses at the undergraduate and post-graduate levels.
+                            </p>
+                            <!-- dialog start -->
+
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop1"
+                                style="padding: 5px 20px; font-size: 16px;font-weight: 500;">
+                                <i class="fa-solid fa-building-columns icon"></i>&nbsp;See Colleges</button>
+
+                            <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static"
+                                data-bs-keyword="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success" style="height:40px;">
+                                            <h5 class="modal-title">List Of Colleges Under University</h5>
+                                            <button type="submit" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered table-striped" style="font-size:12px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>College Code</th>
+                                                        <th>College Name</th>
+                                                        <th>District Name</th>
+                                                        <th>Type</th>
+                                                        <th>Principal Name & Number</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for(let i=0; i < vbuCollege.length; i++){ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= vbuCollege[i]._id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= vbuCollege[i].Coll_Code %>
+                                                            </td>
+                                                            <td>
+                                                                <%= vbuCollege[i].Coll_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= vbuCollege[i].Dist_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= vbuCollege[i].Type %>
+                                                            </td>
+                                                            <td>
+                                                                <%= vbuCollege[i].Princ_Name %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dialog end -->
+                        </div>
+                    </div>
+                    <!-- skmu -->
+                    <div class="univ">
+                        <div class="uimg">
+                            <img class="skmuimg img-thumbnail img-responsive" src="./image/slide-5.jpg" alt="">
+                        </div>
+                        <div class="u-details">
+                            <h5 style="font-size: 17px;">SIDO KANHU MURMU UNIVERSITY, DUMKA</h5>
+                            <a href="https://www.skmu.ac.in/" target="_blank" class="text-info">Explore the
+                                University</a>
+                            <p class="about">
+                                Sido Kanhu Murmu University (formerly known as Siddhu Kanhu University) is a public
+                                university situated in the indigenous peoples dominated area of Santhal Parganas region
+                                of Jharkhand state in eastern India. It has its headquarters at Dumka, the second
+                                capital of Jharkhand.
+                            </p>
+                            <!-- dialog start -->
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop2"
+                                style="padding: 5px 20px; font-size: 16px; font-weight: 500;">
+                                <i class="fa-solid fa-building-columns icon"></i>&nbsp;See Colleges</button>
+
+                            <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static"
+                                data-bs-keyword="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success" style="height:40px;">
+                                            <h5 class="modal-title">List Of Colleges Under University</h5>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered table-striped" style="font-size:12px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>College Code</th>
+                                                        <th>College Name</th>
+                                                        <th>District Name</th>
+                                                        <th>Type</th>
+                                                        <th>Principal Name & Number</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for(let i=0; i < skmu.length; i++){ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= skmu[i]._id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= skmu[i].Coll_Code %>
+                                                            </td>
+                                                            <td>
+                                                                <%= skmu[i].Coll_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= skmu[i].Dist_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= skmu[i].Type %>
+                                                            </td>
+                                                            <td>
+                                                                <%= skmu[i].Princ_Name %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dialog end -->
+                        </div>
+                    </div>
+                    <!-- ru -->
+                    <div class="univ">
+                        <div class="uimg">
+                            <img class="ruimg img-thumbnail img-responsive" src="./image/slide-3.jpg" alt="">
+                        </div>
+                        <div class="u-details">
+                            <h5 style="font-size: 17px;">RANCHI UNIVERSITY, RANCHI</h5>
+                            <a href="https://www.skmu.ac.in/" target="_blank" class="text-info">Explore the
+                                University</a>
+                            <p class="about">
+                                Ranchi University is a university in Jharkhand state of India. It was established on 12
+                                July 1960 as a teaching-cum-affiliating university, and its first vice chancellor was
+                                Vishnudeo Narayan Singh. It is headquartered in Ranchi, the capital city of Jharkhand.
+                            </p>
+                            <!-- dialog start -->
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop3"
+                                style="padding: 5px 20px; font-size: 16px; font-weight: 500;">
+                                <i class="fa-solid fa-building-columns icon"></i>&nbsp;See Colleges</button>
+
+                            <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static"
+                                data-bs-keyword="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success" style="height:40px;">
+                                            <h5 class="modal-title">List Of Colleges Under University</h5>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered table-striped" style="font-size:12px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>College Code</th>
+                                                        <th>College Name</th>
+                                                        <th>District Name</th>
+                                                        <th>Type</th>
+                                                        <th>Principal Name & Number</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for(let i=0; i < ru.length; i++){ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= ru[i]._id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= ru[i].Coll_Code %>
+                                                            </td>
+                                                            <td>
+                                                                <%= ru[i].Coll_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= ru[i].Dist_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= ru[i].Type %>
+                                                            </td>
+                                                            <td>
+                                                                <%= ru[i].Princ_Name %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dialog end -->
+                        </div>
+                    </div>
+                    <!-- kolhan -->
+                    <div class="univ">
+                        <div class="uimg">
+                            <img class="kolhanimg img-thumbnail img-responsive" src="./image/kolhan.jpg" alt="">
+                        </div>
+                        <div class="u-details">
+                            <h5 style="font-size: 17px;">KOLHAN UNIVERSITY, CHAIBASA</h5>
+                            <a href="https://kolhanuniversity.ac.in/" target="_blank" class="text-info">Explore the
+                                University</a>
+                            <p class="about">
+                                The Kolhan University was established on 13 August 2009 with 14 Constituent Colleges and
+                                12 Affiliated Colleges in geographical jurisdiction of East Singhbhum, West Singhbhum
+                                and Seraikela Kharswan District with more than 80,000 students strength. The University
+                                is in the area of tribal region.
+                            </p>
+                            <!-- dialog start -->
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop4"
+                                style="padding: 5px 20px; font-size: 16px; font-weight: 500;">
+                                <i class="fa-solid fa-building-columns icon"></i>&nbsp;See Colleges</button>
+
+                            <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static"
+                                data-bs-keyword="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success" style="height:40px;">
+                                            <h5 class="modal-title">List Of Colleges Under University</h5>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered table-striped" style="font-size:12px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>College Code</th>
+                                                        <th>College Name</th>
+                                                        <th>District Name</th>
+                                                        <th>Type</th>
+                                                        <th>Principal Name & Number</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for(let i=0; i < kolhanUniv.length; i++){ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= kolhanUniv[i]._id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= kolhanUniv[i].Coll_Code %>
+                                                            </td>
+                                                            <td>
+                                                                <%= kolhanUniv[i].Coll_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= kolhanUniv[i].Dist_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= kolhanUniv[i].Type %>
+                                                            </td>
+                                                            <td>
+                                                                <%= kolhanUniv[i].Princ_Name %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dialog end -->
+                        </div>
+                    </div>
+                    <!-- JRSU -->
+                    <div class="univ">
+                        <div class="uimg">
+                            <img class="JRSUimg img-thumbnail img-responsive" src="./image/jrus.jpg" alt="">
+                        </div>
+                        <div class="u-details">
+                            <h5 style="font-size: 17px;">JHARKHAND RAKSHA SHAKTI UNIVERSITY (JRSU)</h5>
+                            <a href="https://www.jrsuranchi.com/" target="_blank" class="text-info">Explore the
+                                University</a>
+                            <p class="about">
+                                To impart customised education to the youth of the country in all vital aspects of
+                                internal and external security to ensure a specialized and trained personnel available
+                                for employment in various security agencies like police personnel, defence, private
+                                security, forensic scientists, cyber security offices etc.
+                            </p>
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop5"
+                                style="padding: 5px 20px; font-size: 16px; font-weight: 500;">
+                                <i class="fa-solid fa-building-columns icon"></i>&nbsp;See Colleges</button>
+
+                            <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static"
+                                data-bs-keyword="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success" style="height:40px;">
+                                            <h5 class="modal-title">List Of Colleges Under University</h5>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered table-striped" style="font-size:12px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>College Code</th>
+                                                        <th>College Name</th>
+                                                        <th>District Name</th>
+                                                        <th>Type</th>
+                                                        <th>Principal Name & Number</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for(let i=0; i < jrsu.length; i++){ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= jrsu[i]._id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrsu[i].Coll_Code %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrsu[i].Coll_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrsu[i].Dist_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrsu[i].Type %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrsu[i].Princ_Name %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dialog end -->
+                        </div>
+                    </div>
+                    <!-- Nilamber Pitamber -->
+                    <div class="univ">
+                        <div class="uimg">
+                            <img class="nilimg img-thumbnail img-responsive" src="./image/nilamber.jpg" alt="">
+                        </div>
+                        <div class="u-details">
+                            <h5 style="font-size: 17px;">NILAMBER PITAMBER UNIVERSITY, PALAMU</h5>
+                            <a href="https://npu.ac.in/" target="_blank" class="text-info">Explore the University</a>
+                            <p class="about">
+                                Nilamber-Pitamber University is a state university located in Medininagar, Jharkhand,
+                                India. NPU is one of the largest universities of Jharkhand which manages and operates
+                                all colleges in Palamu district as well as other nearby districts like Garhwa, Latehar
+                                etc. It is an autonomous institution.
+                            </p>
+                            <!-- dialog start -->
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop6"
+                                style="padding: 5px 20px; font-size: 16px; font-weight: 500;">
+                                <i class="fa-solid fa-building-columns icon"></i>&nbsp;See Colleges</button>
+
+                            <div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static"
+                                data-bs-keyword="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success" style="height:40px;">
+                                            <h5 class="modal-title">List Of Colleges Under University</h5>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered table-striped" style="font-size:12px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>College Code</th>
+                                                        <th>College Name</th>
+                                                        <th>District Name</th>
+                                                        <th>Type</th>
+                                                        <th>Principal Name & Number</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for(let i=0; i < npu.length; i++){ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= npu[i]._id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= npu[i].Coll_Code %>
+                                                            </td>
+                                                            <td>
+                                                                <%= npu[i].Coll_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= npu[i].Dist_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= npu[i].Type %>
+                                                            </td>
+                                                            <td>
+                                                                <%= npu[i].Princ_Name %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dialog end -->
+                        </div>
+                    </div>
+                    <!-- DSPMU -->
+                    <div class="univ">
+                        <div class="uimg">
+                            <img class="dspmuimg img-thumbnail img-responsive" src="./image/dspmu.jpg" alt="">
+                        </div>
+                        <div class="u-details">
+                            <h5 style="font-size: 17px;">DR SHYAMA PRASAD MUKHERJEE UNIVERSITY, RANCHI</h5>
+                            <a href="http://www.dspmuranchi.ac.in/" target="_blank" class="text-info">Explore the
+                                University</a>
+                            <p class="about">
+                                Ranchi College, Ranchi (now upgraded as a Unitary State University and known as Dr.
+                                Shyama Prasad Mukherjee University, Ranchi) had been established during the Pre-
+                                Independent India. Established in 1926 as Government Intermediate College, it marched
+                                ahead and began Under- Graduate and Post –Graduate Courses in various subjects of Arts/
+                                Science in the year 1946. The UGC accorded it the status of an “Autonomous College” in
+                                2009. Also, it had been recognized by the UGC as “College with Potential for
+                                Excellence”. This primer college of the Capital has set its mood and never looked back.
+                            </p>
+                            <!-- dialog start -->
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop7"
+                                style="padding: 5px 20px; font-size: 16px; font-weight: 500;">
+                                <i class="fa-solid fa-building-columns icon"></i>&nbsp;See Colleges</button>
+
+                            <div class="modal fade" id="staticBackdrop7" data-bs-backdrop="static"
+                                data-bs-keyword="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success" style="height:40px;">
+                                            <h5 class="modal-title">List Of Colleges Under University</h5>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered table-striped" style="font-size:12px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>College Code</th>
+                                                        <th>College Name</th>
+                                                        <th>District Name</th>
+                                                        <th>Type</th>
+                                                        <th>Principal Name & Number</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for(let i=0; i < dsmpu.length; i++){ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= dsmpu[i]._id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= dsmpu[i].Coll_Code %>
+                                                            </td>
+                                                            <td>
+                                                                <%= dsmpu[i].Coll_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= dsmpu[i].Dist_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= dsmpu[i].Type %>
+                                                            </td>
+                                                            <td>
+                                                                <%= dsmpu[i].Princ_Name %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dialog end -->
+                        </div>
+                    </div>
+                    <!-- JWU -->
+                    <div class="univ">
+                        <div class="uimg">
+                            <img class="jwuimg img-thumbnail img-responsive" src="./image/slide-7.jpg" alt="jwu">
+                        </div>
+                        <div class="u-details">
+                            <h5 style="font-size: 17px;">JAMSHEDPUR WOMEN'S UNIVERSITY</h5>
+                            <a href="http://www.jsrwomenscollege.ac.in/" target="_blank" class="text-info">Explore the
+                                University</a>
+                            <p class="about">
+                                Jamshedpur Women's University
+                            </p>
+                            <!-- dialog start -->
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop8"
+                                style="padding: 5px 20px; font-size: 16px; font-weight: 500;">
+                                <i class="fa-solid fa-building-columns icon"></i>&nbsp;See Colleges</button>
+
+                            <div class="modal fade" id="staticBackdrop8" data-bs-backdrop="static"
+                                data-bs-keyword="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success" style="height:40px;">
+                                            <h5 class="modal-title">List Of Colleges Under University</h5>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered table-striped" style="font-size:12px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>College Code</th>
+                                                        <th>College Name</th>
+                                                        <th>District Name</th>
+                                                        <th>Type</th>
+                                                        <th>Principal Name & Number</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for(let i=0; i < jrw.length; i++){ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= jrw[i]._id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrw[i].Coll_Code %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrw[i].Coll_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrw[i].Dist_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrw[i].Type %>
+                                                            </td>
+                                                            <td>
+                                                                <%= jrw[i].Princ_Name %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dialog end -->
+                        </div>
+                    </div>
+                    <!-- BBMKU -->
+                    <div class="univ">
+                        <div class="uimg">
+                            <img class="bbmkuimg img-thumbnail img-responsive" src="./image/slide-8.jpg" alt="">
+                        </div>
+                        <div class="u-details">
+                            <h5 style="font-size: 17px;">BINOD BIHARI MAHTO KOYALANCHAL UNIVERSITY, DHANBAD</h5>
+                            <a href="https://bbmku.ac.in/" target="_blank" class="text-info">Explore the University</a>
+                            <p class="about">
+                                Binod Bihari Mahto Koylanchal University, Dhanbad was established on 13th November 2017
+                                by the Government of Jharakhand. The University has 10 Constituents and 43 Affiliated
+                                College (including B.Ed. Colleges), one Govt. Engineering College and one Govt. Medical
+                                College spread in Dhanbad and Bokaro districts of Jharkhand, with its headquarter at
+                                Dhanbad. The University offers Undergraduate and Postgraduate courses with 21
+                                Postgraduate Departments, which includes the Department of Management, Education, Mass
+                                Communication, Art & Culture, Law, Foreign Languages, Life Science, Computer Science,
+                                and Environmental Science & disaster Management.
+                            </p>
+                            <!-- dialog start -->
+                            <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop9"
+                                style="padding: 5px 20px; font-size: 16px; font-weight: 500;">
+                                <i class="fa-solid fa-building-columns icon"></i>&nbsp;See Colleges</button>
+
+                            <div class="modal fade" id="staticBackdrop9" data-bs-backdrop="static"
+                                data-bs-keyword="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-success" style="height:40px;">
+                                            <h5 class="modal-title">List Of Colleges Under University</h5>
+                                            <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-bordered table-striped" style="font-size:12px;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>College Code</th>
+                                                        <th>College Name</th>
+                                                        <th>District Name</th>
+                                                        <th>Type</th>
+                                                        <th>Principal Name & Number</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% for(let i=0; i < bbmku.length; i++){ %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= bbmku[i]._id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= bbmku[i].Coll_Code %>
+                                                            </td>
+                                                            <td>
+                                                                <%= bbmku[i].Coll_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= bbmku[i].Dist_Name %>
+                                                            </td>
+                                                            <td>
+                                                                <%= bbmku[i].Type %>
+                                                            </td>
+                                                            <td>
+                                                                <%= bbmku[i].Princ_Name %>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- dialog end -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <script src="nav.js"></script>
+            <%- include('./partials/footer'); %>

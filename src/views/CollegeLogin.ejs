@@ -1,0 +1,142 @@
+<%- include('./partials/header'); %>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: repeating-linear-gradient(90deg, #eee, #eee);
+
+        }
+
+        h1 {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type=text],
+        input[type=password] {
+            margin: 10px 0 0px 0;
+            /* width: 80%; */
+            border: 1px solid #B7C4CF;
+            border-radius: 5px;
+            text-align: left;
+            color: #809db5;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus {
+            border-color: #063860;
+        }
+
+        ::placeholder {
+            color: #04AA6D;
+            opacity: 0.4;
+            text-transform: capitalize;
+        }
+
+        input[type=text] {
+            margin-left: 13px;
+        }
+
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: #ffffff;
+            margin-top: 30px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        #sub-container {
+            margin: 80px auto auto auto;
+            padding: 40px 50px;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px #ccc;
+        }
+    </style>
+
+    <div id="header">
+        <img class="img-responsive" src="./image/c-logo1.png" alt="logo" draggable="false">
+        <span class="title">Apna College</span>
+    </div>
+
+    <%- include('./partials/navbar'); %>
+        </body>
+        <div>
+            <div class="form-container">
+                <div id="sub-container">
+                    <h1 class="fs-3">Login</h1>
+                    <p style="color: #04AA6D; text-align: center;">
+                        <%= LogMessage %>
+                    </p>
+                    <form onsubmit="return handleSubmit();" action="/collegelogin" method="post">
+                        <div>
+                            <p id="serror" class="text-danger"
+                                style="  padding: 5px 20px; margin-top:-37px; position: relative; border-radius: 5px;">
+
+                            </p>
+                            <label for="username">Login Id</label>
+                            <input type="text" name="username" id="username" autocomplete="on">
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" autocomplete="off">
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" id="btn" value="Login" data-bs-toggle="modal">
+                        </div>
+                    </form>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a style="text-decoration: none;" href="/collegesignup">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="login" data-bs-backdrop="static" tabindex="-1" aria-labelledby="loginLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger" style="height:40px; color: white;">
+                            <h5 class="modal-title fs-5 " id="exampleModalLabel">warning!</h5>
+                            <button onclick="handleClick()" type="button" class="btn-close shadow-none"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-danger">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const btn = document.getElementById('btn');
+            const inp = document.getElementById("username");
+            const pass = document.getElementById("password");
+            const msg = document.querySelector(".modal-body");
+
+            console.log(sError);
+
+            function handleSubmit() {
+
+                if (inp.value == "" || pass == "") {
+                    msg.innerHTML = "All filed are required!";
+                    btn.setAttribute("data-bs-target", "#login");
+                    btn.dispatchEvent(new Event("click"));
+                    return false;
+                }
+            }
+
+            function handleClick() {
+                msg.innerHTML = "";
+                btn.removeAttribute("data-bs-target");
+            }
+        </script>
+
+
+        </html>

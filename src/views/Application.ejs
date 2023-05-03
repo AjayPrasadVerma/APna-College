@@ -1,0 +1,311 @@
+<%- include('./partials/header'); %>
+
+    <body>
+        <div class="application-title">
+            <div class="heading">
+                <p id="para1">Online Application Form</p>
+                <p id="2nd">Form No: <%= formNo %> | Course : <%=Course[1] %>
+                </p>
+            </div>
+            <div class="sub-heading">
+                <div>
+                    <img class="img-responsive" src="/image/c-logo1.png" alt="logo" width="110">
+                </div>
+                <div id="details">
+                    <h1 class="fs-4">APNA COLLEGE</h1>
+                    <p>
+                        <%= Course[0] %>
+                    </p>
+                    <p>Online Common Application FORM :: Session <%= session %>
+                    </p>
+                    <p>Application No: <%=Course[1] %>/<%=session %>/<%= appNo %>
+                </div>
+            </div>
+        </div>
+        <h1 class="bg-warning fs-5" style="padding: 10px; font-weight: bold; text-align: right;">Hi, <%= username %>
+        </h1>
+        <div class="container-fluid">
+            <form id="application" action="" method="" enctype="multipart/form-data">
+                <div class="container-f">
+                    <div class="personal-info tab">
+                        <div>
+                            <h1 class="fs-4">PERSIONAL INFORMATION</h1>
+                            <hr>
+                        </div>
+                        <div class="personal-info-contnr">
+                            <div class="p-info">
+                                <label class="required" for="fName">First Name</label>
+                                <input type="text" name="fName" id="fName" oninput="this.className='' "
+                                    autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label for="mName">Middle Name</label>
+                                <input type="text" name="mName" id="mName" oninput="this.className='' "
+                                    autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="lName">Last Name</label>
+                                <input type="text" name="lName" id="lName" oninput="this.className='' "
+                                    autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="FatherName">Father Name</label>
+                                <input type="text" name="FatherName" id="FatherName" oninput="this.className='' "
+                                    autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="MotherName">Mother Name</label>
+                                <input type="text" id="MotherName" name="MotherName" oninput="this.className='' "
+                                    autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label for="mobileNo">Mobile No</label>
+                                <input type="tel" id="mobileNo" name="mobileNo" value="<%= usermobile %>" disabled>
+                            </div>
+                            <div class="p-info">
+                                <label for="emailId">Email Id</label>
+                                <input type="email" id="emailId" name="emailId" style="text-transform: lowercase;"
+                                    value="<%= useremail %>" disabled>
+                            </div>
+                            <div class="p-info p-info-select">
+                                <div class="p-info">
+                                    <label class="required" for="gender">Gender</label>
+                                    <select id="gender" name="gender" style="margin-top: 6px;"
+                                        onselect="this.className='' ">
+                                        <option value="" selected>SELECT GENDER</option>
+                                        <option value="MALE">MALE</option>
+                                        <option value="FEMALE">FEMALE</option>
+                                    </select>
+                                </div>
+                                <div class="p-info p-info-bottom">
+                                    <label class="required" for="cast">Cast</label>
+                                    <select id="cast" name="cast" style="margin-top: 6px;"
+                                        onselect="this.className='' ">
+                                        <option value="" selected>SELECT CAST</option>
+                                        <option value="BC-I">BC-I</option>
+                                        <option value="BC-II">BC-II</option>
+                                        <option value="SC">SC</option>
+                                        <option value="ST">ST</option>
+                                        <option value="Transgender">TRANSGENDER</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="dob">Date Of Birth</label>
+                                <input type="date" id="dob" name="dob" oninput="this.className='' " autocomplete="off">
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Personal Info end -->
+                    <!-- Permanent address section start -->
+                    <div class="address-sec tab">
+                        <div>
+                            <h1 class="fs-4">ADDRESS INFORMATION</h1>
+                            <p class="fs-8 text-danger">Permanent Address</p>
+                            <hr>
+                        </div>
+                        <div class="address-sec-contnr">
+                            <div class="p-info add-sec addL1">
+                                <label class="required" for="addL1">Address Line1</label>
+                                <textarea rows="2" type="text" name="addL1" id="addL1" autocomplete="off"></textarea>
+                            </div>
+                            <div class="p-info add-sec addL2">
+                                <label for="addL2">Address Line2</label>
+                                <textarea rows="2" type="text" name="addL1" id="addLc" autocomplete="off"></textarea>
+                            </div>
+                            <div class="p-info add-sec">
+                                <label class="required" for="block">Block</label>
+                                <input type="text" name="block" id="block" autocomplete="off">
+                            </div>
+                            <div class="p-info add-sec">
+                                <label class="required" for="distric">District</label>
+                                <input type="text" id="distric" name="distric" autocomplete="off">
+                            </div>
+                            <div class="p-info add-sec">
+                                <label class="required" for="pinCode">Pin Code</label>
+                                <input type="number" id="pinCode" name="pinCode" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Permanent address section end -->
+                    <!-- academic-information start -->
+                    <div class="academic-info tab">
+                        <div>
+                            <h1 class="fs-4">PREVIOUS ACADEMIC INFORMATION <h1>
+                                    <hr>
+                        </div>
+                        <div class="academic-info-contnr">
+
+                            <div class="p-info">
+                                <label class="required" for="gender">Last Passed Exam</label>
+                                <select id="gender" name="gender" style="margin-top: 6px;">
+                                    <option value="">Select</option>
+                                    <option value="BA">Bachelor of Arts (BA)</option>
+                                    <option value="BS">Bachelor of Science (B.Sc.)</option>
+                                    <option value="BBA">Bachelor of Business Administration (BBA)</option>
+                                    <option value="BE">Bachelor of Engineering (BE)</option>
+                                    <option value="BFA">Bachelor of Computer Application (BCA)</option>
+                                    <option value="BArch">Bachelor of Architecture (BArch)</option>
+                                    <option value="LLB">Bachelor of Laws (LLB)</option>
+                                </select>
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="university">University Name</label>
+                                <input type="text" name="university" id="university" autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="session">Session</label>
+                                <select id="session" name="session" style="margin-top: 6px;">
+                                    <option value="0" selected>Selest Session</option>
+                                    <!-- automatically created through js -->
+                                </select>
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="regNo">Registration No.</label>
+                                <input type="text" id="regNo" name="regNo" autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label class="required" class="required" for="passYear">Passing Year</label>
+                                <select id="passYear" name="passYear" style="margin-top: 6px;">
+                                    <option value="0" selected>Select Year</option>
+                                    <!-- automatically created through js -->
+                                </select>
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="courseType">Course Type</label>
+                                <select id="courseType" name="courseType" style="margin-top: 6px;">
+                                    <option value="0" selected>Select Course Type</option>
+                                    <option value="MALE">Regular</option>
+                                    <option value="FEMALE">Distance</option>
+                                </select>
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="subject">Subject Studied</label>
+                                <input type="text" id="subject" name="subject" autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="cgpa">CGPA</label>
+                                <input type="text" id="cgpa" name="cgpa" autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="percentage-marks">Percentage Of Marks Secured</label>
+                                <input type="text" id="percentage-marks" name="percentage-marks" autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="percentage-marks">Subject's Total Credit Score</label>
+                                <input type="number" id="percentage-marks" name="percentage-marks" autocomplete="off">
+                            </div>
+                            <div class="p-info">
+                                <label class="required" for="percentage-marks">Total Credit Secured On Subject</label>
+                                <input type="number" id="percentage-marks" name="percentage-marks" autocomplete="off">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Academic information end -->
+
+                    <!-- DISCIPLINE SECTION start-->
+                    <div class="tab">
+                        <div class="descipline-info">
+                            <div>
+                                <h1 class="fs-4">DISCIPLINE SECTION<h1>
+                                        <hr>
+                            </div>
+                            <div class="descipline-info-contnr">
+                                <div class="p-info">
+                                    <label class="required" for="univName">University Name</label>
+                                    <select id="univName" name="univName" style="margin-top: 6px;">
+                                        <option value="">Select University</option>
+                                        <option value="BA">University 1</option>
+                                        <option value="BS">University 2</option>
+                                        <option value="BBA">University 3</option>
+                                        <option value="BE">University 4</option>
+                                        <option value="BFA">University 5</option>
+                                        <option value="BArch">University 6</option>
+                                        <option value="LLB">University 6</option>
+                                        <option value="LLB">University 8</option>
+                                    </select>
+                                </div>
+                                <div class="p-info">
+                                    <label class="required" for="clgName">College Name</label>
+                                    <select id="clgName" name="clgName" style="margin-top: 6px;">
+                                        <option value="" selected>Selest College</option>
+                                        <option value="BA">college 1</option>
+                                        <option value="BS">college 2</option>
+                                        <option value="BBA">college 3</option>
+                                        <option value="BE">college 4</option>
+                                    </select>
+                                </div>
+                                <div class="p-info">
+                                    <label class="required" class="required" for="stream">Stream</label>
+                                    <select id="stream" name="stream" style="margin-top: 6px;">
+                                        <option value="" selected>Select Stream</option>
+                                        <option value="BA">Stream 1</option>
+                                        <option value="BS">Stream 2</option>
+                                        <option value="BBA">Stream 3</option>
+                                        <option value="BE">Stream 4</option>
+                                    </select>
+                                </div>
+                                <div class="p-info">
+                                    <label class="required" for="courseType">Course Type</label>
+                                    <select id="courseType" name="courseType" style="margin-top: 6px;">
+                                        <option value="" selected>Select Course Type</option>
+                                        <option value="MALE">Regular</option>
+                                        <option value="FEMALE">Distance</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FILE SECTION start-->
+                        <div class="file-upload">
+                            <div>
+                                <h1 class="fs-4">FILE SECTION<h1>
+                                        <p class="file-instructions fs-6 text-danger">Please upload a file in JPEG, JPG,
+                                            PNG
+                                            format with
+                                            a
+                                            maximum size of 2MB.</p>
+                                        <hr>
+                            </div>
+                            <div class="file-upload-contnr">
+                                <div class="p-info">
+                                    <div>
+                                        <label class="lbl" for="file-upload" class="required">Upload Photo</label>
+                                        <label for="file-upload" class="custom-file-upload">
+                                            <i class="fa fa-cloud-upload"></i> Choose File
+                                        </label>
+                                        <input onchange="handleChange(this)" id="file-upload" type="file" name="file">
+                                        <div class="text-danger fs-6" style="font-style: italic;" class="text-danger"
+                                            id="FileError"></div>
+                                    </div>
+                                </div>
+                                <div class="p-info">
+                                    <div>
+                                        <label class="lbl" for="file-upload" class="required">Upload Signature</label>
+                                        <label for="sig-upload" class="custom-file-upload ">
+                                            <i class="fa fa-cloud-upload"></i> Choose File
+                                        </label>
+                                        <input onchange="handleSignChange(this)" id="sig-upload" type="file"
+                                            name="sigfile">
+                                    </div>
+                                    <div class="text-danger fs-6" style="font-style: italic;" id="sigError"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- FILE SECTION end-->
+                    </div>
+                    <!-- DISCIPLINE SECTION end-->
+
+                </div>
+                <div style="overflow:auto; margin-bottom: 20px;">
+                    <div style="text-align: center;">
+                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    </div>
+                </div>
+            </form>
+            <script src="/application.js"></script>
+        </div>
+    </body>
+
+    </html>

@@ -1,0 +1,175 @@
+<body onload="onloadEvent()">
+    <header>
+        <div id="head" class="bg-warning">
+            <div class="dropdown" style="margin-right: 0px;">
+                <button class="btn btn1 btn-warning" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                    style="border-radius: 0px; padding:4px;">
+                    <img class="rounded-circle img-fluid bg-light img-responsive" id="userImg"
+                        src="/image/<%= userprofile %>" alt="user" style="margin-left: -45px;">
+                    <b>
+                        <%= username %>
+                    </b>
+                </button>
+                <section class="vh-10 dropdown-menu" style="background-color: #eee;" style="border-radius: 0px;">
+                    <div class="container py-1 px-4 h-100">
+                        <div class="row d-flex justify-content-center align-items-center h-100">
+
+                            <img class="rounded-circle img-fluid bg-light img-responsive mb-3 btn-md" id="drop-img"
+                                src="/image/<%= userprofile %>" class="card-img-top" alt="..." style="width: 120px;">
+
+                            <button class="btn btn-danger btn-lg" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">Logout</button>
+                        </div>
+                </section>
+            </div>
+            <div id="tag" class="bg-warning text-light">
+                <h4 class="cl-name" style=""><b>APNA</b> COLLEGE</h4>
+                <div id="navbtn" style="padding: 0px;">
+                    <span id="clsbtn" class="closebtn" style="font-size:25px; cursor:pointer;"
+                        onclick="onclickEvent(0)">&#9776;</span>
+                </div>
+            </div>
+
+            <!-- side nav start -->
+
+        </div>
+        <div id="mySidenav" class="sidenav">
+            <div id="profile" class="mt-3 mb-4 txt-light"> <!-- margin -->
+                <img class="rounded-circle img-fluid bg-light img-responsive" id="userImg"
+                    src="/image/<%= userprofile %>" alt="user"><b id="uname">
+                    <%= username %>
+                </b>
+            </div>
+            <small id="mn">MAIN NAVIGATION</small>
+
+            <div id="nlink">
+                <a class="active" href="#D"><i class="fa-solid fa-house-chimney active"></i><span
+                        class="navlink active"> Dashboard</span></a>
+                <a href="#A"><i class="fa-solid fa-database"></i><span class="navlink"> View Application</span></a>
+                <a id="set-Menu" href="#S"><i class="fa-solid fa-gear"></i><span class="navlink"> Seeting
+                        &#x25BC;</span></a>
+                <div id="sMenu">
+                    <ul>
+                        <li><a style="border: none;" href="#mob"><i class="fa-solid fa-phone"></i>&nbsp;Change
+                                Mobile
+                                No.</a></li>
+                        <li><a style="border: none;" href="#Email"><i class="fa-solid fa-envelope"></i>&nbsp;Change
+                                Email id.</a></li>
+                        <li><a style="border: none;" href="#Cpsaa"><i class="fa-solid fa-lock"></i>&nbsp;Change
+                                Password</a></li>
+                    </ul>
+                </div>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+                        class="fa-solid fa-right-from-bracket"></i><span class="navlink"> Logout</span></a>
+            </div>
+        </div>
+        <!-- side nav end -->
+    </header>
+
+    <!-- log out start -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyword="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content text-center">
+                <div class="modal-body text-center">
+                    <h1 class="fs-5">Log Out</h1>
+                    <p>
+                        Are you sure you would like to log out?
+                    </p>
+                </div>
+                <div class="d-grid mb-2 mt-0">
+                    <a href="/logout" onclick="handleOnclick()" style="border-radius: 5px;" type="button"
+                        class="btn btn-danger m-2 mb-0">YES</a>
+                    <button style="border-radius: 5px;" type="button" class="btn btn-success m-2"
+                        data-bs-dismiss="modal">NO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- log out end -->
+
+    <script type="text/javascript">
+
+        let sidenave = document.getElementById("mySidenav");
+        let Nav = document.getElementById("head");
+        let link = document.getElementsByClassName("navlink");
+        let nlink = document.getElementById("nlink");
+        let tag = document.getElementById("tag");
+
+        let flag = 0;
+
+        function onloadEvent() {
+            onclickEvent(1);
+        }
+
+        function onclickEvent(x) {
+            flag = flag + x;
+            handleOnclickEvent(flag);
+        }
+
+
+        function handleOnclickEvent(num) {
+
+            if (num == 1) {
+                function openNav() {
+                    tag.style.width = "50px";
+                    sidenave.style.width = "50px";
+                    // Nav.style.marginLeft = "40px";
+                    // document.getElementById("userImg").style.width = "40px";
+                    document.getElementById("uname").style.display = "none";
+                    document.getElementById("mn").style.display = "none";
+                    document.querySelector(".cl-name").innerHTML = "<b>AC</b>";
+                    // nlink.style.marginTop = "-25px";
+                    // document.getElementById("head").style.width = "98%";
+
+                    for (ele of link) {
+                        ele.style.opacity = "0";
+                        ele.style.display = "none";
+                    }
+                    flag = 0;
+                }
+                openNav();
+            }
+            else {
+                function closeNav() {
+                    tag.style.width = "250px";
+                    sidenave.style.width = "220px";
+                    // Nav.style.marginLeft = "220px";
+                    document.getElementById("uname").style.display = "inline";
+                    document.querySelector(".cl-name").innerHTML = "<b>APNA</b> COLLEGE";
+                    document.getElementById("mn").style.display = "block";
+                    // nlink.style.marginTop = "10px";
+
+                    for (ele of link) {
+                        ele.style.opacity = "1";
+                        ele.style.display = "inline";
+
+                        // setTimeout(() => {
+                        //     document.getElementById("head").style.width = "85%";
+                        // }, 300);
+                    }
+                    flag = 1;
+                }
+                closeNav();
+            }
+        }
+
+        $("#set-Menu").click(() => {
+            $("#sMenu").slideToggle();
+        })
+
+        function handleOnclick() {
+
+            // Get the current URL
+            var currentUrl = window.location.href;
+
+            // Remove the URL parameters
+            var newUrl = currentUrl.split('?')[0];
+
+            // Redirect to the new URL
+            window.location.href = newUrl;
+
+            sessionStorage.clear();
+            window.location.replace('/');
+        }
+    </script>
