@@ -9,9 +9,18 @@ const collegeLogin = mongoose.Schema({
     profile: String
 })
 
+const collegeApplication = mongoose.Schema({
+    collegeName: String,
+    courseType: String,
+    from: Date,
+    To: Date,
+    PgCourse: Array,
+    notice: String
+})
+
 collegeLogin.plugin(passportLocalMongoose);
 const clgLoginModel = mongoose.model("collegeLogin", collegeLogin);
+const clgAppliModel = mongoose.model("openApplication", collegeApplication);
 
-
-module.exports = clgLoginModel;
+module.exports = { clgLoginModel, clgAppliModel };
 

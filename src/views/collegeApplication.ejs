@@ -1,0 +1,445 @@
+<%- include('./partials/header'); %>
+    <style>
+        .app-info>input {
+            width: 30px;
+            padding: 5px;
+        }
+
+        .app-info1 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .address-sec {
+            margin-top: 10px;
+            display: none;
+        }
+
+        textarea {
+            text-transform: none;
+        }
+
+        .course {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+        }
+
+        @media(max-width: 941px) {
+            .course {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        @media(max-width: 941px) {
+            .app-info1 {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        .commerce {
+            display: grid;
+            grid-template-columns: repeat(3, 2fr);
+            align-items: center;
+            grid-row-gap: 10px
+        }
+
+        @media(max-width: 932px) {
+            .commerce {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        .language {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chemistry {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cs {
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr 1fr;
+            align-items: center;
+            grid-row-gap: 10px;
+            gap: 10px;
+        }
+
+        .math {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            gap: 10px;
+        }
+
+        @media(max-width: 938px) {
+
+            .language,
+            .chemistry,
+            .cs,
+            .math {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+
+    <body>
+        <div class="application-title">
+            <div class="sub-heading">
+                <div>
+                    <img class="img-responsive" src="/image/c-logo1.png" alt="logo" width="110">
+                </div>
+                <div id="details">
+                    <h1 class="fs-4">
+                        <%= username %>
+                    </h1>
+                    <p>Online Common Application FORM :: <%= year %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container-f">
+            <form onsubmit="return handleSubmit()" action="/clgapplication" method="post">
+                <div class="personal-info">
+                    <div>
+                        <h1 class="fs-4">COURSE TYPE</h1>
+                        <hr>
+                    </div>
+                    <input type="hidden" id="hId" name="collegeName" value='<%= username %>'>
+                    <div class="app-info1">
+                        <div class="course">
+                            <div class="app-info">
+                                <label for="couresT1">Undergraduate</label>
+                                <input type="checkbox" name="couresType" id="couresT1" value="UG"
+                                    oninput="this.className='' ">
+                            </div>
+                            <div class="app-info">
+                                <label for="couresT2">Postgraduate</label>
+                                <input type="checkbox" name="couresType" id="couresT2" value="PG"
+                                    oninput="this.className='' ">
+                            </div>
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="form">From</label>
+                            <input type="date" id="form" name="from" oninput="this.className='' " autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="to">To</label>
+                            <input type="date" id="to" name="to" oninput="this.className='' " autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                <div class="address-sec tab-1">
+                    <div>
+                        <h1 class="fs-4">UG COURSES</h1>
+                        <hr>
+                    </div>
+                    <div class="app-info2">
+                        <p class="fs-8 text-danger">Commerce:</p>
+                        <div class="commerce">
+                            <div class="app-info">
+                                <label for="BCom">B.Com.</label>
+                                <input type="checkbox" name="UgCourse" id="BCom" value="B.Com.">
+                            </div>
+                            <div class="app-info">
+                                <label for="BComHonsCLaw">B.Com. (Hons.) Corporate Laws</label>
+                                <input type="checkbox" name="UgCourse" id="BComHonsCLaw"
+                                    value="B.Com. (Hons.) Corporate Laws">
+                            </div>
+                            <div class="app-info">
+                                <label for="BComHons">B.Com. (Hons.)</label>
+                                <input type="checkbox" name="UgCourse" id="BComHons" value="PG">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="app-info3">
+                        <p class="fs-8 text-danger">languages:</p>
+                        <div class="language">
+                            <div class="app-info">
+                                <label for="BA">B.A. Programme (Language Courses) in Hindi</label>
+                                <input type="checkbox" name="UgCourse" id="BA"
+                                    value="B.A. Programme (Language Courses) in Hindi">
+                            </div>
+                            <div class="app-info">
+                                <label for="BASnk">B.A. Programme (Language Courses) in Sanskrit</label>
+                                <input type="checkbox" name="UgCourse" id="BASnk"
+                                    value="B.A. Programme (Language Courses) in Sanskrit">
+                            </div>
+                            <div class="app-info">
+                                <label for="BACSnk">B.A. Programme (Courses ) in Sanskrit</label>
+                                <input type="checkbox" name="UgCourse" id="BASnk"
+                                    value="B.A. Programme (Discipline Courses ) in Sanskrit">
+                            </div>
+                            <div class="app-info">
+                                <label for="BAPunjabi">B.A. Programme (Language Courses) in Punjabi</label>
+                                <input type="checkbox" name="UgCourse" id="BAPunjabi"
+                                    value="B.A. Programme (Language Courses) in Punjabi">
+                            </div>
+                            <div class="app-info">
+                                <label for="BAUrdu">B.A. Programme (Language Courses) in Urdu</label>
+                                <input type="checkbox" name="UgCourse" id="BAUrdu"
+                                    value="B.A. Programme (Language Courses) in Urdu">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="app-info4">
+                        <p class="fs-8 text-danger">Chemistry:</p>
+                        <div class="chemistry">
+                            <div class="app-info">
+                                <label for="BSCH-Chem">B.Sc. (Hon) Chemistry</label>
+                                <input type="checkbox" name="UgCourse" id="BSCH-Chem" value="B.Sc. (Hon) Chemistry">
+                            </div>
+                            <div class="app-info">
+                                <label for="BSCH-PC">B.Sc. (Hon) Physical Science with Chemistry</label>
+                                <input type="checkbox" name="UgCourse" id="BSCH-PC"
+                                    value="B.Sc. (Hon) Physical Science with Chemistry">
+                            </div>
+                            <div class="app-info">
+                                <label for="BSCH-IC">B.Sc. (Hon) Industrial Chemistry</label>
+                                <input type="checkbox" name="UgCourse" id="BSCH-IC"
+                                    value="B.Sc. (Hon) Industrial Chemistry">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="app-info5">
+                        <p class="fs-8 text-danger">Computer Science:</p>
+                        <div class="cs">
+                            <div class="app-info">
+                                <label for="BSC-CS">B.Sc. (Hon) Computer Science</label>
+                                <input type="checkbox" name="UgCourse" id="BSC-CS" value="B.Sc. (Hon) Computer Science">
+                            </div>
+                            <div class="app-info">
+                                <label for="BSC-PCS">B.Sc (Hon) Physical Science Computer Science</label>
+                                <input type="checkbox" name="UgCourse" id="BSC-PCS"
+                                    value="B.Sc (Hon) Physical Science Computer Science">
+                            </div>
+                            <div class="app-info">
+                                <label for="BCA">BCA</label>
+                                <input type="checkbox" name="UgCourse" id="BCA" value="BCA">
+                            </div>
+                            <div class="app-info">
+                                <label for="BScIT">B.Sc.IT</label>
+                                <input type="checkbox" name="UgCourse" id="BScIT" value="BSc.IT">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="app-info6">
+                        <p class="fs-8 text-danger">Mathematics:</p>
+                        <div class="math">
+                            <div class="app-info">
+                                <label for="BSC-MH">B.Sc. (Hon) Mathematics</label>
+                                <input type="checkbox" name="UgCourse" id="BSC-MH" value="B.Sc. (Hon) Mathematics">
+                            </div>
+                            <div class="app-info">
+                                <label for="BA-MH">B.A. Programme (Discipline Courses) in Mathematics</label>
+                                <input type="checkbox" name="UgCourse" id="BA-MH"
+                                    value="B.A. Programme (Discipline Courses) in Mathematics">
+                            </div>
+                            <div class="app-info">
+                                <label for="BA-AC-MH">B.A. Programme (Application Courses) in Mathematics</label>
+                                <input type="checkbox" name="UgCourse" id="BA-AC-MH"
+                                    value="B.A. Programme (Application Courses) in Mathematics">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="address-sec tab-2">
+                    <div>
+                        <h1 class="fs-4">PG COURSES</h1>
+                        <hr>
+                    </div>
+                    <div class="app-info2">
+                        <p class="fs-8 text-danger">Commerce:</p>
+                        <div class="commerce">
+                            <div class="app-info">
+                                <label for="MCom">M.Com.</label>
+                                <input type="checkbox" name="PgCourse" id="MCom" value="M.Com.">
+                            </div>
+                            <div class="app-info">
+                                <label for="BComHonsCLaw">B.Com. (Hons.) Corporate Laws</label>
+                                <input type="checkbox" name="PgCourse" id="MComHonsCLaw"
+                                    value="M.Com. (Hons.) Corporate Laws">
+                            </div>
+                            <div class="app-info">
+                                <label for="MComHons">M.Com. (Hons.)</label>
+                                <input type="checkbox" name="PgCourse" id="MComHons" value="PG">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="app-info3">
+                        <p class="fs-8 text-danger">languages:</p>
+                        <div class="language">
+                            <div class="app-info">
+                                <label for="MA">M.A. Programme (Language Courses) in Hindi</label>
+                                <input type="checkbox" name="PgCourse" id="BA"
+                                    value="M.A. Programme (Language Courses) in Hindi">
+                            </div>
+                            <div class="app-info">
+                                <label for="MASnk">M.A. Programme (Language Courses) in Sanskrit</label>
+                                <input type="checkbox" name="PgCourse" id="MASnk"
+                                    value="M.A. Programme (Language Courses) in Sanskrit">
+                            </div>
+                            <div class="app-info">
+                                <label for="MACSnk">M.A. Programme (Courses ) in Sanskrit</label>
+                                <input type="checkbox" name="PgCourse" id="MASnk"
+                                    value="M.A. Programme (Discipline Courses ) in Sanskrit">
+                            </div>
+                            <div class="app-info">
+                                <label for="MAPunjabi">M.A. Programme (Language Courses) in Punjabi</label>
+                                <input type="checkbox" name="PgCourse" id="MAPunjabi"
+                                    value="M.A. Programme (Language Courses) in Punjabi">
+                            </div>
+                            <div class="app-info">
+                                <label for="MAUrdu">M.A. Programme (Language Courses) in Urdu</label>
+                                <input type="checkbox" name="PgCourse" id="MAUrdu"
+                                    value="M.A. Programme (Language Courses) in Urdu">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="app-info4">
+                        <p class="fs-8 text-danger">Chemistry:</p>
+                        <div class="chemistry">
+                            <div class="app-info">
+                                <label for="MSCH-Chem">B.Sc. (Hon) Chemistry</label>
+                                <input type="checkbox" name="PgCourse" id="MSCH-Chem" value="M.Sc. (Hon) Chemistry">
+                            </div>
+                            <div class="app-info">
+                                <label for="MSCH-PC">M.Sc. (Hon) Physical Science with Chemistry</label>
+                                <input type="checkbox" name="PgCourse" id="MSCH-PC"
+                                    value="M.Sc. (Hon) Physical Science with Chemistry">
+                            </div>
+                            <div class="app-info">
+                                <label for="MSCH-IC">M.Sc. (Hon) Industrial Chemistry</label>
+                                <input type="checkbox" name="PgCourse" id="MSCH-IC"
+                                    value="M.Sc. (Hon) Industrial Chemistry">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="app-info5">
+                        <p class="fs-8 text-danger">Computer Science:</p>
+                        <div class="cs">
+                            <div class="app-info">
+                                <label for="MSC-CS">M.Sc. (Hon) Computer Science</label>
+                                <input type="checkbox" name="PgCourse" id="MSC-CS" value="M.Sc. (Hon) Computer Science">
+                            </div>
+                            <div class="app-info">
+                                <label for="MSC-PCS">M.Sc (Hon) Physical Science Computer Science</label>
+                                <input type="checkbox" name="PgCourse" id="MSC-PCS"
+                                    value="M.Sc (Hon) Physical Science Computer Science">
+                            </div>
+                            <div class="app-info">
+                                <label for="MCA">MCA</label>
+                                <input type="checkbox" name="PgCourse" id="MCA" value="MCA">
+                            </div>
+                            <div class="app-info">
+                                <label for="MScIT">M.Sc.IT</label>
+                                <input type="checkbox" name="PgCourse" id="MScIT" value="MSc.IT">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="app-info6">
+                        <p class="fs-8 text-danger">Mathematics:</p>
+                        <div class="math">
+                            <div class="app-info">
+                                <label for="MSC-MH">M.Sc. (Hon) Mathematics</label>
+                                <input type="checkbox" name="PgCourse" id="MSC-MH" value="M.Sc. (Hon) Mathematics">
+                            </div>
+                            <div class="app-info">
+                                <label for="MA-MH">M.A. Programme (Discipline Courses) in Mathematics</label>
+                                <input type="checkbox" name="PgCourse" id="MA-MH"
+                                    value="M.A. (Discipline Courses) in Mathematics">
+                            </div>
+                            <div class="app-info">
+                                <label for="coures2">M.A. Programme (Application Courses) in Mathematics</label>
+                                <input type="checkbox" name="PgCourse" id="MA-AC-MH"
+                                    value="M.A. (Application Courses) in Mathematics">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="academic-info mt-2">
+                    <div class="p-info add-sec">
+                        <label class="required" for="notice">Notice</label>
+                        <textarea rows="4" type="text" name="notice" id="notice" autocomplete="off"
+                            oninput="this.className=''"></textarea>
+                    </div>
+                </div>
+                <div style="overflow:auto; margin-bottom: 5px;">
+                    <div style="text-align: center;">
+                        <button type="submit" id="nextBtn">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script>
+
+            $(document).ready(function () {
+                $('#couresT1').click(function () {
+                    if ($(this).prop("checked") == true) {
+                        $(".tab-1").css("display", "block");
+                    }
+                    else if ($(this).prop("checked") == false) {
+                        $(".tab-1").css("display", "none");
+                    }
+                })
+            })
+
+            $(document).ready(function () {
+                $('#couresT2').click(function () {
+                    if ($(this).prop("checked") == true) {
+                        $(".tab-2").css("display", "block");
+                    }
+                    else if ($(this).prop("checked") == false) {
+                        $(".tab-2").css("display", "none");
+                    }
+                })
+            })
+
+            function validateForm() {
+
+                let x, y, i, valid = true;
+
+                x = document.getElementsByTagName("input");
+                y = document.getElementsByTagName("textarea");
+                let allField = [...x, ...y];
+
+                for (i = 0; i < allField.length; i++) {
+
+                    if (allField[i].value == "") {
+                        allField[i].className += " invalid";
+                        valid = false;
+                    }
+                }
+
+                return (valid) ? true : false;
+            }
+
+            function handleSubmit() {
+                return validateForm();
+            }
+
+            const serMsg = '<%= successMsg %>'
+
+            if (serMsg != "") {
+                alert(serMsg);
+            }
+        </script>
+    </body>
+
+    </html>

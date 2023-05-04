@@ -1,31 +1,91 @@
 <%- include('./partials/header'); %>
 
     <body>
+        <style>
+            .sidenav {
+                margin-top: 51px;
+            }
+        </style>
         <%- include('./partials/DashboardNav'); %>
-            <h1>College Content</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus numquam veritatis facilis nihil
-                dignissimos, debitis aut eum laboriosam alias nemo mollitia officiis iusto quo eos voluptate. Maiores,
-                eius. Totam provident culpa, voluptatem ducimus ex molestiae, nesciunt ipsum possimus labore cumque, ab
-                adipisci. Perferendis possimus beatae doloribus. Mollitia iste velit delectus aperiam aliquid fugit
-                assumenda praesentium, ullam dolores consectetur perspiciatis maxime vitae fuga animi laudantium porro
-                atque asperiores nam est laboriosam ab quis tenetur. Aliquid fuga dolor assumenda laborum quibusdam
-                iure, voluptates beatae enim ullam quidem nobis deleniti nesciunt reprehenderit fugit exercitationem,
-                temporibus nulla consequatur? Culpa repellendus, ut, nisi ducimus soluta unde ipsam quia voluptatum
-                delectus hic qui laudantium recusandae nesciunt natus porro quisquam sunt reprehenderit modi sapiente
-                corrupti placeat! Ullam veniam dicta adipisci quibusdam non perspiciatis, blanditiis, enim beatae
-                debitis saepe doloremque nam natus assumenda animi rerum et tempora in modi inventore delectus deleniti
-                minus soluta. Quaerat dolorum commodi quisquam exercitationem neque explicabo ex provident ut voluptate.
-                Dolorum ex ab delectus debitis fugit beatae dolore aliquam suscipit magni minima accusamus, doloribus
-                consequatur, voluptatem exercitationem! Reprehenderit, repudiandae adipisci architecto eveniet, cumque
-                temporibus quibusdam veritatis accusamus animi laboriosam amet eligendi saepe consequatur ipsam officiis
-                magni aliquam! Earum nihil recusandae, dicta autem, cum numquam et, adipisci architecto quidem ab ipsum
-                repudiandae alias cupiditate unde explicabo officia commodi incidunt. Reprehenderit aliquid optio minus
-                eius impedit corrupti aperiam eveniet ducimus quasi omnis doloremque consequuntur esse similique velit
-                vero modi ipsam laborum, tenetur pariatur, laudantium accusamus eaque placeat nisi eos. Quas, nesciunt
-                id vel mollitia aliquam est asperiores, doloremque quae facilis dolores fugiat adipisci laborum incidunt
-                natus. Dolor deleniti numquam delectus dolorem temporibus impedit reiciendis eaque soluta saepe fugiat
-                vitae, eius aspernatur facilis animi inventore quae neque quaerat quas nulla! Sapiente soluta nihil
-                ullam quis atque, nemo debitis, tenetur voluptas labore qui ad eaque eveniet consectetur?</p>
+
+            <div id="main-container">
+                <h2 style="visibility: hidden;">main-container</h2>
+            </div>
+
+            <div class="profile-container">
+                <div class="title-container">
+                    <h2 class="bg-warning" style="padding: 3px;">Dashobard</h2>
+                    <div class="profile-dashboard">
+                        <div class="user-profile">
+                            <div class="user-img">
+                                <img class="rounded-circle user img-fluid bg-light img-responsive"
+                                    src="/image/<%= userprofile %>" alt="user">
+                            </div>
+                            <div style="text-align: center; font-weight: bold; font-size: 20px;">
+                                <%= username %>
+                            </div>
+                            <div class="user-details">
+                                <p class="userDetails"><span class="text-info"><i class="fa-solid fa-user"></i> Name :
+
+                                </p>
+                                <p class="userDetails"><span class="text-info"><i class="fa-solid fa-envelope"></i>
+                                        Email :
+
+                                </p>
+                                <p class="userDetails"><span class="text-info"><i class="fa-solid fa-phone"></i> Mobile
+                                        :
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="profile-notice">
+                            <h3 class="text-success">
+                                <i class="fa-solid fa-bullhorn"></i> Important notie for College or university
+                            </h3>
+
+                            <p class="p-notice text-danger">
+                                1. Before FEE Payment please verify your all details(your personal delatls,
+                                ,Education details, marks, Category etc). On the basis of these details your
+                                marit list will be published. After FEE Payment you can not change your details.
+                            </p>
+                            <p class="p-notice text-danger">
+                                2. During the application for PG Course please do not submit yout Final year/Semester
+                                Marks on the basis of Partial Marks because After FEE Payment you can not change your
+                                details.
+                            </p>
+                            <p class="p-notice text-danger">
+                                3. For you convient in LOGIN CHANGE REQUEST OPTION are availabe, With the help of that
+                                student
+                                can send change request to your related college or university for your Name, Father's
+                                Name,
+                                Mother's
+                                Name, Date of Birth, Address, Blood Gropu, Marital Status, and Religion and student does
+                                not
+                                have to
+                                go college and university to submit any application.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const parent = document.getElementById("nlink");
+                const newEle = document.createElement("a");
+                newEle.href = "/college/collegeprofile/application";
+                newEle.id = "newEle";
+                let position = parent.firstElementChild.nextElementSibling;
+                parent.insertBefore(newEle, position);
+
+                const icon = document.createElement("i");
+                icon.classList.add("fa-solid", "fa-download");
+                document.getElementById("newEle").appendChild(icon);
+
+                const linkName = document.createElement("span");
+                linkName.classList.add("navlink");
+                linkName.append(" Open Application");
+                document.getElementById("newEle").appendChild(linkName);
+            </script>
     </body>
 
     </html>

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 require('./views/config');
 const { vbuCollege, KolhanUniv, JRSU, JWU, DSMPU, BBMKU, NPU, RU, SKMU } = require("./views/models/college_model");
 const SIGNUP = require('./views/models/studentLogin_model');
-const clgLoginModel = require("./views/models/collegeLogin_model");
+const { clgLoginModel, clgAppliModel } = require("./views/models/collegeLogin_model");
 const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
@@ -231,20 +231,19 @@ app.post("/collegesignup", async (req, res) => {
 
     try {
         const collName = await clgLoginModel.findOne({ username: req.body.instute });
-        console.log('colg : ' + req.body.instute);
-        // console.log(collName);
 
         if (collName) {
             req.session.clgSign = "Account already exist!";
             return res.redirect("/collegesignup");
-        } else {
+        }
+        else {
             await clgLoginModel.register(new clgLoginModel({
                 Coll_Name: req.body.instute,
                 username: req.body.username,     // college_code
                 profile: "userdemo.png"
             }), req.body.password, function (err, college) {
                 if (err) {
-                    console.log(err);
+                    console.log("Error : " + err);
                     res.redirect("/collegesignup");
                 } else {
                     passport.authenticate('college')(req, res, function () {
@@ -255,7 +254,7 @@ app.post("/collegesignup", async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err);
+        console.log("Error Catched : " + err);
     }
 
 })
@@ -306,6 +305,43 @@ app.post("/collegelogin", async (req, res) => {
 });
 
 // --------------- college login end --------------
+// ------------ open application ------------------
+app.get("/college/collegeprofile/application", async (req, res) => {
+
+    try {
+        const clgFound = await clgLoginModel.findOne({ username: req.session.clgusr });
+        if (req.isAuthenticated()) {
+            res.render('collegeApplication', { username: clgFound.Coll_Name, year: year, successMsg: req.session.appSuccess });
+        } else {
+            res.redirect("/collegelogin")
+        }
+    } catch (err) {
+        console.log(err);
+    }
+
+})
+
+app.post("/clgapplication", async (req, res) => {
+    // const value = req.body;
+    // console.log("all data" + value);
+
+    const openApplication = new clgAppliModel({
+        collegeName: req.body.collegeName,
+        courseType: req.body.courseType,
+        from: req.body.from,
+        To: req.body.to,
+        PgCourse: req.body.PgCourse,
+        notice: req.body.notice
+    });
+
+    try {
+        await openApplication.save();
+        req.session.appSuccess = "Application Successfully Submited!";
+        res.redirect("/college/collegeprofile");
+    } catch (err) {
+        console.log(err);
+    }
+})
 
 //------------------------- Instute part end ----------
 //   ---------------------- application start -----------

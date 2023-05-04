@@ -58,12 +58,19 @@
         }
 
         #sub-container {
-            margin: 10px auto auto auto;
-            width: 50%;
+            margin: 5px auto auto auto;
+            /* width: 50%; */
+            width: 630px;
             padding: 40px 50px;
             background: #fff;
             border-radius: 7px;
             box-shadow: 0 2px 5px #ccc;
+        }
+
+        @media (max-width:650px) {
+            #sub-container {
+                width: 90%;
+            }
         }
 
         .c-info {
@@ -76,7 +83,8 @@
             overflow-y: auto;
             border-radius: 7px;
             margin-left: -31px;
-            width: 40%;
+            margin-right: 31px;
+            width: inherit;
         }
 
         .list-item {

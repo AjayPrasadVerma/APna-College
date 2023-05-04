@@ -111,7 +111,7 @@
                                 <textarea rows="2" type="text" name="addL1" id="addL1" autocomplete="off"></textarea>
                             </div>
                             <div class="p-info add-sec addL2">
-                                <label for="addL2">Address Line2</label>
+                                <label class="required" for="addL2">Address Line2</label>
                                 <textarea rows="2" type="text" name="addL1" id="addLc" autocomplete="off"></textarea>
                             </div>
                             <div class="p-info add-sec">
@@ -156,7 +156,7 @@
                             </div>
                             <div class="p-info">
                                 <label class="required" for="session">Session</label>
-                                <select id="session" name="session" style="margin-top: 6px;">
+                                <select id="session" name="session" style="margin-top: 6px;" required>
                                     <option value="0" selected>Selest Session</option>
                                     <!-- automatically created through js -->
                                 </select>
@@ -167,7 +167,7 @@
                             </div>
                             <div class="p-info">
                                 <label class="required" class="required" for="passYear">Passing Year</label>
-                                <select id="passYear" name="passYear" style="margin-top: 6px;">
+                                <select id="passYear" name="passYear" style="margin-top: 6px;" required>
                                     <option value="0" selected>Select Year</option>
                                     <!-- automatically created through js -->
                                 </select>
@@ -214,7 +214,7 @@
                             <div class="descipline-info-contnr">
                                 <div class="p-info">
                                     <label class="required" for="univName">University Name</label>
-                                    <select id="univName" name="univName" style="margin-top: 6px;">
+                                    <select class="selectField" id="univName" name="univName" style="margin-top: 6px;">
                                         <option value="">Select University</option>
                                         <option value="BA">University 1</option>
                                         <option value="BS">University 2</option>
@@ -248,7 +248,8 @@
                                 </div>
                                 <div class="p-info">
                                     <label class="required" for="courseType">Course Type</label>
-                                    <select id="courseType" name="courseType" style="margin-top: 6px;">
+                                    <select class="selectField" id="courseType" name="courseType"
+                                        style="margin-top: 6px;">
                                         <option value="" selected>Select Course Type</option>
                                         <option value="MALE">Regular</option>
                                         <option value="FEMALE">Distance</option>
