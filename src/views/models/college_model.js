@@ -23,7 +23,10 @@ const collegeListSchema = mongoose.Schema({
         type: String,
         required: [true, "Type is missing"]
     },
-    Princ_Name: String
+    Princ_Name: String,
+    university: {
+        type: String
+    }
 });
 
 const vbuCollege = mongoose.model("vbulist", collegeListSchema);

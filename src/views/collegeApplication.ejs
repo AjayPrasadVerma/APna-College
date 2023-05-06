@@ -114,6 +114,7 @@
                         <hr>
                     </div>
                     <input type="hidden" id="hId" name="collegeName" value='<%= username %>'>
+                    <input type="hidden" id="hId" name="universityName" value='<%= university %>'>
                     <div class="app-info1">
                         <div class="course">
                             <div class="app-info">
@@ -129,11 +130,13 @@
                         </div>
                         <div class="p-info">
                             <label class="required" for="form">From</label>
-                            <input type="date" id="form" name="from" oninput="this.className='' " autocomplete="off">
+                            <input type="datetime-local" id="form" name="from" oninput="this.className='' "
+                                autocomplete="off">
                         </div>
                         <div class="p-info">
                             <label class="required" for="to">To</label>
-                            <input type="date" id="to" name="to" oninput="this.className='' " autocomplete="off">
+                            <input type="datetime-local" id="to" name="to" oninput="this.className='' "
+                                autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -434,11 +437,6 @@
                 return validateForm();
             }
 
-            const serMsg = '<%= successMsg %>'
-
-            if (serMsg != "") {
-                alert(serMsg);
-            }
         </script>
     </body>
 

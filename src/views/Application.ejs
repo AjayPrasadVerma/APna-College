@@ -230,10 +230,11 @@
                                     <label class="required" for="clgName">College Name</label>
                                     <select id="clgName" name="clgName" style="margin-top: 6px;">
                                         <option value="" selected>Selest College</option>
-                                        <option value="BA">college 1</option>
-                                        <option value="BS">college 2</option>
-                                        <option value="BBA">college 3</option>
-                                        <option value="BE">college 4</option>
+                                        <% clgOpen.map((college)=>{ %>
+                                            <option value='<%= college.collegeName %>'>
+                                                <%= college.collegeName %>
+                                            </option>
+                                            <% }) %>
                                     </select>
                                 </div>
                                 <div class="p-info">

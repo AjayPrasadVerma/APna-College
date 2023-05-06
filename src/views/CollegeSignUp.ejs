@@ -27,10 +27,6 @@
             width: 100%;
         }
 
-        input[type=text] {
-            text-transform: uppercase;
-        }
-
         ::placeholder {
             color: #04AA6D;
             opacity: 0.4;
@@ -114,6 +110,7 @@
                     <p style="color: #04AA6D; text-align: center;">
                         <%= message %>
                     </p>
+                    <input type="hidden" name="university" id="university" value="">
                     <div class="c-info">
                         <label class="required" for="instutename">Institute
                             Name</label>
@@ -171,13 +168,15 @@
         let collegeJSON = '<%- JSON.stringify(college) %>';
         const objData = JSON.parse(collegeJSON);
 
+        // console.log(objData);
+
         const collegeName = objData.map(college => college.Coll_Name.toUpperCase());
         const collegeCode = objData.map(college => college.Coll_Code.toUpperCase());
 
-        console.log(collegeCode);
-        collegeCode.map((cose) => {
-            console.log(cose);
-        })
+        // console.log(collegeCode);
+        // collegeCode.map((cose) => {
+        //     console.log(cose);
+        // })
 
         function handleSubmit() {
 
@@ -205,11 +204,11 @@
                 return false;
             }
 
-            const foundCode = collegeCode.filter((code) => (code == inp.value));
+            const foundCode = collegeCode.filter((code) => (code == inp.value.toUpperCase()));
+            console.log(inp.value.toUpperCase());
+            // console.log(foundCode != inp.value.toUpperCase());
 
-            console.log(foundCode != inp.value);
-
-            if (foundCode != inp.value) {
+            if (foundCode != inp.value.toUpperCase()) {
                 msg.innerHTML = "Invalid Code!";
                 btn.setAttribute("data-bs-target", "#login");
                 btn.dispatchEvent(new Event("click"));
@@ -252,8 +251,6 @@
 
                     word += i.substr(input.value.length); // concating next String of matching value
 
-                    // console.log(word);
-
                     listItem.innerHTML = word;
                     document.querySelector(".list").appendChild(listItem);
                 }
@@ -262,6 +259,14 @@
 
         function displayName(value) {
             input.value = value;
+
+            objData.filter((obj) => {
+                if (obj.Coll_Name.toLowerCase() == input.value.toLowerCase()) {
+                    document.getElementById("university").value = obj.university;
+                    console.log(obj.university);
+                }
+            });
+
             removeEvements();
             listag.style.height = "0";
         }

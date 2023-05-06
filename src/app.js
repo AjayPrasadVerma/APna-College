@@ -195,7 +195,7 @@ app.get("/college/collegeprofile", async (req, res) => {
 
         if (req.isAuthenticated()) {
             res.render("CollegeProfile", {
-                username: clgFound.Coll_Name,
+                username: clgFound.coll_name,
                 userprofile: clgFound.profile
             });
         } else {
@@ -230,7 +230,11 @@ app.get("/collegesignup", async (req, res) => {
 app.post("/collegesignup", async (req, res) => {
 
     try {
-        const collName = await clgLoginModel.findOne({ username: req.body.instute });
+        const collName = await clgLoginModel.findOne({ coll_name: req.body.instute });
+
+        // console.log(req.body.instute);
+        // console.log(collName);
+        // console.log(req.body.univ,);
 
         if (collName) {
             req.session.clgSign = "Account already exist!";
@@ -238,7 +242,8 @@ app.post("/collegesignup", async (req, res) => {
         }
         else {
             await clgLoginModel.register(new clgLoginModel({
-                Coll_Name: req.body.instute,
+                university: req.body.university,
+                coll_name: req.body.instute,
                 username: req.body.username,     // college_code
                 profile: "userdemo.png"
             }), req.body.password, function (err, college) {
@@ -310,8 +315,13 @@ app.get("/college/collegeprofile/application", async (req, res) => {
 
     try {
         const clgFound = await clgLoginModel.findOne({ username: req.session.clgusr });
+
         if (req.isAuthenticated()) {
-            res.render('collegeApplication', { username: clgFound.Coll_Name, year: year, successMsg: req.session.appSuccess });
+            res.render('collegeApplication', {
+                username: clgFound.coll_name,
+                year: year,
+                university: clgFound.university
+            });
         } else {
             res.redirect("/collegelogin")
         }
@@ -326,6 +336,7 @@ app.post("/clgapplication", async (req, res) => {
     // console.log("all data" + value);
 
     const openApplication = new clgAppliModel({
+        university: req.body.universityName,
         collegeName: req.body.collegeName,
         courseType: req.body.courseType,
         from: req.body.from,
@@ -348,8 +359,16 @@ app.post("/clgapplication", async (req, res) => {
 
 app.get("/student/dashboard/applicatiion", async (req, res) => {
 
+    const today = new Date();
+
     try {
         const stud = await SIGNUP.findOne({ username: req.session.usr });
+        const college = await clgAppliModel.find({
+            $and: [
+                { from: { $lte: today } },
+                { To: { $gte: today } }
+            ]
+        });
 
         if (req.isAuthenticated()) {
             res.render('Application', {
@@ -360,7 +379,8 @@ app.get("/student/dashboard/applicatiion", async (req, res) => {
                 Course: [req.session.course, req.session.crs],
                 session: req.session.session,
                 appNo: req.session.appNo,
-                formNo: req.session.formNo
+                formNo: req.session.formNo,
+                clgOpen: college
             });
 
         } else {
