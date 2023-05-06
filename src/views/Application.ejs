@@ -216,35 +216,21 @@
                                     <label class="required" for="univName">University Name</label>
                                     <select class="selectField" id="univName" name="univName" style="margin-top: 6px;">
                                         <option value="">Select University</option>
-                                        <option value="BA">University 1</option>
-                                        <option value="BS">University 2</option>
-                                        <option value="BBA">University 3</option>
-                                        <option value="BE">University 4</option>
-                                        <option value="BFA">University 5</option>
-                                        <option value="BArch">University 6</option>
-                                        <option value="LLB">University 6</option>
-                                        <option value="LLB">University 8</option>
+                                        <!-- university name -->
                                     </select>
                                 </div>
                                 <div class="p-info">
                                     <label class="required" for="clgName">College Name</label>
                                     <select id="clgName" name="clgName" style="margin-top: 6px;">
                                         <option value="" selected>Selest College</option>
-                                        <% clgOpen.map((college)=>{ %>
-                                            <option value='<%= college.collegeName %>'>
-                                                <%= college.collegeName %>
-                                            </option>
-                                            <% }) %>
+                                        <!-- college Name -->
                                     </select>
                                 </div>
                                 <div class="p-info">
                                     <label class="required" class="required" for="stream">Stream</label>
                                     <select id="stream" name="stream" style="margin-top: 6px;">
                                         <option value="" selected>Select Stream</option>
-                                        <option value="BA">Stream 1</option>
-                                        <option value="BS">Stream 2</option>
-                                        <option value="BBA">Stream 3</option>
-                                        <option value="BE">Stream 4</option>
+                                        <!-- course stream -->
                                     </select>
                                 </div>
                                 <div class="p-info">
@@ -262,11 +248,8 @@
                         <div class="file-upload">
                             <div>
                                 <h1 class="fs-4">FILE SECTION<h1>
-                                        <p class="file-instructions fs-6 text-danger">Please upload a file in JPEG, JPG,
-                                            PNG
-                                            format with
-                                            a
-                                            maximum size of 2MB.</p>
+                                        <p class="file-instructions fs-6 text-danger">
+                                            Please upload a file in JPEG, JPG,PNG format with a maximum size of 2MB.</p>
                                         <hr>
                             </div>
                             <div class="file-upload-contnr">
@@ -306,6 +289,118 @@
                     </div>
                 </div>
             </form>
+            <script>
+                const course = '<%=Course[1] %>';
+                const collegeData = '<%- JSON.stringify(clgOpen) %>';
+                const objData = JSON.parse(collegeData);
+
+                // const univName = objData.map((university) => university.university);  // university array
+
+                // 
+                const univName = objData.filter((university) => {
+                    if (university.courseType === course) {
+                        return university.university;
+                    }
+                })
+
+                const univArray = univName.map((university) => university.university);  // university array
+
+                const university = [...new Set(univArray)];   // removing duplicate
+
+
+                university.map((university) => {
+                    let optionTag = document.createElement("option");
+                    optionTag.value = university;
+                    optionTag.innerText = university;
+
+                    document.getElementById("univName").appendChild(optionTag);
+                });
+
+                const collegeField = document.getElementById("clgName");
+                const universityName = document.getElementById("univName");
+
+                universityName.addEventListener('change', () => {
+                    // console.log(universityName.value);
+
+                    const collegeObj = objData.filter((name) => {
+                        removeEvements();
+
+                        if (name.university == universityName.value && name.courseType === course) {
+                            // console.log(name.collegeName);
+                            return name.collegeName;
+                        }
+                    });
+                    // console.log(collegeObj);
+
+                    const collegeArray = collegeObj.map((college) => college.collegeName);  // university array
+                    const college = [...new Set(collegeArray)];
+
+                    college.map((college) => {
+                        let optionTag = document.createElement("option");
+                        optionTag.value = college;
+                        optionTag.classList = "coll-item";
+                        optionTag.innerText = college;
+
+                        collegeField.appendChild(optionTag);
+                    });
+                })
+
+                function removeEvements() {
+                    let items = document.querySelectorAll(".coll-item");
+                    items.forEach((item) => {
+                        item.remove();
+                    })
+                }
+
+                clgName.addEventListener("change", () => {
+                    // console.log(clgName.value);
+
+                    const clgCourse = objData.filter((name) => {
+                        removeCourse();
+                        if (name.collegeName === clgName.value && name.courseType === course) {
+                            // console.log(name.course);
+                            return name.course;
+                        }
+                    });
+
+                    const courseArray = clgCourse.map((courses) => {
+                        // console.log(courses);
+                        courses.course.map((crs) => {
+                            // console.log(crs);
+                            const courseOption = document.createElement('option');
+                            courseOption.classList = "course-item";
+                            courseOption.value = crs;
+                            courseOption.innerText = crs;
+
+                            document.getElementById("stream").appendChild(courseOption);
+                        });
+                    });
+
+                    // const ClgCourse = [...new Set(courseArray)];  // Unique course
+                    // console.log(ClgCourse);
+
+                    // console.log(courseArray);
+
+
+
+                    // ClgCourse.map((course) => {
+                    //     // removeCourse();
+                    //     const courseOption = document.createElement('option');
+                    //     courseOption.classList = "course-item";
+                    //     courseOption.value = course;
+                    //     courseOption.innerText = course;
+
+                    //     document.getElementById("stream").appendChild(courseOption);
+                    // });
+                })
+
+                function removeCourse() {
+                    const items = document.querySelectorAll('.course-item');
+                    items.forEach((item) => {
+                        item.remove();
+                    })
+                }
+            </script>
             <script src="/application.js"></script>
         </div>
     </body>

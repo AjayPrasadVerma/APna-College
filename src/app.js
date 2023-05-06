@@ -341,7 +341,7 @@ app.post("/clgapplication", async (req, res) => {
         courseType: req.body.courseType,
         from: req.body.from,
         To: req.body.to,
-        PgCourse: req.body.PgCourse,
+        course: req.body.course,
         notice: req.body.notice
     });
 

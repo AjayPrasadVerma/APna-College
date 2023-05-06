@@ -26,7 +26,7 @@ const collegeApplication = mongoose.Schema({
     courseType: String,
     from: Date,
     To: Date,
-    PgCourse: Array,
+    course: Array,
     notice: String
 })
 

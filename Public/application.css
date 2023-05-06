@@ -70,6 +70,7 @@
 .p-info>input[type=date],
 .p-info>input[type=number],
 .p-info>input[type=tel],
+.p-info>input[type=datetime-local],
 textarea {
     width: 100%;
     margin: 5px 0 22px 0;
@@ -120,10 +121,11 @@ select {
 .p-info>input[type=date]:focus,
 .p-info>input[type=number]:focus,
 .p-info>input[type=tel]:focus,
+.p-info>input[type=datetime-local]:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border: 2px solid #B7C4CF;
+    border: 1px solid #3a546a;
     border-radius: 2px;
 }
 
@@ -154,9 +156,9 @@ hr {
     grid-gap: 15px;
 }
 
-.tab {
+/* .tab {
     display: none;
-}
+} */
 
 .p-info>input[type=text].invalid,
 .p-info>input[type=password].invalid,
