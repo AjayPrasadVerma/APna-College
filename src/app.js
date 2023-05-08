@@ -351,8 +351,8 @@ app.get("/college/collegeprofile/application/update", async (req, res) => {
         const toDate = moment.tz(applcationFound.To, 'Asia/Kolkata');
         const to = toDate.format('YYYY-MM-DD hh:mm A');
 
-        console.log("from : " + from);
-        console.log("to : " + to);
+        // console.log("from : " + from);
+        // console.log("to : " + to);
 
         if (req.isAuthenticated()) {
             res.render('clgAppUpdate', {
@@ -429,6 +429,20 @@ app.post("/clgapplication", async (req, res) => {
     } catch (err) {
         console.log(err);
     }
+})
+
+app.post("/clgappdelete", (req, res) => {
+
+    clgAppliModel.findByIdAndRemove(req.body.delInp, function (err) {
+        if (err) {
+            console.log(err);
+            res.redirect("//college/collegeprofile");
+        }
+        else {
+            console.log("Record Successfully deleted .......");
+            res.redirect("/college/collegeprofile");
+        }
+    });
 })
 
 //------------------------- Instute part end ----------

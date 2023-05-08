@@ -97,7 +97,11 @@
                                         </div>
                                 </div>
                                 <div class="btn-container">
-                                    <button type="button" class="btn btn-danger">Delete</button>&nbsp;
+                                    <form onsubmit=" return deleteSubmit()" action="/clgappdelete" method="post"
+                                        style="display: inline-block;">
+                                        <input type="hidden" name="delInp" value="<%= app._id %>">
+                                        <button type="submit" class="btn btn-danger">Delete</button>&nbsp;
+                                    </form>
                                     <a href="/college/collegeprofile/application/update?id=<%= app._id %>" role="button"
                                         class="btn btn-warning">Edit</a>&nbsp;
                                 </div>
@@ -134,7 +138,11 @@
                                         </div>
                                     </div>
                                     <div class="btn-container">
-                                        <a href="#" type="button" class="btn btn-danger">Delete</a>&nbsp;
+                                        <form onsubmit=" return deleteSubmit()" action="/clgappdelete" method="post"
+                                            style="display: inline-block;">
+                                            <input type="hidden" name="delInp" value="<%= app._id %>">
+                                            <button type="submit" class="btn btn-danger">Delete</button>&nbsp;
+                                        </form>
                                         <a href="/college/collegeprofile/application/update?id=<%= app._id %>"
                                             role="button" class="btn btn-warning" value="">Edit</a>&nbsp;
                                     </div>
@@ -162,13 +170,14 @@
                 linkName.append(" Open Application");
                 document.getElementById("newEle").appendChild(linkName);
 
-                // const ugJSON = '<%= JSON.stringify(ugApplication) %>';
-                // const ugObj = JSON.parse(ugJSON);
-
-                // console.log("upfrom : " + ugObj);
-
-
-                // document.getElementById("ugFrom").innerText = 
+                function deleteSubmit() {
+                    if (confirm("Do you really want to delete this record?")) {
+                        alert("Record Deleted successfully");
+                        return true;
+                    } else {
+                        return false
+                    }
+                }
             </script>
     </body>
 
