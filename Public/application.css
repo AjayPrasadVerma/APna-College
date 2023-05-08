@@ -290,3 +290,47 @@ textarea.invalid {
         padding-left: 24px;
     }
 }
+
+/* ----------------------------------- College profile CSS Strat ---------------------------- */
+
+.app-container {
+    margin: 10px 10px 10px 60px;
+}
+
+.UG-Application,
+.PG-Application {
+    background-color: #f1f1f1a2;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.application {
+    /* display: grid; */
+    /* grid-template-columns: 4fr minmax(210px, 1fr); */
+    /* gap: 10px; */
+    align-items: center;
+    /* background-color: #ffffffde; */
+    background-color: #009f6b;
+    border-radius: 5px;
+    font-size: 1.1em;
+    padding: 10px 20px 10px 20px;
+}
+
+.btn-time {
+    display: grid;
+    grid-template-columns: 4fr minmax(150px, 1fr);
+    gap: 10px;
+}
+
+.btn-container {
+    display: inline-block;
+    text-align: right;
+    align-self: flex-end;
+}
+
+@media (max-width: 524px) {
+    .btn-time {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

@@ -6,10 +6,10 @@ require('./views/config');
 const { vbuCollege, KolhanUniv, JRSU, JWU, DSMPU, BBMKU, NPU, RU, SKMU } = require("./views/models/college_model");
 const SIGNUP = require('./views/models/studentLogin_model');
 const { clgLoginModel, clgAppliModel } = require("./views/models/collegeLogin_model");
-const mongoose = require('mongoose');
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
+const moment = require('moment-timezone');
 const path = require('path');
 const port = 3000;
 
@@ -193,15 +193,22 @@ app.get("/college/collegeprofile", async (req, res) => {
     try {
         const clgFound = await clgLoginModel.findOne({ username: req.session.clgusr });
 
+        const collName = clgFound.coll_name;
+
+        const ugAppFound = await clgAppliModel.find({ collegeName: collName, courseType: "UG" });
+        const pgAppFound = await clgAppliModel.find({ collegeName: collName, courseType: "PG" });
+
         if (req.isAuthenticated()) {
             res.render("CollegeProfile", {
                 username: clgFound.coll_name,
-                userprofile: clgFound.profile
+                userprofile: clgFound.profile,
+                ugApplication: ugAppFound,
+                pgApplication: pgAppFound,
             });
         } else {
             res.redirect("/collegelogin")
         }
-    } catch (e) {
+    } catch (err) {
         console.log(err);
     }
 });
@@ -331,16 +338,86 @@ app.get("/college/collegeprofile/application", async (req, res) => {
 
 })
 
+app.get("/college/collegeprofile/application/update", async (req, res) => {
+
+    const id = req.query.id;
+    try {
+        const applcationFound = await clgAppliModel.findById(id);
+
+        const fromDate = moment.tz(applcationFound.from, 'Asia/Kolkata');
+        // format the date in 12-hour format with Indian time standard
+        const from = fromDate.format('YYYY-MM-DD hh:mm A');
+
+        const toDate = moment.tz(applcationFound.To, 'Asia/Kolkata');
+        const to = toDate.format('YYYY-MM-DD hh:mm A');
+
+        console.log("from : " + from);
+        console.log("to : " + to);
+
+        if (req.isAuthenticated()) {
+            res.render('clgAppUpdate', {
+                year: year,
+                appDetails: applcationFound,
+                start: from,
+                end: to
+            });
+        } else {
+            res.redirect("/collegelogin")
+        }
+    } catch (err) {
+        console.log(err);
+    }
+
+});
+
+app.post("/update/:id", async (req, res) => {
+
+    const id = req.params.id;
+
+    // convert to moment object and set the timezone to Indian Standard Time
+    const fromDate = moment.tz(req.body.from, 'Asia/Kolkata');
+    // format the date in 12-hour format with Indian time standard
+    const from = fromDate.format('YYYY-MM-DD hh:mm A');
+
+    const toDate = moment.tz(req.body.to, 'Asia/Kolkata');
+    const to = toDate.format('YYYY-MM-DD hh:mm A');
+
+    // console.log("from : " + from);
+    // console.log("to : " + to);
+
+    const updatedData = {
+        ...req.body,
+        from: from,
+        To: to
+    };
+
+    try {
+        const updatedApplication = await clgAppliModel.findByIdAndUpdate(id, { $set: updatedData }, { new: true });
+        console.log("Application Successfully Updated!");
+        res.redirect("/college/collegeprofile");
+    }
+    catch (err) {
+        console.log("Catched error : " + err);
+        // res.status(500).send(err);
+    }
+});
+
 app.post("/clgapplication", async (req, res) => {
     // const value = req.body;
     // console.log("all data" + value);
+
+    const fromDate = moment.tz(req.body.from, 'Asia/Kolkata');
+    const from = fromDate.format('YYYY-MM-DD hh:mm A');
+
+    const toDate = moment.tz(req.body.to, 'Asia/Kolkata');
+    const to = toDate.format('YYYY-MM-DD hh:mm A');
 
     const openApplication = new clgAppliModel({
         university: req.body.universityName,
         collegeName: req.body.collegeName,
         courseType: req.body.courseType,
-        from: req.body.from,
-        To: req.body.to,
+        from: from,
+        To: to,
         course: req.body.course,
         notice: req.body.notice
     });

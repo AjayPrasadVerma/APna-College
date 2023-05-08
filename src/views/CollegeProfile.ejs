@@ -68,6 +68,82 @@
                     </div>
                 </div>
             </div>
+            <div class="app-container">
+                <div class="UG-Application">
+                    <div class="notice-msg">
+                        <div class="bdr"></div>Under Graduate<div class="bdr"></div>
+                    </div>
+                    <% ugApplication.map((app)=>{ %>
+                        <div class="application">
+
+                            <div>
+                                <b>Course</b> : <% app.course.forEach((crs, index)=>{ %>
+                                    <%= crs %>
+                                        <% if (index < app.course.length - 1) { %>, <% } %>
+                                                <% }) %>
+                            </div>
+                            <hr />
+                            <div class="btn-time">
+                                <div>
+                                    <% function formatDate(dateStr) { const date=new Date(dateStr); const options={
+                                        hour12: true, timeZone: "Asia/Kolkata" , year: 'numeric' , month: '2-digit' ,
+                                        day: '2-digit' , hour: '2-digit' , minute: '2-digit' }; const
+                                        formattedDate=date.toLocaleString('en-IN', options); return formattedDate; } %>
+                                        <div style="display: inline-block;">
+                                            <b>From</b> : <%= formatDate(app.from) %>
+                                        </div>&nbsp;&nbsp;
+                                        <div style="display: inline-block;">
+                                            <b>To</b> : <%= formatDate(app.To) %>
+                                        </div>
+                                </div>
+                                <div class="btn-container">
+                                    <button type="button" class="btn btn-danger">Delete</button>&nbsp;
+                                    <a href="/college/collegeprofile/application/update?id=<%= app._id %>" role="button"
+                                        class="btn btn-warning">Edit</a>&nbsp;
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <% }) %>
+                </div>
+                <div class="PG-Application">
+                    <div class="notice-msg">
+                        <div class="bdr"></div>Post Graduate<div class="bdr"></div>
+                    </div>
+                    <% pgApplication.map((app)=>{ %>
+                        <div class="application">
+
+                            <div>
+                                <b>Course</b> : <% app.course.forEach((crs,index)=>{ %>
+                                    <%= crs %>
+                                        <% if (index < app.course.length - 1) { %>, <% } %>
+                                                <% }) %>
+                            </div>
+                            <hr />
+                            <div class="btn-time">
+                                <% function formatDate(dateStr) { const date=new Date(dateStr); const options={
+                                    hour12:true, timeZone: "Asia/Kolkata" , year: 'numeric' , month: '2-digit' ,
+                                    day: '2-digit' , hour: '2-digit' , minute: '2-digit' }; const
+                                    formattedDate=date.toLocaleString('en-IN', options); return formattedDate; } %>
+                                    <div>
+                                        <div style="display: inline-block;">
+                                            <b>From</b> : <%= formatDate(app.from) %>
+                                        </div>&nbsp;&nbsp;
+                                        <div style="display: inline-block;">
+                                            <b>To</b> : <%= formatDate(app.To) %>
+                                        </div>
+                                    </div>
+                                    <div class="btn-container">
+                                        <a href="#" type="button" class="btn btn-danger">Delete</a>&nbsp;
+                                        <a href="/college/collegeprofile/application/update?id=<%= app._id %>"
+                                            role="button" class="btn btn-warning" value="">Edit</a>&nbsp;
+                                    </div>
+                            </div>
+                        </div>
+                        <br />
+                        <% }) %>
+                </div>
+            </div>
 
             <script>
                 const parent = document.getElementById("nlink");
@@ -85,6 +161,14 @@
                 linkName.classList.add("navlink");
                 linkName.append(" Open Application");
                 document.getElementById("newEle").appendChild(linkName);
+
+                // const ugJSON = '<%= JSON.stringify(ugApplication) %>';
+                // const ugObj = JSON.parse(ugJSON);
+
+                // console.log("upfrom : " + ugObj);
+
+
+                // document.getElementById("ugFrom").innerText = 
             </script>
     </body>
 

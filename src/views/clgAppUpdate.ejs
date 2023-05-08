@@ -99,7 +99,7 @@
                 </div>
                 <div id="details">
                     <h1 class="fs-4">
-                        <%= username %>
+                        <%= appDetails.collegeName %>
                     </h1>
                     <p>Online Common Application FORM :: <%= year %>
                     </p>
@@ -107,39 +107,38 @@
             </div>
         </div>
         <div class="container-f">
-            <form onsubmit="return handleSubmit()" action="/clgapplication" method="post">
+            <form onsubmit="return handleSubmit()" action="/update/<%= appDetails._id %>" method="post">
                 <div class="personal-info">
                     <div>
                         <h1 class="fs-4">COURSE TYPE</h1>
                         <hr>
                     </div>
-                    <input type="hidden" id="hId" name="collegeName" value='<%= username %>'>
-                    <input type="hidden" id="hId" name="universityName" value='<%= university %>'>
                     <div class="app-info1">
                         <div class="course">
                             <div class="app-info">
                                 <label for="couresT1">Undergraduate</label>
                                 <input type="checkbox" name="courseType" id="couresT1" value="UG"
-                                    oninput="this.className='' ">
+                                    <%=appDetails.courseType=='UG' ? 'checked' : '' %> oninput="this.className='' ">
                             </div>
                             <div class="app-info">
                                 <label for="couresT2">Postgraduate</label>
                                 <input type="checkbox" name="courseType" id="couresT2" value="PG"
-                                    oninput="this.className='' ">
+                                    <%=appDetails.courseType=='PG' ?'checked':'' %> oninput="this.className='' ">
                             </div>
                         </div>
                         <div class="p-info">
                             <label class="required" for="form">From</label>
-                            <input type="datetime-local" id="form" name="from" oninput="this.className='' "
+                            <input type="datetime-local" id="from" name="from" oninput="this.className='' " value=""
                                 autocomplete="off">
                         </div>
                         <div class="p-info">
                             <label class="required" for="to">To</label>
-                            <input type="datetime-local" id="to" name="to" oninput="this.className='' "
+                            <input type="datetime-local" id="to" name="to" oninput="this.className='' " value=''
                                 autocomplete="off">
                         </div>
                     </div>
                 </div>
+
                 <div class="address-sec tab-1">
                     <div>
                         <h1 class="fs-4">UG COURSES</h1>
@@ -150,16 +149,26 @@
                         <div class="commerce">
                             <div class="app-info">
                                 <label for="BCom">B.Com.</label>
-                                <input type="checkbox" name="course" id="BCom" value="B.Com.">
+                                <input type="checkbox" name="course" id="BCom" value="B.Com." <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="B.Com." ?'checked':'' %>
+                                    <% }) %>>
                             </div>
+
                             <div class="app-info">
                                 <label for="BComHonsCLaw">B.Com. (Hons.) Corporate Laws</label>
                                 <input type="checkbox" name="course" id="BComHonsCLaw"
-                                    value="B.Com. (Hons.) Corporate Laws">
+                                    value="B.Com. (Hons.) Corporate Laws" <% appDetails.course.map((courses)=>{ %>
+                                <%= courses=="B.Com. (Hons.) Corporate Laws" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
+
                             <div class="app-info">
                                 <label for="BComHons">B.Com. (Hons.)</label>
-                                <input type="checkbox" name="course" id="BComHons" value="PG">
+                                <input type="checkbox" name="course" id="BComHons" value="B.Com. (Hons.)" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.Com. (Hons.)" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -170,27 +179,42 @@
                             <div class="app-info">
                                 <label for="BA">B.A. Programme (Language Courses) in Hindi</label>
                                 <input type="checkbox" name="course" id="BA"
-                                    value="B.A. Programme (Language Courses) in Hindi">
+                                    value="B.A. Programme (Language Courses) in Hindi" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.A. Programme (Language Courses) in Hindi" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BASnk">B.A. Programme (Language Courses) in Sanskrit</label>
                                 <input type="checkbox" name="course" id="BASnk"
-                                    value="B.A. Programme (Language Courses) in Sanskrit">
+                                    value="B.A. Programme (Language Courses) in Sanskrit" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.A. Programme (Language Courses) in Sanskrit" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BACSnk">B.A. Programme (Courses ) in Sanskrit</label>
                                 <input type="checkbox" name="course" id="BASnk"
-                                    value="B.A. Programme (Discipline Courses ) in Sanskrit">
+                                    value="B.A. Programme (Discipline Courses ) in Sanskrit" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.A. Programme (Discipline Courses ) in Sanskrit" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BAPunjabi">B.A. Programme (Language Courses) in Punjabi</label>
                                 <input type="checkbox" name="course" id="BAPunjabi"
-                                    value="B.A. Programme (Language Courses) in Punjabi">
+                                    value="B.A. Programme (Language Courses) in Punjabi" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.A. Programme (Language Courses) in Punjabi" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BAUrdu">B.A. Programme (Language Courses) in Urdu</label>
                                 <input type="checkbox" name="course" id="BAUrdu"
-                                    value="B.A. Programme (Language Courses) in Urdu">
+                                    value="B.A. Programme (Language Courses) in Urdu" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.A. Programme (Language Courses) in Urdu" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -200,17 +224,25 @@
                         <div class="chemistry">
                             <div class="app-info">
                                 <label for="BSCH-Chem">B.Sc. (Hon) Chemistry</label>
-                                <input type="checkbox" name="course" id="BSCH-Chem" value="B.Sc. (Hon) Chemistry">
+                                <input type="checkbox" name="course" id="BSCH-Chem" value="B.Sc. (Hon) Chemistry" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.Sc. (Hon) Chemistry" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BSCH-PC">B.Sc. (Hon) Physical Science with Chemistry</label>
                                 <input type="checkbox" name="course" id="BSCH-PC"
-                                    value="B.Sc. (Hon) Physical Science with Chemistry">
+                                    value="B.Sc. (Hon) Physical Science with Chemistry" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.Sc. (Hon) Physical Science with Chemistry" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BSCH-IC">B.Sc. (Hon) Industrial Chemistry</label>
                                 <input type="checkbox" name="course" id="BSCH-IC"
-                                    value="B.Sc. (Hon) Industrial Chemistry">
+                                    value="B.Sc. (Hon) Industrial Chemistry" <% appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.Sc. (Hon) Industrial Chemistry" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -220,20 +252,32 @@
                         <div class="cs">
                             <div class="app-info">
                                 <label for="BSC-CS">B.Sc. (Hon) Computer Science</label>
-                                <input type="checkbox" name="course" id="BSC-CS" value="B.Sc. (Hon) Computer Science">
+                                <input type="checkbox" name="course" id="BSC-CS" value="B.Sc. (Hon) Computer Science" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.Sc. (Hon) Computer Science" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BSC-PCS">B.Sc (Hon) Physical Science Computer Science</label>
                                 <input type="checkbox" name="course" id="BSC-PCS"
-                                    value="B.Sc (Hon) Physical Science Computer Science">
+                                    value="B.Sc (Hon) Physical Science Computer Science" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.Sc (Hon) Physical Science Computer Science" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BCA">BCA</label>
-                                <input type="checkbox" name="course" id="BCA" value="BCA">
+                                <input type="checkbox" name="course" id="BCA" value="BCA" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.Sc. (Hon) Industrial Chemistry" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BScIT">B.Sc.IT</label>
-                                <input type="checkbox" name="course" id="BScIT" value="BSc.IT">
+                                <input type="checkbox" name="course" id="BScIT" value="BSc.IT" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="BSc.IT" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -243,17 +287,26 @@
                         <div class="math">
                             <div class="app-info">
                                 <label for="BSC-MH">B.Sc. (Hon) Mathematics</label>
-                                <input type="checkbox" name="course" id="BSC-MH" value="B.Sc. (Hon) Mathematics">
+                                <input type="checkbox" name="course" id="BSC-MH" value="B.Sc. (Hon) Mathematics" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.Sc. (Hon) Mathematics" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BA-MH">B.A. Programme (Discipline Courses) in Mathematics</label>
                                 <input type="checkbox" name="course" id="BA-MH"
-                                    value="B.A. Programme (Discipline Courses) in Mathematics">
+                                    value="B.A. Programme (Discipline Courses) in Mathematics" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.A. Programme (Discipline Courses) in Mathematics" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BA-AC-MH">B.A. Programme (Application Courses) in Mathematics</label>
                                 <input type="checkbox" name="course" id="BA-AC-MH"
-                                    value="B.A. Programme (Application Courses) in Mathematics">
+                                    value="B.A. Programme (Application Courses) in Mathematics" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%=courses=="B.A. Programme (Application Courses) in Mathematics" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -268,16 +321,24 @@
                         <div class="commerce">
                             <div class="app-info">
                                 <label for="MCom">M.Com.</label>
-                                <input type="checkbox" name="course" id="MCom" value="M.Com.">
+                                <input type="checkbox" name="course" id="MCom" value="M.Com." <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.Com." ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="BComHonsCLaw">M.Com. (Hons.) Corporate Laws</label>
                                 <input type="checkbox" name="course" id="MComHonsCLaw"
-                                    value="M.Com. (Hons.) Corporate Laws">
+                                    value="M.Com. (Hons.) Corporate Laws" <% appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.Com. (Hons.) Corporate Laws" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MComHons">M.Com. (Hons.)</label>
-                                <input type="checkbox" name="course" id="MComHons" value="PG">
+                                <input type="checkbox" name="course" id="MComHons" value="M.Com. (Hons.)" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.Com. (Hons.)" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -288,27 +349,42 @@
                             <div class="app-info">
                                 <label for="MA">M.A. Programme (Language Courses) in Hindi</label>
                                 <input type="checkbox" name="course" id="BA"
-                                    value="M.A. Programme (Language Courses) in Hindi">
+                                    value="M.A. Programme (Language Courses) in Hindi" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.A. Programme (Language Courses) in Hindi" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MASnk">M.A. Programme (Language Courses) in Sanskrit</label>
                                 <input type="checkbox" name="course" id="MASnk"
-                                    value="M.A. Programme (Language Courses) in Sanskrit">
+                                    value="M.A. Programme (Language Courses) in Sanskrit" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.A. Programme (Language Courses) in Sanskrit" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MACSnk">M.A. Programme (Courses ) in Sanskrit</label>
                                 <input type="checkbox" name="course" id="MASnk"
-                                    value="M.A. Programme (Discipline Courses ) in Sanskrit">
+                                    value="M.A. Programme (Discipline Courses ) in Sanskrit" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.A. Programme (Discipline Courses ) in Sanskrit" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MAPunjabi">M.A. Programme (Language Courses) in Punjabi</label>
                                 <input type="checkbox" name="course" id="MAPunjabi"
-                                    value="M.A. Programme (Language Courses) in Punjabi">
+                                    value="M.A. Programme (Language Courses) in Punjabi" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.A. Programme (Language Courses) in Punjabi" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MAUrdu">M.A. Programme (Language Courses) in Urdu</label>
                                 <input type="checkbox" name="course" id="MAUrdu"
-                                    value="M.A. Programme (Language Courses) in Urdu">
+                                    value="M.A. Programme (Language Courses) in Urdu" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.A. Programme (Language Courses) in Urdu" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -318,17 +394,25 @@
                         <div class="chemistry">
                             <div class="app-info">
                                 <label for="MSCH-Chem">B.Sc. (Hon) Chemistry</label>
-                                <input type="checkbox" name="course" id="MSCH-Chem" value="M.Sc. (Hon) Chemistry">
+                                <input type="checkbox" name="course" id="MSCH-Chem" value="M.Sc. (Hon) Chemistry" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.Sc. (Hon) Chemistry" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MSCH-PC">M.Sc. (Hon) Physical Science with Chemistry</label>
                                 <input type="checkbox" name="course" id="MSCH-PC"
-                                    value="M.Sc. (Hon) Physical Science with Chemistry">
+                                    value="M.Sc. (Hon) Physical Science with Chemistry" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.Sc. (Hon) Physical Science with Chemistry" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MSCH-IC">M.Sc. (Hon) Industrial Chemistry</label>
                                 <input type="checkbox" name="course" id="MSCH-IC"
-                                    value="M.Sc. (Hon) Industrial Chemistry">
+                                    value="M.Sc. (Hon) Industrial Chemistry" <% appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.Sc. (Hon) Industrial Chemistry" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -338,20 +422,32 @@
                         <div class="cs">
                             <div class="app-info">
                                 <label for="MSC-CS">M.Sc. (Hon) Computer Science</label>
-                                <input type="checkbox" name="course" id="MSC-CS" value="M.Sc. (Hon) Computer Science">
+                                <input type="checkbox" name="course" id="MSC-CS" value="M.Sc. (Hon) Computer Science" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.Sc. (Hon) Computer Science" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MSC-PCS">M.Sc (Hon) Physical Science Computer Science</label>
                                 <input type="checkbox" name="course" id="MSC-PCS"
-                                    value="M.Sc (Hon) Physical Science Computer Science">
+                                    value="M.Sc (Hon) Physical Science Computer Science" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.Sc (Hon) Physical Science Computer Science" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MCA">MCA</label>
-                                <input type="checkbox" name="course" id="MCA" value="MCA">
+                                <input type="checkbox" name="course" id="MCA" value="MCA" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="MCA" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MScIT">M.Sc.IT</label>
-                                <input type="checkbox" name="course" id="MScIT" value="MSc.IT">
+                                <input type="checkbox" name="course" id="MScIT" value="MSc.IT" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="MSc.IT" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -361,17 +457,26 @@
                         <div class="math">
                             <div class="app-info">
                                 <label for="MSC-MH">M.Sc. (Hon) Mathematics</label>
-                                <input type="checkbox" name="course" id="MSC-MH" value="M.Sc. (Hon) Mathematics">
+                                <input type="checkbox" name="course" id="MSC-MH" value="M.Sc. (Hon) Mathematics" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.Sc. (Hon) Mathematics" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="MA-MH">M.A. Programme (Discipline Courses) in Mathematics</label>
                                 <input type="checkbox" name="course" id="MA-MH"
-                                    value="M.A. (Discipline Courses) in Mathematics">
+                                    value="M.A. (Discipline Courses) in Mathematics" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.A. (Discipline Courses) in Mathematics" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                             <div class="app-info">
                                 <label for="coures2">M.A. Programme (Application Courses) in Mathematics</label>
                                 <input type="checkbox" name="course" id="MA-AC-MH"
-                                    value="M.A. (Application Courses) in Mathematics">
+                                    value="M.A. (Application Courses) in Mathematics" <%
+                                    appDetails.course.map((courses)=>{ %>
+                                <%= courses=="M.A. (Application Courses) in Mathematics" ?'checked':'' %>
+                                    <% }) %>>
                             </div>
                         </div>
                     </div>
@@ -380,39 +485,51 @@
                     <div class="p-info add-sec">
                         <label class="required" for="notice">Notice</label>
                         <textarea rows="4" type="text" name="notice" id="notice" autocomplete="off"
-                            oninput="this.className=''"></textarea>
+                            oninput="this.className=''"><%= appDetails.notice %></textarea>
                     </div>
                 </div>
                 <div style="overflow:auto; margin-bottom: 5px;">
                     <div style="text-align: center;">
-                        <button type="submit" id="nextBtn">Submit</button>
+                        <button type="submit" id="nextBtn">Update</button>
                     </div>
                 </div>
             </form>
         </div>
         <script>
 
-            $(document).ready(function () {
-                $('#couresT1').click(function () {
-                    if ($(this).prop("checked") == true) {
-                        $(".tab-1").css("display", "block");
-                    }
-                    else if ($(this).prop("checked") == false) {
-                        $(".tab-1").css("display", "none");
-                    }
-                })
-            })
+            const courset1 = document.getElementById("couresT1");
+            const courset2 = document.getElementById("couresT2");
+            const tab1 = document.querySelector(".tab-1");
+            const tab2 = document.querySelector(".tab-2");
 
-            $(document).ready(function () {
-                $('#couresT2').click(function () {
-                    if ($(this).prop("checked") == true) {
-                        $(".tab-2").css("display", "block");
-                    }
-                    else if ($(this).prop("checked") == false) {
-                        $(".tab-2").css("display", "none");
-                    }
-                })
-            })
+
+            if (courset1.checked) {
+                tab1.style.display = 'block'; // show the element
+            } else {
+                tab1.style.display = 'none'; // hide the element
+            }
+
+
+
+            if (courset2.checked) {
+                tab2.style.display = 'block'; // show the element
+            } else {
+                tab2.style.display = 'none'; // hide the element
+            }
+
+            const startDate = '<%= start %>';
+            const startDateTime = new Date(startDate);
+            const start = startDateTime.toISOString().slice(0, 16); // format as yyyy-MM-ddThh:mm
+            console.log(start);
+
+            const endDate = '<%= end %>';
+            const endDateTime = new Date(endDate);
+            const end = endDateTime.toISOString().slice(0, 16); // format as yyyy-MM-ddThh:mm
+            console.log(end);
+
+            document.getElementById("from").value = start;
+            document.getElementById("to").value = end;
+
 
             function validateForm() {
 
@@ -435,7 +552,8 @@
 
             function handleSubmit() {
                 if (validateForm()) {
-                    alert("Application Successfully Submited!");
+                    alert("Application Successfully Updated!");
+                    preventDefault();
                     return true;
                 } else {
                     return false;
