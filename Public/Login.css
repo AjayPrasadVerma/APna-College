@@ -124,34 +124,6 @@ body {
     height: 442px;
 }
 
-.arrow {
-    cursor: pointer;
-    position: absolute;
-    top: 43%;
-    background-color: rgba(255, 255, 255, 0.146);
-    padding: 8px 15px;
-    border-radius: 50%;
-    font-size: 16px;
-    font-weight: bold;
-    user-select: none;
-}
-
-.arrow:hover {
-    background-color: rgba(255, 255, 255, 0.553);
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
-.slide {
-    display: none;
-}
-
 /* image slide end */
 
 /* Login start */
@@ -507,15 +479,34 @@ a {
 .slides {
     border: 1px solid rgb(123, 14, 14);
     display: flex;
+    width: 100%;
+    height: 200px;
     overflow: hidden;
     position: relative;
 }
 
 .logo {
-
-    margin-right: 50px;
-    border: 2px solid black;
+    width: 110px;
+    height: 110px;
+    top: 20%;
+    position: relative;
+    transform: translateY(-50%);
+    animation: slide 5s linear infinite;
 }
+
+/* @keyframes slide {
+    0% {
+        left: -100px;
+    }
+
+    20% {
+        left: 20%;
+    }
+
+    100% {
+        left: 100%;
+    }
+} */
 
 /* logo slider end */
 /* footer start */

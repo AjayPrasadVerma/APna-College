@@ -74,8 +74,12 @@ function nextPrev(n) {
     currentTab = currentTab + n;
 
     if (currentTab >= allTab.length) {
-        document.getElementById("application").submit();
-        return false;
+
+        if (confirm("Do you really want to submit the application!<br/>Please Verify details before submit")) {
+            alert("Your application submitted successfully!");
+            document.getElementById("application").submit();
+            return false;
+        }
     }
     showTab(currentTab);
 }
@@ -86,7 +90,7 @@ function validateForm() {
     x = document.getElementsByClassName("tab");
 
     // accessing current tab (input field )
-    y = x[currentTab].getElementsByTagName("input");
+    y = x[currentTab].getElementsByClassName("input");
     z = x[currentTab].getElementsByTagName("select");
     p = x[currentTab].getElementsByTagName("textarea");
     let allField = [...y, ...z, ...p];

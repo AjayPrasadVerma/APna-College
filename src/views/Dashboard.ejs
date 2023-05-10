@@ -1,11 +1,6 @@
 <%- include('./partials/header'); %>
 
     <body>
-        <style>
-            .sidenav {
-                margin-top: 51px;
-            }
-        </style>
         <%- include('./partials/DashboardNav'); %>
 
             <div id="main-container">
@@ -18,8 +13,16 @@
                     <div class="profile-dashboard">
                         <div class="user-profile">
                             <div class="user-img">
-                                <img class="rounded-circle user img-fluid bg-light img-responsive"
-                                    src="/image/<%= userprofile %>" alt="user">
+                                <% function myPhoto(){ const img=appDetails.map((data)=> data.photo)
+                                    if(img != ""){
+                                    return img[0]
+                                    }else{
+                                    return userprofile
+                                    }
+                                    } %>
+                                    <img class="rounded-circle user img-fluid bg-light img-responsive"
+                                        src="/<%= myPhoto() %>" alt="user"
+                                        style="width: 150px; height: 150px; user-select: none;" draggable="false">
                             </div>
                             <div class="user-details">
                                 <p class="userDetails"><span class="text-info"><i class="fa-solid fa-user"></i> Name :
@@ -113,6 +116,52 @@
                     </div>
                 </div>
             </div>
+            <!-- /modal -->
+            <!-- Application Details -->
+            <div style="padding-bottom: 4em ;">
+                <div class="profile-container user-app">
+                    <h4 class="text-center" style="padding-top: 5px;">Your Application</h4>
+                    <table class="table table-bordered table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>University Name</th>
+                                <th>College Name</th>
+                                <th>Stream</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% appDetails.map((data, index)=>{ %>
+                                <tr>
+                                    <td>
+                                        <%= index+1 %>
+                                    </td>
+                                    <td>
+                                        <%= data.university %>
+                                    </td>
+                                    <td>
+                                        <%= data.collegeName %>
+                                    </td>
+                                    <td>
+                                        <%= data.stream %>
+                                    </td>
+                                    <td>
+                                        <%= data.status %>
+                                    </td>
+                                    <td>
+                                        <!-- <a href="print?id=<%= data._id %>" role="button" class="btn btn-success"
+                                            value="" id="print-button">Print</a> -->
+                                        <a href="#" role="button" class="btn btn-success" value=""
+                                            id="print-button">Print</a>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <script>
                 function handleSubmit() {
                     const btn = document.getElementById('btn');
@@ -128,6 +177,11 @@
                 function handleClick() {
                     btn.removeAttribute("data-bs-target");
                 }
+
+                const printButton = document.querySelector('#print-button');
+                printButton.addEventListener('click', () => {
+                    window.print();
+                });
 
             </script>
     </body>

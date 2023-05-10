@@ -156,9 +156,9 @@ hr {
     grid-gap: 15px;
 }
 
-/* .tab {
+.tab {
     display: none;
-} */
+}
 
 .p-info>input[type=text].invalid,
 .p-info>input[type=password].invalid,

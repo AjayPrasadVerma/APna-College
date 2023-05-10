@@ -25,7 +25,8 @@
         <h1 class="bg-warning fs-5" style="padding: 10px; font-weight: bold; text-align: right;">Hi, <%= username %>
         </h1>
         <div class="container-fluid">
-            <form id="application" action="" method="" enctype="multipart/form-data">
+            <form id="application" action="/stuapplication" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="course" value="<%=Course[1] %>">
                 <div class="container-f">
                     <div class="personal-info tab">
                         <div>
@@ -35,7 +36,7 @@
                         <div class="personal-info-contnr">
                             <div class="p-info">
                                 <label class="required" for="fName">First Name</label>
-                                <input type="text" name="fName" id="fName" oninput="this.className='' "
+                                <input type="text" class="input" name="fName" id="fName" oninput="this.className='' "
                                     autocomplete="off">
                             </div>
                             <div class="p-info">
@@ -45,27 +46,30 @@
                             </div>
                             <div class="p-info">
                                 <label class="required" for="lName">Last Name</label>
-                                <input type="text" name="lName" id="lName" oninput="this.className='' "
+                                <input type="text" class="input" name="lName" id="lName" oninput="this.className='' "
                                     autocomplete="off">
                             </div>
                             <div class="p-info">
                                 <label class="required" for="FatherName">Father Name</label>
-                                <input type="text" name="FatherName" id="FatherName" oninput="this.className='' "
-                                    autocomplete="off">
+                                <input type="text" class="input" name="FatherName" id="FatherName"
+                                    oninput="this.className='' " autocomplete="off">
                             </div>
                             <div class="p-info">
                                 <label class="required" for="MotherName">Mother Name</label>
-                                <input type="text" id="MotherName" name="MotherName" oninput="this.className='' "
-                                    autocomplete="off">
+                                <input type="text" class="input" id="MotherName" name="MotherName"
+                                    oninput="this.className='' " autocomplete="off">
                             </div>
                             <div class="p-info">
                                 <label for="mobileNo">Mobile No</label>
-                                <input type="tel" id="mobileNo" name="mobileNo" value="<%= usermobile %>" disabled>
+                                <input type="tel" id="mobileNo" name="mobile" value="<%= usermobile %>" disabled>
+                                <input type="hidden" id="mobileNo" name="mobileNo" value="<%= usermobile %>">
                             </div>
                             <div class="p-info">
                                 <label for="emailId">Email Id</label>
-                                <input type="email" id="emailId" name="emailId" style="text-transform: lowercase;"
+                                <input type="email" id="emailId" name="email" style="text-transform: lowercase;"
                                     value="<%= useremail %>" disabled>
+                                <input type="hidden" id="emailId" name="emailId" style="text-transform: lowercase;"
+                                    value="<%= useremail %>">
                             </div>
                             <div class="p-info p-info-select">
                                 <div class="p-info">
@@ -92,7 +96,8 @@
                             </div>
                             <div class="p-info">
                                 <label class="required" for="dob">Date Of Birth</label>
-                                <input type="date" id="dob" name="dob" oninput="this.className='' " autocomplete="off">
+                                <input type="date" class="input" id="dob" name="dob" oninput="this.className='' "
+                                    autocomplete="off">
                             </div>
 
                         </div>
@@ -112,19 +117,20 @@
                             </div>
                             <div class="p-info add-sec addL2">
                                 <label class="required" for="addL2">Address Line2</label>
-                                <textarea rows="2" type="text" name="addL1" id="addLc" autocomplete="off"></textarea>
+                                <textarea rows="2" type="text" name="addL2" id="addL2" autocomplete="off"></textarea>
                             </div>
                             <div class="p-info add-sec">
                                 <label class="required" for="block">Block</label>
-                                <input type="text" name="block" id="block" autocomplete="off">
+                                <input type="text" class="input" name="block" id="block" autocomplete="off">
                             </div>
                             <div class="p-info add-sec">
                                 <label class="required" for="distric">District</label>
-                                <input type="text" id="distric" name="distric" autocomplete="off">
+                                <input type="text" class="input" id="distric" name="distric" autocomplete="off">
                             </div>
                             <div class="p-info add-sec">
                                 <label class="required" for="pinCode">Pin Code</label>
-                                <input type="number" id="pinCode" name="pinCode" autocomplete="off">
+                                <input type="number" class="input" id="pinCode" name="pinCode" pattern="^[0-9]+$"
+                                    autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -138,21 +144,24 @@
                         <div class="academic-info-contnr">
 
                             <div class="p-info">
-                                <label class="required" for="gender">Last Passed Exam</label>
-                                <select id="gender" name="gender" style="margin-top: 6px;">
+                                <label class="required" for="lastPassedExam">Last Passed Exam</label>
+                                <select id="lastPassedExam" name="lastPassedExam" style="margin-top: 6px;">
                                     <option value="">Select</option>
-                                    <option value="BA">Bachelor of Arts (BA)</option>
-                                    <option value="BS">Bachelor of Science (B.Sc.)</option>
-                                    <option value="BBA">Bachelor of Business Administration (BBA)</option>
-                                    <option value="BE">Bachelor of Engineering (BE)</option>
-                                    <option value="BFA">Bachelor of Computer Application (BCA)</option>
-                                    <option value="BArch">Bachelor of Architecture (BArch)</option>
-                                    <option value="LLB">Bachelor of Laws (LLB)</option>
+                                    <option value="Bachelor of Arts (BA)">Bachelor of Arts (BA)</option>
+                                    <option value="Bachelor of Science (B.Sc.)">Bachelor of Science (B.Sc.)</option>
+                                    <option value="Bachelor of Business Administration (BBA)">Bachelor of Business
+                                        Administration (BBA)</option>
+                                    <option value="Bachelor of Engineering (BE)">Bachelor of Engineering (BE)</option>
+                                    <option value="Bachelor of Computer Application (BCA)">Bachelor of Computer
+                                        Application (BCA)</option>
+                                    <option value="Bachelor of Architecture (BArch)">Bachelor of Architecture (BArch)
+                                    </option>
+                                    <option value="Bachelor of Laws (LLB)">Bachelor of Laws (LLB)</option>
                                 </select>
                             </div>
                             <div class="p-info">
-                                <label class="required" for="university">University Name</label>
-                                <input type="text" name="university" id="university" autocomplete="off">
+                                <label class="required" for="LPassUniversity">University Name</label>
+                                <input type="text" name="LPassUniversity" id="LPassUniversity" autocomplete="off">
                             </div>
                             <div class="p-info">
                                 <label class="required" for="session">Session</label>
@@ -163,7 +172,7 @@
                             </div>
                             <div class="p-info">
                                 <label class="required" for="regNo">Registration No.</label>
-                                <input type="text" id="regNo" name="regNo" autocomplete="off">
+                                <input type="text" class="input" id="regNo" name="regNo" autocomplete="off">
                             </div>
                             <div class="p-info">
                                 <label class="required" class="required" for="passYear">Passing Year</label>
@@ -173,32 +182,37 @@
                                 </select>
                             </div>
                             <div class="p-info">
-                                <label class="required" for="courseType">Course Type</label>
-                                <select id="courseType" name="courseType" style="margin-top: 6px;">
+                                <label class="required" for="courseTypeStudied">Course Type</label>
+                                <select id="courseTypeStudied" name="courseTypeStudied" style="margin-top: 6px;">
                                     <option value="0" selected>Select Course Type</option>
-                                    <option value="MALE">Regular</option>
-                                    <option value="FEMALE">Distance</option>
+                                    <option value="Regular">Regular</option>
+                                    <option value="Distanse">Distance</option>
                                 </select>
                             </div>
                             <div class="p-info">
                                 <label class="required" for="subject">Subject Studied</label>
-                                <input type="text" id="subject" name="subject" autocomplete="off">
+                                <input type="text" class="input" id="subject" name="subject" autocomplete="off">
                             </div>
                             <div class="p-info">
                                 <label class="required" for="cgpa">CGPA</label>
-                                <input type="text" id="cgpa" name="cgpa" autocomplete="off">
+                                <input type="text" class="input" id="cgpa" name="cgpa" autocomplete="off">
                             </div>
                             <div class="p-info">
-                                <label class="required" for="percentage-marks">Percentage Of Marks Secured</label>
-                                <input type="text" id="percentage-marks" name="percentage-marks" autocomplete="off">
+                                <label class="required" for="percentage-marks-secured">Percentage Of Marks
+                                    Secured</label>
+                                <input type="text" class="input" id="percentage-marks-secured" name="percentMarks"
+                                    autocomplete="off">
                             </div>
                             <div class="p-info">
-                                <label class="required" for="percentage-marks">Subject's Total Credit Score</label>
-                                <input type="number" id="percentage-marks" name="percentage-marks" autocomplete="off">
+                                <label class="required" for="total-marks">Subject's Total Credit Score</label>
+                                <input type="number" class="input" id="total-marks" name="totalMarks"
+                                    autocomplete="off">
                             </div>
                             <div class="p-info">
-                                <label class="required" for="percentage-marks">Total Credit Secured On Subject</label>
-                                <input type="number" id="percentage-marks" name="percentage-marks" autocomplete="off">
+                                <label class="required" for="total-marks-secured">Total Credit Secured On
+                                    Subject</label>
+                                <input type="number" class="input" id="total-marks-secured" name="totalMarksSecured"
+                                    autocomplete="off">
                             </div>
                         </div>
                     </div>
@@ -255,23 +269,25 @@
                             <div class="file-upload-contnr">
                                 <div class="p-info">
                                     <div>
-                                        <label class="lbl" for="file-upload" class="required">Upload Photo</label>
+                                        <label class="lbl required" for="file-upload">Upload
+                                            Photo</label>
                                         <label for="file-upload" class="custom-file-upload">
                                             <i class="fa fa-cloud-upload"></i> Choose File
                                         </label>
-                                        <input onchange="handleChange(this)" id="file-upload" type="file" name="file">
+                                        <input onchange="handleChange(this)" id="file-upload" type="file" class="input"
+                                            name="photofile">
                                         <div class="text-danger fs-6" style="font-style: italic;" class="text-danger"
                                             id="FileError"></div>
                                     </div>
                                 </div>
                                 <div class="p-info">
                                     <div>
-                                        <label class="lbl" for="file-upload" class="required">Upload Signature</label>
-                                        <label for="sig-upload" class="custom-file-upload ">
+                                        <label class="lbl required" for="file-upload">Upload Signature</label>
+                                        <label for="sig-upload" class="custom-file-upload " class="required">
                                             <i class="fa fa-cloud-upload"></i> Choose File
                                         </label>
                                         <input onchange="handleSignChange(this)" id="sig-upload" type="file"
-                                            name="sigfile">
+                                            class="input" name="sigfile">
                                     </div>
                                     <div class="text-danger fs-6" style="font-style: italic;" id="sigError"></div>
                                 </div>

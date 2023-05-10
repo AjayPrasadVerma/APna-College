@@ -520,12 +520,14 @@
             const startDate = '<%= start %>';
             const startDateTime = new Date(startDate);
             const start = startDateTime.toISOString().slice(0, 16); // format as yyyy-MM-ddThh:mm
-            console.log(start);
+
 
             const endDate = '<%= end %>';
             const endDateTime = new Date(endDate);
             const end = endDateTime.toISOString().slice(0, 16); // format as yyyy-MM-ddThh:mm
+            console.log(start);
             console.log(end);
+
 
             document.getElementById("from").value = start;
             document.getElementById("to").value = end;

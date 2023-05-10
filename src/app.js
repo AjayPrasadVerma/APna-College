@@ -3,19 +3,22 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 require('./views/config');
-const { vbuCollege, KolhanUniv, JRSU, JWU, DSMPU, BBMKU, NPU, RU, SKMU } = require("./views/models/college_model");
+const { vbuCollege, KolhanUniv, JRSU, JWU, DSMPU, BBMKU, NPU, RU, SKMU, application } = require("./views/models/college_model");
 const SIGNUP = require('./views/models/studentLogin_model');
 const { clgLoginModel, clgAppliModel } = require("./views/models/collegeLogin_model");
 const passport = require('passport');
 const session = require('express-session');
 const LocalStrategy = require('passport-local').Strategy;
 const moment = require('moment-timezone');
+const multer = require('multer');
 const path = require('path');
 const port = 3000;
 
 const staticPath = path.join(__dirname, "../Public");
+const uploadPath = path.join(__dirname, "../upload");
 
 app.use(express.static(staticPath));
+app.use(express.static(uploadPath));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -41,6 +44,15 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+const Storage = multer.diskStorage({
+    destination: "../upload",
+    filename: (req, file, callback) => {
+        callback(null, Date.now() + file.originalname);
+    }
+})
+
+const upload = multer({ storage: Storage });
 
 
 app.get("/", (req, res) => {
@@ -106,15 +118,16 @@ app.get("/student/dashboard", async (req, res) => {
 
     try {
         const stud = await SIGNUP.findOne({ username: req.session.usr });
+        const stuApp = await application.find({ emailId: stud.username })
 
         if (req.isAuthenticated()) {
             res.render('Dashboard', {
                 username: stud.name,
                 useremail: stud.username,
                 usermobile: stud.mobileno,
-                userprofile: stud.profile
+                userprofile: stud.profile,
+                appDetails: stuApp
             });
-
         } else {
             res.redirect("/");
         }
@@ -351,6 +364,7 @@ app.get("/college/collegeprofile/application/update", async (req, res) => {
         const toDate = moment.tz(applcationFound.To, 'Asia/Kolkata');
         const to = toDate.format('YYYY-MM-DD hh:mm A');
 
+
         // console.log("from : " + from);
         // console.log("to : " + to);
 
@@ -358,8 +372,8 @@ app.get("/college/collegeprofile/application/update", async (req, res) => {
             res.render('clgAppUpdate', {
                 year: year,
                 appDetails: applcationFound,
-                start: from,
-                end: to
+                start: applcationFound.from,
+                end: applcationFound.To
             });
         } else {
             res.redirect("/collegelogin")
@@ -504,6 +518,60 @@ app.post("/application", (req, res) => {
     res.redirect("/student/dashboard/applicatiion");
 })
 
+app.post("/stuapplication", upload.fields([
+    { name: 'photofile', maxCount: 1 },
+    { name: 'sigfile', maxCount: 1 }
+]), (req, res) => {
+
+    const { photofile, sigfile } = req.files;
+
+    // console.log(photofile[0].filename);
+    // console.log(sigfile[0].filename);
+
+    const newApplication = new application({
+        course: req.body.course,
+        fName: req.body.fName,
+        mName: req.body.mName,
+        lName: req.body.lName,
+        fatherName: req.body.FatherName,
+        motherName: req.body.MotherName,
+        mobileNo: req.body.mobileNo,
+        emailId: req.body.emailId,
+        gender: req.body.gender,
+        cast: req.body.cast,
+        dateOfBirth: req.body.dob,
+        addressLine1: req.body.addL1,
+        addressLine2: req.body.addL2,
+        block: req.body.block,
+        district: req.body.distric,
+        pincode: req.body.pinCode,
+        lastPassedExam: req.body.lastPassedExam,
+        universityNameLastPassed: req.body.LPassUniversity,
+        session: req.body.session,
+        registrationNo: req.body.regNo,
+        passingYear: req.body.passYear,
+        courseTypeStudied: req.body.courseTypeStudied,
+        subjectStudied: req.body.subject,
+        cgpa: req.body.cgpa,
+        percentageOfMarks: req.body.percentMarks,
+        totalCredit: req.body.totalMarks,
+        totalSecuredCredit: req.body.totalMarksSecured,
+        university: req.body.univName,
+        collegeName: req.body.clgName,
+        stream: req.body.stream,
+        courseType: req.body.courseType,
+        status: "pending",
+        photo: photofile[0].filename,
+        signatire: sigfile[0].filename
+    })
+
+    try {
+        newApplication.save();
+        res.redirect("/student/dashboard");
+    } catch (err) {
+        console.log(err);
+    }
+})
 
 //   ---------------------- application end -------------
 

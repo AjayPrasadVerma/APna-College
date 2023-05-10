@@ -1,12 +1,7 @@
 <%- include('./partials/header'); %>
 
     <body>
-        <style>
-            .sidenav {
-                margin-top: 51px;
-            }
-        </style>
-        <%- include('./partials/DashboardNav'); %>
+        <%- include('./partials/ClgDashboardNav'); %>
 
             <div id="main-container">
                 <h2 style="visibility: hidden;">main-container</h2>
@@ -19,7 +14,7 @@
                         <div class="user-profile">
                             <div class="user-img">
                                 <img class="rounded-circle user img-fluid bg-light img-responsive"
-                                    src="/image/<%= userprofile %>" alt="user">
+                                    src="/<%= userprofile %>" alt="user">
                             </div>
                             <div style="text-align: center; font-weight: bold; font-size: 20px;">
                                 <%= username %>
