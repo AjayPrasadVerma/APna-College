@@ -210,14 +210,16 @@ body {
     }
 
     .profile-container {
-        background-color: #f1f1f1a2;
+        /* background-color: #f1f1f1a2; */
         margin: 30px 10px 5px 48px;
         font-size: 14px;
     }
 }
 
 .user-app {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
+    padding: 0 5px 5px 5px;
+    border-radius: 10px;
 }
 
 @media (max-width: 700px) {
@@ -228,11 +230,11 @@ body {
 
 @media (max-width: 540px) {
 
-    thead {
+    .table-dark>tr {
         display: none;
     }
 
-    tbody tr td {
+    .app-info>td {
         display: block;
     }
 
@@ -242,41 +244,29 @@ body {
         padding: 5px;
     }
 
-    tbody tr td:nth-of-type(1):before {
+    .app-info>td:nth-of-type(1):before {
         content: "#";
         font-weight: bolder;
     }
 
 
-    tbody tr td:nth-of-type(2):before {
+    .app-info>td:nth-of-type(2):before {
         content: "University Name: ";
         font-weight: bolder;
     }
 
-    tbody tr td:nth-of-type(3):before {
+    .app-info>td:nth-of-type(3):before {
         content: "College Name: ";
         font-weight: bolder;
     }
 
-    tbody tr td:nth-of-type(4):before {
+    .app-info>td:nth-of-type(4):before {
         content: "Stream: ";
         font-weight: bolder;
     }
 
-    td:nth-of-type(5):before {
+    .app-info>td:nth-of-type(5):before {
         content: "Status: ";
         font-weight: bolder;
     }
 }
-
-/* ------------------ Main end ----------------- */
-
-/* @media screen and (max-width: 450px)
-{ */
-/* .sidenav{
-        padding-top: 15px;
-    } */
-
-/* .sidenav a{
-        font-size: 18px;
-    } */

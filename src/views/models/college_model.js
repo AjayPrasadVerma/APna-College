@@ -43,6 +43,17 @@ const SKMU = mongoose.model("SKMuniversity", collegeListSchema);
 
 //  college Application Schema start
 const applicationSchema = mongoose.Schema({
+    appliedSession: String,
+    applicationNo: {
+        type: String,
+        required: [true, "Application Number is missing"],
+        unique: [true, "Application Number already exists"]
+    },
+    formNo: {
+        type: String,
+        required: [true, "Form Number is missing"],
+        unique: [true, "Form Number already exists"]
+    },
     course: String,
     fName: {
         type: String,
@@ -162,7 +173,7 @@ const applicationSchema = mongoose.Schema({
         type: String,
         required: [true, "Photo is missing"]
     },
-    signatire: {
+    signature: {
         type: String,
         required: [true, "Signature name is missing"]
     }

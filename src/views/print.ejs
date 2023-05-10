@@ -1,0 +1,291 @@
+<%- include('./partials/header'); %>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: repeating-linear-gradient(90deg, white, white);
+        }
+
+        .prnt-heading {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 5px 0px;
+            border: 0.15em solid #256a98;
+        }
+
+        .columns {
+            /* color: #0694f3; */
+            font-weight: 600;
+        }
+
+        .rows {}
+
+        .prnt-title {
+            padding-left: 5px;
+            color: orange;
+        }
+
+        .caption {
+            text-align: center;
+        }
+
+        .print-table {
+            width: 100%;
+        }
+
+        .table-container {
+            margin-top: 15px;
+        }
+
+        .print-table,
+        tr,
+        td,
+        th {
+            border: 0.15em solid #256a98;
+            padding: 5px 0px;
+        }
+
+        .table-heading {
+            text-align: center;
+        }
+
+        .content {
+            padding: 5px 10px;
+        }
+
+        .content1 {
+            width: 20%;
+            padding-left: 10px;
+        }
+
+        .content2 {
+            width: 70%;
+            padding-left: 10px;
+        }
+
+        @media print {
+            .print-btn {
+                display: none;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+
+    <body>
+        <div class="prnt-heading">
+            <div>
+                <img class="img-responsive" src="/image/c-logo1.png" alt="logo" width="110">
+            </div>
+            <div class="prnt-title">
+                <h1 class="fs-4" style="margin: 0px; font-weight: 600;">APNA COLLEGE</h1>
+                <p style="margin: 0px;">Online Common Application FORM :: Session</p>
+                <p style="margin: 0px;">Application No:
+            </div>
+        </div>
+        <div class="table-container ">
+            <table class="print-table">
+                <thead>
+                    <tr>
+                        <th colspan="6" class="table-heading text-primary">PEESONAL INFORMATION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="content1 columns">Name: </td>
+                        <% function mName(){ const middle=details.mName; if(middle !="" ){ return middle }else{ return
+                            null } } %>
+                            <td class="content2 rows" colspan="4">
+                                <%= details.fName %>
+                                    <%= mName() %>
+                                        <%= details.lName %>
+                            </td>
+                            <td rowspan="7">
+                                <img src="/<%= details.photo %>" alt="" width="150" height="190">
+                                <img src="/<%= details.signature %>" alt="" width="150" height="50">
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class=" content1 columns">Father' s Name: </td>
+                        <td class="content2 rows" colspan="4">
+                            <%= details.fatherName %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content1 columns">Email: </td>
+                        <td class="content2 rows" colspan="4">
+                            <%= details.emailId %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content1 columns">Mobile No.: </td>
+                        <td class="content2 rows" colspan="4">
+                            <%= details.mobileNo %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content1 columns">Date of Birth: </td>
+                        <td class="content2 dob rows" colspan="4"></td>
+                    </tr>
+                    <tr>
+                        <td class="content1 columns">Category: </td>
+                        <td class="content2 rows" colspan="4">
+                            <%= details.cast %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content1 columns">Gender: </td>
+                        <td class="content2 rows" colspan="4">
+                            <%= details.gender %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content1 columns">Address Line1: </td>
+                        <td class="content2 rows" colspan="5">
+                            <%= details.addressLine1 %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content1 columns">Address Line2: </td>
+                        <td class="content2 rows" colspan="5">
+                            <%= details.addressLine2 %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content columns">Block: </td>
+                        <td class="content rows" colspan="">
+                            <%= details.block %>
+                        </td>
+                        <td class="content columns">District: </td>
+                        <td class="content rows" colspan="">
+                            <%= details.district %>
+                        </td>
+                        <td class="content columns">Pin Code: </td>
+                        <td class="content rows" colspan="">
+                            <%= details.pincode %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Academic details -->
+            <table class="print-table" style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th style="width: 24%" colspan="5" class="table-heading text-primary">ACADEMIC DETAILS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="content columns">Last Pass Exam: </td>
+                        <td class="content rows">
+                            <%= details.lastPassedExam %>
+                        </td>
+                        <td rowspan="4"></td>
+                        <td class="content columns">Registration No.</td>
+                        <td class="content rows">
+                            <%= details.registrationNo %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content columns">University Name: </td>
+                        <td class="content rows">
+                            <%= details.universityNameLastPassed %>
+                        </td>
+                        <td class="content columns">Passing Year. </td>
+                        <td class="content rows">
+                            <%= details.passingYear %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content columns">Subject Studied: </td>
+                        <td class="content rows">
+                            <%= details.subjectStudied %>
+                        </td>
+                        <td class="content columns">CGPA : </td>
+                        <td class="content rows">
+                            <%= details.cgpa %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="content columns">Tolat Credit Secure on Subject: </td>
+                        <td class="content rows">
+                            <%= details.totalSecuredCredit %>
+                        </td>
+                        <td class="content columns">Tolat Subject Credit Score: </td>
+                        <td class="content rows">
+                            <%= details.totalCredit %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Curren Application Details -->
+            <table class="print-table" style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th class="table-heading columns">University Name</th>
+                        <th class="table-heading columns">College Name</th>
+                        <th class="table-heading columns">Stream</th>
+                        <th class="table-heading columns">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="content rows">
+                            <%= details.university %>
+                        </td>
+                        <td class="content rows">
+                            <%= details.collegeName %>
+                        </td>
+                        <td class="content rows">
+                            <%= details.stream %>
+                        </td>
+                        <td class="content rows">
+                            <%= details.status %>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="text-align: center; margin-top: 10px;">
+            <button class="print-btn btn btn-success" onclick="window.print()">Print</button>
+        </div>
+        <div class="footer">
+            <p id="url" style="display: inline-block;"></p> &nbsp;&nbsp;&nbsp;&nbsp;
+            <p id="time" style="display: inline-block;"></p>
+        </div>
+
+        <script>
+
+            const date = new Date();
+
+            const options = {
+                hour12: true,
+                timeZone: "Asia/Kolkata",
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit', minute: '2-digit'
+            };
+
+            const formattedDate = date.toLocaleString('en-IN', options);
+            document.getElementById("time").innerText = formattedDate;
+
+            var currentUrl = window.location.href;
+            document.getElementById("url").innerText = currentUrl;
+
+            const dob = '<%= details.dateOfBirth %>';
+            const dateObject = new Date(dob);
+            const dateString = dateObject.toLocaleDateString('en-IN');
+
+            document.querySelector(".dob").innerText = dateString;
+        </script>
+    </body>
+
+    </html>

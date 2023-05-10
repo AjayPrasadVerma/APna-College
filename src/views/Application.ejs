@@ -22,10 +22,14 @@
                 </div>
             </div>
         </div>
-        <h1 class="bg-warning fs-5" style="padding: 10px; font-weight: bold; text-align: right;">Hi, <%= username %>
+        <h1 class="bg-warning fs-5" style="padding: 10px; font-weight: bold; text-align: right;">Welcome, <%= username
+                %>
         </h1>
         <div class="container-fluid">
             <form id="application" action="/stuapplication" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="appliedSession" value="<%= session %>">
+                <input type="hidden" name="applicationNo" value="<%=Course[1] %>/<%=session %>/<%= appNo %>">
+                <input type="hidden" name="formNo" value="<%= formNo %>">
                 <input type="hidden" name="course" value="<%=Course[1] %>">
                 <div class="container-f">
                     <div class="personal-info tab">
@@ -252,8 +256,8 @@
                                     <select class="selectField" id="courseType" name="courseType"
                                         style="margin-top: 6px;">
                                         <option value="" selected>Select Course Type</option>
-                                        <option value="MALE">Regular</option>
-                                        <option value="FEMALE">Distance</option>
+                                        <option value="Regular">Regular</option>
+                                        <option value="Distance">Distance</option>
                                     </select>
                                 </div>
                             </div>

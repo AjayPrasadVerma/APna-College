@@ -118,10 +118,10 @@
             </div>
             <!-- /modal -->
             <!-- Application Details -->
-            <div style="padding-bottom: 4em ;">
+            <div style="padding-bottom: 4em ;" class="non-print-container">
                 <div class="profile-container user-app">
                     <h4 class="text-center" style="padding-top: 5px;">Your Application</h4>
-                    <table class="table table-bordered table-striped">
+                    <table class="table table-bordered">
                         <thead class="table-dark">
                             <tr>
                                 <th>#</th>
@@ -134,7 +134,7 @@
                         </thead>
                         <tbody>
                             <% appDetails.map((data, index)=>{ %>
-                                <tr>
+                                <tr class="app-info">
                                     <td>
                                         <%= index+1 %>
                                     </td>
@@ -151,10 +151,8 @@
                                         <%= data.status %>
                                     </td>
                                     <td>
-                                        <!-- <a href="print?id=<%= data._id %>" role="button" class="btn btn-success"
-                                            value="" id="print-button">Print</a> -->
-                                        <a href="#" role="button" class="btn btn-success" value=""
-                                            id="print-button">Print</a>
+                                        <a onclick="openPopup('<%= data._id %>')" href="#" role="button"
+                                            class="btn btn-success" value="">Show</a>
                                     </td>
                                 </tr>
                                 <% }) %>
@@ -178,10 +176,12 @@
                     btn.removeAttribute("data-bs-target");
                 }
 
-                const printButton = document.querySelector('#print-button');
-                printButton.addEventListener('click', () => {
-                    window.print();
-                });
+                const features = "width=900,height=700,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=yes";
+
+                function openPopup(id) {
+                    window.open('/student/print?id=' + id, 'popupWindow', features);
+                }
+
 
             </script>
     </body>

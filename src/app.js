@@ -136,7 +136,6 @@ app.get("/student/dashboard", async (req, res) => {
     }
 })
 
-
 //-------------------- login start ---------------------
 
 app.post("/", async (req, res) => {
@@ -529,6 +528,9 @@ app.post("/stuapplication", upload.fields([
     // console.log(sigfile[0].filename);
 
     const newApplication = new application({
+        appliedSession: req.body.appliedSession,
+        applicationNo: req.body.applicationNo,
+        formNo: req.body.formNo,
         course: req.body.course,
         fName: req.body.fName,
         mName: req.body.mName,
@@ -562,7 +564,7 @@ app.post("/stuapplication", upload.fields([
         courseType: req.body.courseType,
         status: "pending",
         photo: photofile[0].filename,
-        signatire: sigfile[0].filename
+        signature: sigfile[0].filename
     })
 
     try {
@@ -571,6 +573,13 @@ app.post("/stuapplication", upload.fields([
     } catch (err) {
         console.log(err);
     }
+});
+
+app.get("/student/print", async (req, res) => {
+
+    const id = req.query.id;
+    const stuDetails = await application.findById(id);
+    res.render("./print", { details: stuDetails });
 })
 
 //   ---------------------- application end -------------
@@ -599,7 +608,6 @@ app.get("/university", async (req, res) => {
         skmu: Skmu
     });
 });
-
 
 app.listen(port, () => {
     console.log(`we are listening at port number ${port}`);
