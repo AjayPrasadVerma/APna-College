@@ -1,0 +1,185 @@
+<%- include('./partials/header'); %>
+    <style>
+        body {
+            background-image: repeating-linear-gradient(90deg, #eee, #eee);
+            font-family: 'Barlow', sans-serif;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 10px;
+            background: #fff;
+            color: #059c60;
+            border-radius: 7px;
+            font-weight: bolder;
+            box-shadow: 0 2px 5px #ccc;
+            font-size: 2em;
+        }
+
+        .table-container {
+            text-align: center;
+            margin-top: 10px;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px #ccc;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        table {
+            border-collapse: separate;
+            width: 100%;
+        }
+
+        .table td,
+        .table th {
+            /* padding: .75em; */
+            vertical-align: top;
+            text-align: center;
+        }
+
+        .table td {
+            box-shadow: 0 2px 5px #ccc;
+        }
+
+        .table td>a.btn {
+            /* padding: .3em 1em; */
+            font-size: 1.1em;
+            margin: 0 .2em;
+            border-radius: 7px;
+        }
+
+        .table tr:hover {
+            background-color: #06d6a0;
+        }
+
+        .table tr:hover td>a {
+            box-shadow: none;
+        }
+
+        .table .thead-dark th {
+            color: #fff;
+            background-color: #0694d6;
+        }
+    </style>
+
+    <body>
+        <div class="container-fluid">
+            <div class="title">
+                <p>All Student Application</p>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Course</th>
+                            <th>Name</th>
+                            <th>Stream</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% pgApplication.map((data, index)=>{ %>
+                            <tr>
+                                <td>
+                                    <%= index+1 %>
+                                </td>
+                                <td>
+                                    <%= data.course %>
+                                </td>
+                                <% function mName(){ const middle=data.mName; if(middle !="" ){ return middle }else{
+                                    return null } } %>
+                                    <td>
+                                        <%= data.fName %>
+                                            <%= mName() %>
+                                                <%= data.lName %>
+                                    </td>
+                                    <td>
+                                        <%= data.stream %>
+                                    </td>
+                                    <td>
+                                        <%= data.status %>
+                                    </td>
+                                    <td>
+                                        <form action="/application/status/<%= data._id %>" method="post"
+                                            style="display: inline-block;">
+                                            <button type="submit" name="reject" value="Rejected"
+                                                class="btn btn-danger">Reject</button>
+                                            <button type="submit" name="accept" value="Accept"
+                                                class="btn btn-success">Accept</button>
+                                        </form>
+                                        <button type="button" onclick="openPopup('<%= data._id %>')"
+                                            class="btn btn-warning">View</button>
+                                    </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-container">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Course</th>
+                            <th>Name</th>
+                            <th>Stream</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% ugApplication.map((data, index)=>{ %>
+                            <tr>
+                                <td>
+                                    <%= index+1 %>
+                                </td>
+                                <td>
+                                    <%= data.course %>
+                                </td>
+                                <% function mName(){ const middle=data.mName; if(middle !="" ){ return middle }else{
+                                    return null } } %>
+                                    <td>
+                                        <%= data.fName %>
+                                            <%= mName() %>
+                                                <%= data.lName %>
+                                    </td>
+                                    <td>
+                                        <%= data.stream %>
+                                    </td>
+                                    <td>
+                                        <%= data.status %>
+                                    </td>
+                                    <td>
+                                        <form action="/application/status/<%= data._id %>" method="post"
+                                            style="display: inline-block;">
+                                            <button type="submit" name="reject" value="Rejected"
+                                                class="btn btn-danger">Reject</button>
+                                            <button type="submit" name="accept" value="Accept"
+                                                class="btn btn-success">Accept</button>
+                                        </form>
+                                        <button type="button" onclick="openPopup('<%= data._id %>')"
+                                            class="btn btn-warning">View</button>
+                                    </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            const features = "width=900,height=700,menubar=no,toolbar=no,location=no,resizable=yes,scrollbars=yes";
+
+            function openPopup(id) {
+                window.open('/student/print?id=' + id, 'popupWindow', features);
+            }
+        </script>
+    </body>
+
+    </html>

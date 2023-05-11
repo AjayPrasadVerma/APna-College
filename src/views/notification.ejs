@@ -1,0 +1,46 @@
+<%- include('./partials/header'); %>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: repeating-linear-gradient(90deg, #eee, #eee);
+            font-family: 'Barlow', sans-serif;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 10px;
+            color: #fff;
+            border-radius: 7px;
+            font-weight: bolder;
+            box-shadow: 0 2px 5px #ccc;
+            font-size: 1.5em;
+        }
+
+        .notification-container>p {
+            margin: 1px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 0 2px 5px #ccc;
+        }
+    </style>
+
+    <body>
+        <div class="container">
+            <div class="title bg-warning">
+                <p>All College Notification for UG and PG</p>
+            </div>
+            <div class="notification-container">
+                <% clgNotice.map((college)=>{ %>
+                    <p>
+                        <%= college.notice %>
+                    </p>
+                    <% }) %>
+            </div>
+        </div>
+    </body>

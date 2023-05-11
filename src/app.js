@@ -357,7 +357,6 @@ app.get("/college/collegeprofile/application/update", async (req, res) => {
         const applcationFound = await clgAppliModel.findById(id);
 
         const fromDate = moment.tz(applcationFound.from, 'Asia/Kolkata');
-        // format the date in 12-hour format with Indian time standard
         const from = fromDate.format('YYYY-MM-DD hh:mm A');
 
         const toDate = moment.tz(applcationFound.To, 'Asia/Kolkata');
@@ -415,6 +414,43 @@ app.post("/update/:id", async (req, res) => {
     }
 });
 
+app.get("/college/collegeprofile/studentapplication", async (req, res) => {
+
+    try {
+        const clgFound = await clgLoginModel.findOne({ username: req.session.clgusr });
+
+        const collName = clgFound.coll_name;
+
+        const ugAppFound = await application.find({ collegeName: collName, course: "UG" });
+        const pgAppFound = await application.find({ collegeName: collName, course: "PG" });
+
+        if (req.isAuthenticated()) {
+            res.render("viewApplication", { ugApplication: ugAppFound, pgApplication: pgAppFound });
+        } else {
+            res.redirect("/collegelogin")
+        }
+    } catch (err) {
+        console.log(err);
+    }
+})
+
+app.post("/application/status/:id", async (req, res) => {
+
+    const id = req.params.id;
+    const update = (req.body.reject) === 'Rejected' ? 'Rejected' : 'Accept';
+
+    try {
+        await application.findByIdAndUpdate(id, { $set: { status: update } }, { new: true });
+        console.log("status updated successfully!");
+        res.redirect("/college/collegeprofile/studentapplication");
+    } catch (err) {
+        console.log(err);
+    }
+
+
+
+})
+
 app.post("/clgapplication", async (req, res) => {
     // const value = req.body;
     // console.log("all data" + value);
@@ -436,9 +472,13 @@ app.post("/clgapplication", async (req, res) => {
     });
 
     try {
-        await openApplication.save();
-        req.session.appSuccess = "Application Successfully Submited!";
-        res.redirect("/college/collegeprofile");
+        if (req.isAuthenticated()) {
+            await openApplication.save();
+            req.session.appSuccess = "Application Successfully Submited!";
+            res.redirect("/college/collegeprofile");
+        } else {
+            res.redirect("/collegelogin")
+        }
     } catch (err) {
         console.log(err);
     }
@@ -502,11 +542,12 @@ function generateRegistrationNumber() {
     return registrationNumber;
 }
 
-const formNo = generateRegistrationNumber() + generateRegistrationNumber();
-
 const year = new Date().getFullYear();
 
 app.post("/application", (req, res) => {
+
+    const formNo = generateRegistrationNumber() + generateRegistrationNumber();
+
     const Course = req.body.course;
     req.session.crs = Course;
     req.session.course = Course === "UG" ? `Under Graduate Admission ${year}` : `Post Graduate Admission ${year}`;
@@ -608,6 +649,21 @@ app.get("/university", async (req, res) => {
         skmu: Skmu
     });
 });
+
+app.get("/notification", async (req, res) => {
+
+    try {
+        const college = await clgAppliModel.find({});
+        res.render("notification", { clgNotice: college });
+
+    } catch (err) {
+        console.log(err);
+    }
+})
+
+app.get("/contact", (req, res) => {
+    res.render("contact");
+})
 
 app.listen(port, () => {
     console.log(`we are listening at port number ${port}`);

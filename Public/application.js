@@ -75,9 +75,9 @@ function nextPrev(n) {
 
     if (currentTab >= allTab.length) {
 
-        if (confirm("Do you really want to submit the application!<br/>Please Verify details before submit")) {
-            alert("Your application submitted successfully!");
+        if (confirm("Do you really want to submit the application!\nPlease Verify details before submit")) {
             document.getElementById("application").submit();
+            alert("Your application submitted successfully!");
             return false;
         }
     }
