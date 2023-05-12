@@ -270,3 +270,37 @@ body {
         font-weight: bolder;
     }
 }
+
+@media (max-width:550px) {
+    .clg-username {
+        font-size: 12px;
+    }
+}
+
+@media (max-width:450px) {
+    .clg-dasboaard {
+        display: none;
+    }
+
+    .clg-head {
+        display: block !important;
+    }
+
+    .clg-sidenav {
+        margin-top: 50px;
+    }
+}
+
+@media(max-width: 311px) {
+    .stu-dashboard {
+        display: none;
+    }
+
+    #head {
+        display: block;
+    }
+
+    .sidenav {
+        margin-top: 50px;
+    }
+}

@@ -510,6 +510,13 @@ a {
 
 /* logo slider end */
 /* footer start */
+.footer {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+}
+
 .termCon {
     background-color: #ffffff91;
     margin-top: 20px;
@@ -530,11 +537,129 @@ a {
 
 .coypRight {
     background: white;
-    padding: 20px 10px 20px 10px;
     font-size: 14px;
     color: #25426be3;
 }
 
+.social-container {
+    color: #25426be3;
+    background: white;
+    width: 100%;
+    padding-bottom: 25px;
+}
+
+/*  social icon start */
+.social-icon {
+    list-style-type: none;
+}
+
+.social-icon {
+    text-decoration: none;
+    position: relative;
+}
+
+.social-icon:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+}
+
+.social-icon.circle {
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border: 0;
+    border-radius: 100%;
+    display: inline-block;
+    font-size: 1.5em;
+    height: 2.25em;
+    left: 0;
+    line-height: 2.25em;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+    width: 2.25em;
+}
+
+.social-icon.circle:hover {
+    top: -0.2em;
+}
+
+.social-icon.circle.fa-twitter {
+    background: #55ACEE;
+    color: #fff;
+}
+
+.social-icon.circle.fa-twitter:hover {
+    background: #6baaca;
+}
+
+.social-icon.circle.fa-facebook {
+    background: #3B5998;
+    color: #fff;
+}
+
+.social-icon.circle.fa-facebook:hover {
+    background: #6e8bc1;
+}
+
+.social-icon.circle.fa-instagram {
+
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+    color: #fff;
+}
+
+.social-icon.circle.fa-instagram:hover {
+    background: radial-gradient(circle farthest-corner at 35% 90%, #f3cf92, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #f3cf92, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #777df4, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #777df4, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #c179f7, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #c179f7, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#777df4, #f460c5 30%, #f66884 50%, #f89568 70%, #f3cf92 100%);
+    color: #fff;
+}
+
+.social-icon.circle.fa-linkedin {
+    background: #007bb5;
+    color: #fff;
+}
+
+
+.social-icon.circle.fa-linkedin:hover {
+    background: #5391ae;
+}
+
+.social-icon.circle.fa-github {
+    background: #dcad8b;
+    color: #fff;
+}
+
+.social-icon.circle.fa-github:hover {
+    background: #e1b89b;
+}
+
+
+.social-icon.featured {
+    cursor: default;
+    display: block;
+    margin: 0 0 1.5em 0;
+    opacity: 0.35;
+    text-align: center;
+}
+
+.social-icon.featured:before {
+    font-size: 5em;
+    line-height: 1em;
+}
+
+/* .icon.circle {
+        font-size: 1.5em;
+    } */
+
+.social-icon>.label {
+    display: none;
+}
+
+/*  social icon end */
 
 /* footer end */
 
@@ -597,7 +722,7 @@ a {
 @media (max-width: 690px) {
     .dash-container {
         display: block;
-
+        padding: 5px 10px;
     }
 
     .title {

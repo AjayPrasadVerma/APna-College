@@ -1,4 +1,4 @@
-<footer>
+<div class="footer">
     <div class="webInfo">
         <div class="termCon">
             <div><a href="#">Terms of Uses</a></div>
@@ -7,11 +7,26 @@
             <div><a href="#">Privacy Policy</a></div>
         </div>
         <div class="coypRight">
-            &copy; 2023 Website developed and Content Managed by Ajay Prasad Verma.<br />
-            Email id : <a href="mailto:apv967@gmail.com">apv967@gmail.com</a>
+            <i class="fa-regular fa-copyright"> <span id="year"></span></i>Website developed and Managed by
+            Ajay Prasad Verma.<br />
+        </div>
+        <div class="social-container ">
+
+            <p id="footer-para">Please visit our social media pages</p>
+
+            <a href="https://www.facebook.com/imAJverma?mibextid=ZbWKwL" class="social-icon circle fa-facebook"><span
+                    class="label">Facebook</span></a>
+            <a href="https://instagram.com/yah_its_ajay" class="social-icon circle fa-instagram"><span
+                    class="label">Instagram+</span></a>
+            <a href="https://twitter.com/imAJ_verma" class="social-icon circle fa-twitter"><span
+                    class="label">Twitter</span></a>
+            <a href="https://www.linkedin.com/in/ajay-prasad-verma-751127258"
+                class="social-icon circle fa-linkedin"><span class="label">Linkedin</span></a>
+            <a href="https://github.com/AjayPrasadVerma" class="social-icon circle fa-github"><span
+                    class="label">Github</span></a>
         </div>
     </div>
-</footer>
-</body>
-
-</html>
+</div>
+<script>
+    document.getElementById("year").innerText = new Date().getFullYear();
+</script>

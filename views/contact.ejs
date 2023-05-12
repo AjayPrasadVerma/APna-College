@@ -144,7 +144,7 @@
 
         .form-control:focus,
         .form-control:active {
-            border-color: #01d28e !important;
+            border-color: #ebcb14 !important;
         }
 
         textarea.form-control {
@@ -168,9 +168,9 @@
             padding: 0px 20px;
         }
 
-        .btn:hover {
+        /* .btn:hover {
             background-color: #03a46e !important;
-        }
+        } */
     </style>
 
     <body>
@@ -283,36 +283,37 @@
                 </div>
             </div>
         </section>
-        <script>
+        <%- include('./partials/footer'); %>
+            <script>
 
-            function handlesubmit() {
-                return inputvalidation();
-            }
-
-
-            let valid = true;
-            function inputvalidation() {
-
-                const input = document.getElementsByTagName("input");
-                const textarea = document.getElementsByTagName("textarea");
-
-                const allfield = [...input, ...textarea];
-
-                const form = document.getElementsByClassName("form-control");
-
-                for (let i = 0; i < allfield.length; i++) {
-                    if (allfield[i].value == "") {
-                        allfield[i].style.borderColor = "red";
-                        valid = false;
-                    } else {
-                        allfield[i].style.borderColor = "";
-                        valid = true;
-                    }
+                function handlesubmit() {
+                    return inputvalidation();
                 }
 
-                return (valid) ? true : false;
-            }
-        </script>
+
+                let valid = true;
+                function inputvalidation() {
+
+                    const input = document.getElementsByTagName("input");
+                    const textarea = document.getElementsByTagName("textarea");
+
+                    const allfield = [...input, ...textarea];
+
+                    const form = document.getElementsByClassName("form-control");
+
+                    for (let i = 0; i < allfield.length; i++) {
+                        if (allfield[i].value == "") {
+                            allfield[i].style.borderColor = "red";
+                            valid = false;
+                        } else {
+                            allfield[i].style.borderColor = "";
+                            valid = true;
+                        }
+                    }
+
+                    return (valid) ? true : false;
+                }
+            </script>
     </body>
 
     </html>

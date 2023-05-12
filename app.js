@@ -675,6 +675,12 @@ app.get("/contact", (req, res) => {
     res.render("contact");
 })
 
+app.get("*", (req, res) => {   // treted as a universal page if above are not matched
+
+    res.status(404).send("<h1>Oops this about page couldn't be found!</h1>");
+
+})
+
 app.listen(port, () => {
     console.log(`we are listening at port number ${port}`);
 })

@@ -1,12 +1,12 @@
 <body onload="onloadEvent()">
     <header>
-        <div id="head" class="bg-warning">
-            <div class="dropdown" style="margin-right: 0px;">
+        <div id="head" class="bg-warning clg-head">
+            <div class="dropdown clg-dasboaard" style="margin-right: 0px;">
                 <button class="btn btn1 btn-warning" type="button" data-bs-toggle="dropdown" aria-expanded="false"
                     style="border-radius: 0px; padding:4px;">
                     <img class="rounded-circle img-fluid bg-light img-responsive" id="userImg" src="/<%= userprofile %>"
                         alt="user" style="width: 45px; height: 45px; user-select: none;" draggable="false">
-                    <b>
+                    <b class="clg-username">
                         <%= username %>
                     </b>
                 </button>
@@ -34,7 +34,7 @@
             <!-- side nav start -->
 
         </div>
-        <div id="mySidenav" class="sidenav">
+        <div id="mySidenav" class="sidenav clg-sidenav">
             <div id="profile" class="mt-3 mb-4 txt-light"> <!-- margin -->
                 <img class="rounded-circle img-fluid bg-light img-responsive" id="userImg" src="/<%= userprofile %>"
                     alt="user" style="width: 45px; height: 45px; user-select: none;" draggable="false"><b id="uname">
