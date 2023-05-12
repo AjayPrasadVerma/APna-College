@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const connectBD = require('./views/partials/config');
+const connectBD = require('./config');
 const { vbuCollege, KolhanUniv, JRSU, JWU, DSMPU, BBMKU, NPU, RU, SKMU, application } = require("./views/models/college_model");
 const SIGNUP = require('./views/models/studentLogin_model');
 const { clgLoginModel, clgAppliModel } = require("./views/models/collegeLogin_model");
@@ -16,8 +16,8 @@ const port = process.env.PORT;
 
 connectBD();
 
-const staticPath = path.join(__dirname, "../Public");
-const uploadPath = path.join(__dirname, "../upload");
+const staticPath = path.join(__dirname, "./Public");
+const uploadPath = path.join(__dirname, "./upload");
 
 app.use(express.static(staticPath));
 app.use(express.static(uploadPath));
