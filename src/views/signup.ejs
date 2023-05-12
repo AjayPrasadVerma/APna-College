@@ -78,11 +78,10 @@
 
             <div class="sign-container">
                 <div id="container" class="">
-                    <form action="/signup" method="post" onsubmit="return handleOnsunmitEvent()" autocomplete="off">
+                    <form onsubmit="return handleOnsunmitEvent()" action="/signup" method="post" autocomplete="off">
                         <p id="serror" class="text-danger"
                             style="  padding: 5px 20px; margin-top:-37px; position: relative; border-radius: 5px;">
-
-
+                            <%= message %>
                         </p>
                         <h2 class="text-warning">STUDENT SIGN UP</h2>
                         <div class="inp form-group">
@@ -96,7 +95,7 @@
                         </div>
 
                         <div class="inp form-group">
-                            <input type="tel" placeholder="Enter 10digit Mobile No" inputmode="numeric" name="mobile"
+                            <input type="text" placeholder="Enter 10digit Mobile No" inputmode="numeric" name="mobile"
                                 maxlength="10" id="mobile" class="form-control shadow-none text-info">
                         </div>
 
@@ -122,70 +121,62 @@
                 </div>
             </div>
             <script>
-                let Name = document.getElementById("name");
-                let Email = document.getElementById("email");
-                let Mobile = document.getElementById("mobile");
-                let password = document.getElementById("inputPassword");
-                let cpassword = document.getElementById("cpass");
-                let error = document.getElementById("serror");
                 // handleOnsunmitEvent();
 
-                const isError = '<%= message %>';
-                console.log(isError);
-
                 function isValid() {
+
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    const namePattern = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
+                    const mobilePattern = /^(\+91|0)?[6789]\d{9}$/;
+
+                    let Name = document.getElementById("name");
+                    let Email = document.getElementById("email");
+                    let Mobile = document.getElementById("mobile");
+                    let password = document.getElementById("inputPassword");
+                    let cpassword = document.getElementById("cpass");
+                    let error = document.getElementById("serror");
+
                     if (Name.value == "" || Email.value == "" || Mobile.value == "" || Mobile.value == "") {
                         error.innerHTML = "All field are required!";
                         error.style.backgroundColor = "#F2DEDE";
                         return false;
                     }
-                    else if (Name.value.length < 3) {
-                        error.innerHTML = "User Name require minimum 3 character";
+                    if (!namePattern.test(Name.value) || Name.value.length < 3) {
+                        error.innerHTML = "Please enter valid email";
                         error.style.backgroundColor = "#F2DEDE";
                         Name.focus();
                         return false;
                     }
-                    else if (Email.value.length < 12) {
+                    if (!emailPattern.test(Email.value)) {
                         error.innerHTML = "Please enter valid email";
                         error.style.backgroundColor = "#F2DEDE";
                         Email.focus();
                         return false;
                     }
-                    else if (Mobile.value.length < 10) {
+                    if (!mobilePattern.test(Mobile.value)) {
                         error.innerHTML = "please enter valid mobile no!";
                         error.style.backgroundColor = "#F2DEDE";
                         Mobile.focus();
                         return false;
                     }
-                    else if (password.value.length < 8) {
+                    if (password.value.length < 8) {
                         error.innerHTML = "Password must be minimum 8 character!";
                         error.style.backgroundColor = "#F2DEDE";
                         password.focus();
                         return false;
                     }
-                    else if (password.value != cpassword.value) {
+                    if (password.value != cpassword.value) {
                         error.innerHTML = "Password are not matched!";
                         error.style.backgroundColor = "#F2DEDE";
                         cpassword.focus();
                         return false
                     }
-                    else if (isError.length != 0) {
-                        error.innerHTML = isError;
-                        error.style.backgroundColor = "#F2DEDE";
-                        return false
-                    }
-                    else {
-                        return true
-                    }
+
+                    return true;
                 }
 
                 function handleOnsunmitEvent() {
-                    if (isValid()) {
-                        return true;
-                    }
-                    else {
-                        return false
-                    }
+                    return isValid();
                 }
             </script>
             <script src="nav.js"></script>

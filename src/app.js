@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-require('./views/config');
+const connectBD = require('./views/partials/config');
 const { vbuCollege, KolhanUniv, JRSU, JWU, DSMPU, BBMKU, NPU, RU, SKMU, application } = require("./views/models/college_model");
 const SIGNUP = require('./views/models/studentLogin_model');
 const { clgLoginModel, clgAppliModel } = require("./views/models/collegeLogin_model");
@@ -12,7 +12,9 @@ const LocalStrategy = require('passport-local').Strategy;
 const moment = require('moment-timezone');
 const multer = require('multer');
 const path = require('path');
-const port = 3000;
+const port = process.env.PORT;
+
+connectBD();
 
 const staticPath = path.join(__dirname, "../Public");
 const uploadPath = path.join(__dirname, "../upload");
@@ -54,6 +56,14 @@ const Storage = multer.diskStorage({
 
 const upload = multer({ storage: Storage });
 
+app.get('/refresh', (req, res) => {
+
+    if (req.session.signupErr) {
+
+        delete req.session.signupErr;
+    }
+    res.redirect('/signup');
+});
 
 app.get("/", (req, res) => {
 
