@@ -41,7 +41,6 @@ body {
     border-top: 2px groove white;
     border-bottom: 2px groove white;
     height: 42px;
-    /* background-color: #25426b; */
     background: #08254b;
 }
 
@@ -50,8 +49,7 @@ body {
 }
 
 #disp1 {
-    border-top: 1px dotted white;
-    /* background-color: #25426b; */
+    border-top: 1px solid white;
     background: #08254b;
 }
 
@@ -538,6 +536,13 @@ a {
     justify-content: center;
     font-weight: bold;
     color: #25426be3;
+}
+
+@media (max-width:428px) {
+    .footer-name {
+        display: block;
+        margin-top: -5px;
+    }
 }
 
 .termCon div {
