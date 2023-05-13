@@ -1,428 +1,429 @@
-<%- include('./partials/header'); %>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body>
-        <div class="application-title">
-            <div class="heading">
-                <p id="para1">Online Application Form</p>
-                <p id="2nd">Form No: <%= formNo %> | Course : <%=Course[1] %>
-                </p>
+<head>
+
+    <%- include('./partials/header'); %>
+</head>
+
+<body>
+    <div class="application-title">
+        <div class="heading">
+            <p id="para1">Online Application Form</p>
+            <p id="2nd">Form No: <%= formNo %> | Course : <%=Course[1] %>
+            </p>
+        </div>
+        <div class="sub-heading">
+            <div>
+                <img class="img-responsive" src="/image/c-logo1.png" alt="logo" width="110">
             </div>
-            <div class="sub-heading">
-                <div>
-                    <img class="img-responsive" src="/image/c-logo1.png" alt="logo" width="110">
-                </div>
-                <div id="details">
-                    <h1 class="fs-4">APNA COLLEGE</h1>
-                    <p>
-                        <%= Course[0] %>
-                    </p>
-                    <p>Online Common Application FORM :: Session <%= session %>
-                    </p>
-                    <p>Application No: <%=Course[1] %>/<%=session %>/<%= appNo %>
-                </div>
+            <div id="details">
+                <h1 class="fs-4">APNA COLLEGE</h1>
+                <p>
+                    <%= Course[0] %>
+                </p>
+                <p>Online Common Application FORM :: Session <%= session %>
+                </p>
+                <p>Application No: <%=Course[1] %>/<%=session %>/<%= appNo %>
             </div>
         </div>
-        <h1 class="bg-warning fs-5" style="padding: 10px; font-weight: bold; text-align: right;">Welcome, <%= username
-                %>
-        </h1>
-        <div class="container-fluid">
-            <form id="application" action="/stuapplication" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="appliedSession" value="<%= session %>">
-                <input type="hidden" name="applicationNo" value="<%=Course[1] %>/<%=session %>/<%= appNo %>">
-                <input type="hidden" name="formNo" value="<%= formNo %>">
-                <input type="hidden" name="course" value="<%=Course[1] %>">
-                <div class="container-f">
-                    <div class="personal-info tab">
-                        <div>
-                            <h1 class="fs-4">PERSIONAL INFORMATION</h1>
-                            <hr>
+    </div>
+    <h1 class="bg-warning fs-5" style="padding: 10px; font-weight: bold; text-align: right;">Welcome, <%= username %>
+    </h1>
+    <div class="container-fluid">
+        <form id="application" action="/stuapplication" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="appliedSession" value="<%= session %>">
+            <input type="hidden" name="applicationNo" value="<%=Course[1] %>/<%=session %>/<%= appNo %>">
+            <input type="hidden" name="formNo" value="<%= formNo %>">
+            <input type="hidden" name="course" value="<%=Course[1] %>">
+            <div class="container-f">
+                <div class="personal-info tab">
+                    <div>
+                        <h1 class="fs-4">PERSIONAL INFORMATION</h1>
+                        <hr>
+                    </div>
+                    <div class="personal-info-contnr">
+                        <div class="p-info">
+                            <label class="required" for="fName">First Name</label>
+                            <input type="text" class="input" name="fName" id="fName" oninput="this.className='' "
+                                autocomplete="off">
                         </div>
-                        <div class="personal-info-contnr">
+                        <div class="p-info">
+                            <label for="mName">Middle Name</label>
+                            <input type="text" name="mName" id="mName" oninput="this.className='' " autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="lName">Last Name</label>
+                            <input type="text" class="input" name="lName" id="lName" oninput="this.className='' "
+                                autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="FatherName">Father Name</label>
+                            <input type="text" class="input" name="FatherName" id="FatherName"
+                                oninput="this.className='' " autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="MotherName">Mother Name</label>
+                            <input type="text" class="input" id="MotherName" name="MotherName"
+                                oninput="this.className='' " autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label for="mobileNo">Mobile No</label>
+                            <input type="tel" id="mobileNo" name="mobile" value="<%= usermobile %>" disabled>
+                            <input type="hidden" id="mobileNo" name="mobileNo" value="<%= usermobile %>">
+                        </div>
+                        <div class="p-info">
+                            <label for="emailId">Email Id</label>
+                            <input type="email" id="emailId" name="email" style="text-transform: lowercase;"
+                                value="<%= useremail %>" disabled>
+                            <input type="hidden" id="emailId" name="emailId" style="text-transform: lowercase;"
+                                value="<%= useremail %>">
+                        </div>
+                        <div class="p-info p-info-select">
                             <div class="p-info">
-                                <label class="required" for="fName">First Name</label>
-                                <input type="text" class="input" name="fName" id="fName" oninput="this.className='' "
-                                    autocomplete="off">
+                                <label class="required" for="gender">Gender</label>
+                                <select id="gender" name="gender" style="margin-top: 6px;"
+                                    onselect="this.className='' ">
+                                    <option value="" selected>SELECT GENDER</option>
+                                    <option value="MALE">MALE</option>
+                                    <option value="FEMALE">FEMALE</option>
+                                </select>
                             </div>
-                            <div class="p-info">
-                                <label for="mName">Middle Name</label>
-                                <input type="text" name="mName" id="mName" oninput="this.className='' "
-                                    autocomplete="off">
+                            <div class="p-info p-info-bottom">
+                                <label class="required" for="cast">Cast</label>
+                                <select id="cast" name="cast" style="margin-top: 6px;" onselect="this.className='' ">
+                                    <option value="" selected>SELECT CAST</option>
+                                    <option value="BC-I">BC-I</option>
+                                    <option value="BC-II">BC-II</option>
+                                    <option value="SC">SC</option>
+                                    <option value="ST">ST</option>
+                                    <option value="Transgender">TRANSGENDER</option>
+                                </select>
                             </div>
-                            <div class="p-info">
-                                <label class="required" for="lName">Last Name</label>
-                                <input type="text" class="input" name="lName" id="lName" oninput="this.className='' "
-                                    autocomplete="off">
-                            </div>
-                            <div class="p-info">
-                                <label class="required" for="FatherName">Father Name</label>
-                                <input type="text" class="input" name="FatherName" id="FatherName"
-                                    oninput="this.className='' " autocomplete="off">
-                            </div>
-                            <div class="p-info">
-                                <label class="required" for="MotherName">Mother Name</label>
-                                <input type="text" class="input" id="MotherName" name="MotherName"
-                                    oninput="this.className='' " autocomplete="off">
-                            </div>
-                            <div class="p-info">
-                                <label for="mobileNo">Mobile No</label>
-                                <input type="tel" id="mobileNo" name="mobile" value="<%= usermobile %>" disabled>
-                                <input type="hidden" id="mobileNo" name="mobileNo" value="<%= usermobile %>">
-                            </div>
-                            <div class="p-info">
-                                <label for="emailId">Email Id</label>
-                                <input type="email" id="emailId" name="email" style="text-transform: lowercase;"
-                                    value="<%= useremail %>" disabled>
-                                <input type="hidden" id="emailId" name="emailId" style="text-transform: lowercase;"
-                                    value="<%= useremail %>">
-                            </div>
-                            <div class="p-info p-info-select">
-                                <div class="p-info">
-                                    <label class="required" for="gender">Gender</label>
-                                    <select id="gender" name="gender" style="margin-top: 6px;"
-                                        onselect="this.className='' ">
-                                        <option value="" selected>SELECT GENDER</option>
-                                        <option value="MALE">MALE</option>
-                                        <option value="FEMALE">FEMALE</option>
-                                    </select>
-                                </div>
-                                <div class="p-info p-info-bottom">
-                                    <label class="required" for="cast">Cast</label>
-                                    <select id="cast" name="cast" style="margin-top: 6px;"
-                                        onselect="this.className='' ">
-                                        <option value="" selected>SELECT CAST</option>
-                                        <option value="BC-I">BC-I</option>
-                                        <option value="BC-II">BC-II</option>
-                                        <option value="SC">SC</option>
-                                        <option value="ST">ST</option>
-                                        <option value="Transgender">TRANSGENDER</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="p-info">
-                                <label class="required" for="dob">Date Of Birth</label>
-                                <input type="date" class="input" id="dob" name="dob" oninput="this.className='' "
-                                    autocomplete="off">
-                            </div>
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="dob">Date Of Birth</label>
+                            <input type="date" class="input" id="dob" name="dob" oninput="this.className='' "
+                                autocomplete="off">
+                        </div>
 
+                    </div>
+                </div>
+                <!-- Personal Info end -->
+                <!-- Permanent address section start -->
+                <div class="address-sec tab">
+                    <div>
+                        <h1 class="fs-4">ADDRESS INFORMATION</h1>
+                        <p class="fs-8 text-danger">Permanent Address</p>
+                        <hr>
+                    </div>
+                    <div class="address-sec-contnr">
+                        <div class="p-info add-sec addL1">
+                            <label class="required" for="addL1">Address Line1</label>
+                            <textarea rows="2" type="text" name="addL1" id="addL1" autocomplete="off"></textarea>
+                        </div>
+                        <div class="p-info add-sec addL2">
+                            <label class="required" for="addL2">Address Line2</label>
+                            <textarea rows="2" type="text" name="addL2" id="addL2" autocomplete="off"></textarea>
+                        </div>
+                        <div class="p-info add-sec">
+                            <label class="required" for="block">Block</label>
+                            <input type="text" class="input" name="block" id="block" autocomplete="off">
+                        </div>
+                        <div class="p-info add-sec">
+                            <label class="required" for="distric">District</label>
+                            <input type="text" class="input" id="distric" name="distric" autocomplete="off">
+                        </div>
+                        <div class="p-info add-sec">
+                            <label class="required" for="pinCode">Pin Code</label>
+                            <input type="number" class="input" id="pinCode" name="pinCode" pattern="^[0-9]+$"
+                                autocomplete="off">
                         </div>
                     </div>
-                    <!-- Personal Info end -->
-                    <!-- Permanent address section start -->
-                    <div class="address-sec tab">
-                        <div>
-                            <h1 class="fs-4">ADDRESS INFORMATION</h1>
-                            <p class="fs-8 text-danger">Permanent Address</p>
-                            <hr>
+                </div>
+                <!-- Permanent address section end -->
+                <!-- academic-information start -->
+                <div class="academic-info tab">
+                    <div>
+                        <h1 class="fs-4">PREVIOUS ACADEMIC INFORMATION <h1>
+                                <hr>
+                    </div>
+                    <div class="academic-info-contnr">
+
+                        <div class="p-info">
+                            <label class="required" for="lastPassedExam">Last Passed Exam</label>
+                            <select id="lastPassedExam" name="lastPassedExam" style="margin-top: 6px;">
+                                <option value="">Select</option>
+                                <option value="Bachelor of Arts (BA)">Bachelor of Arts (BA)</option>
+                                <option value="Bachelor of Science (B.Sc.)">Bachelor of Science (B.Sc.)</option>
+                                <option value="Bachelor of Business Administration (BBA)">Bachelor of Business
+                                    Administration (BBA)</option>
+                                <option value="Bachelor of Engineering (BE)">Bachelor of Engineering (BE)</option>
+                                <option value="Bachelor of Computer Application (BCA)">Bachelor of Computer
+                                    Application (BCA)</option>
+                                <option value="Bachelor of Architecture (BArch)">Bachelor of Architecture (BArch)
+                                </option>
+                                <option value="Bachelor of Laws (LLB)">Bachelor of Laws (LLB)</option>
+                            </select>
                         </div>
-                        <div class="address-sec-contnr">
-                            <div class="p-info add-sec addL1">
-                                <label class="required" for="addL1">Address Line1</label>
-                                <textarea rows="2" type="text" name="addL1" id="addL1" autocomplete="off"></textarea>
-                            </div>
-                            <div class="p-info add-sec addL2">
-                                <label class="required" for="addL2">Address Line2</label>
-                                <textarea rows="2" type="text" name="addL2" id="addL2" autocomplete="off"></textarea>
-                            </div>
-                            <div class="p-info add-sec">
-                                <label class="required" for="block">Block</label>
-                                <input type="text" class="input" name="block" id="block" autocomplete="off">
-                            </div>
-                            <div class="p-info add-sec">
-                                <label class="required" for="distric">District</label>
-                                <input type="text" class="input" id="distric" name="distric" autocomplete="off">
-                            </div>
-                            <div class="p-info add-sec">
-                                <label class="required" for="pinCode">Pin Code</label>
-                                <input type="number" class="input" id="pinCode" name="pinCode" pattern="^[0-9]+$"
-                                    autocomplete="off">
-                            </div>
+                        <div class="p-info">
+                            <label class="required" for="LPassUniversity">University Name</label>
+                            <input type="text" name="LPassUniversity" id="LPassUniversity" autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="session">Session</label>
+                            <select id="session" name="session" style="margin-top: 6px;" required>
+                                <option value="0" selected>Selest Session</option>
+                                <!-- automatically created through js -->
+                            </select>
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="regNo">Registration No.</label>
+                            <input type="text" class="input" id="regNo" name="regNo" autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" class="required" for="passYear">Passing Year</label>
+                            <select id="passYear" name="passYear" style="margin-top: 6px;" required>
+                                <option value="0" selected>Select Year</option>
+                                <!-- automatically created through js -->
+                            </select>
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="courseTypeStudied">Course Type</label>
+                            <select id="courseTypeStudied" name="courseTypeStudied" style="margin-top: 6px;">
+                                <option value="0" selected>Select Course Type</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Distanse">Distance</option>
+                            </select>
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="subject">Subject Studied</label>
+                            <input type="text" class="input" id="subject" name="subject" autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="cgpa">CGPA</label>
+                            <input type="text" class="input" id="cgpa" name="cgpa" autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="percentage-marks-secured">Percentage Of Marks
+                                Secured</label>
+                            <input type="text" class="input" id="percentage-marks-secured" name="percentMarks"
+                                autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="total-marks">Subject's Total Credit Score</label>
+                            <input type="number" class="input" id="total-marks" name="totalMarks" autocomplete="off">
+                        </div>
+                        <div class="p-info">
+                            <label class="required" for="total-marks-secured">Total Credit Secured On
+                                Subject</label>
+                            <input type="number" class="input" id="total-marks-secured" name="totalMarksSecured"
+                                autocomplete="off">
                         </div>
                     </div>
-                    <!-- Permanent address section end -->
-                    <!-- academic-information start -->
-                    <div class="academic-info tab">
+                </div>
+                <!-- Academic information end -->
+
+                <!-- DISCIPLINE SECTION start-->
+                <div class="tab">
+                    <div class="descipline-info">
                         <div>
-                            <h1 class="fs-4">PREVIOUS ACADEMIC INFORMATION <h1>
+                            <h1 class="fs-4">DISCIPLINE SECTION<h1>
                                     <hr>
                         </div>
-                        <div class="academic-info-contnr">
-
+                        <div class="descipline-info-contnr">
                             <div class="p-info">
-                                <label class="required" for="lastPassedExam">Last Passed Exam</label>
-                                <select id="lastPassedExam" name="lastPassedExam" style="margin-top: 6px;">
-                                    <option value="">Select</option>
-                                    <option value="Bachelor of Arts (BA)">Bachelor of Arts (BA)</option>
-                                    <option value="Bachelor of Science (B.Sc.)">Bachelor of Science (B.Sc.)</option>
-                                    <option value="Bachelor of Business Administration (BBA)">Bachelor of Business
-                                        Administration (BBA)</option>
-                                    <option value="Bachelor of Engineering (BE)">Bachelor of Engineering (BE)</option>
-                                    <option value="Bachelor of Computer Application (BCA)">Bachelor of Computer
-                                        Application (BCA)</option>
-                                    <option value="Bachelor of Architecture (BArch)">Bachelor of Architecture (BArch)
-                                    </option>
-                                    <option value="Bachelor of Laws (LLB)">Bachelor of Laws (LLB)</option>
+                                <label class="required" for="univName">University Name</label>
+                                <select class="selectField" id="univName" name="univName" style="margin-top: 6px;">
+                                    <option value="">Select University</option>
+                                    <!-- university name -->
                                 </select>
                             </div>
                             <div class="p-info">
-                                <label class="required" for="LPassUniversity">University Name</label>
-                                <input type="text" name="LPassUniversity" id="LPassUniversity" autocomplete="off">
-                            </div>
-                            <div class="p-info">
-                                <label class="required" for="session">Session</label>
-                                <select id="session" name="session" style="margin-top: 6px;" required>
-                                    <option value="0" selected>Selest Session</option>
-                                    <!-- automatically created through js -->
+                                <label class="required" for="clgName">College Name</label>
+                                <select id="clgName" name="clgName" style="margin-top: 6px;">
+                                    <option value="" selected>Selest College</option>
+                                    <!-- college Name -->
                                 </select>
                             </div>
                             <div class="p-info">
-                                <label class="required" for="regNo">Registration No.</label>
-                                <input type="text" class="input" id="regNo" name="regNo" autocomplete="off">
-                            </div>
-                            <div class="p-info">
-                                <label class="required" class="required" for="passYear">Passing Year</label>
-                                <select id="passYear" name="passYear" style="margin-top: 6px;" required>
-                                    <option value="0" selected>Select Year</option>
-                                    <!-- automatically created through js -->
+                                <label class="required" class="required" for="stream">Stream</label>
+                                <select id="stream" name="stream" style="margin-top: 6px;">
+                                    <option value="" selected>Select Stream</option>
+                                    <!-- course stream -->
                                 </select>
                             </div>
                             <div class="p-info">
-                                <label class="required" for="courseTypeStudied">Course Type</label>
-                                <select id="courseTypeStudied" name="courseTypeStudied" style="margin-top: 6px;">
-                                    <option value="0" selected>Select Course Type</option>
+                                <label class="required" for="courseType">Course Type</label>
+                                <select class="selectField" id="courseType" name="courseType" style="margin-top: 6px;">
+                                    <option value="" selected>Select Course Type</option>
                                     <option value="Regular">Regular</option>
-                                    <option value="Distanse">Distance</option>
+                                    <option value="Distance">Distance</option>
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                    <!-- FILE SECTION start-->
+                    <div class="file-upload">
+                        <div>
+                            <h1 class="fs-4">FILE SECTION<h1>
+                                    <p class="file-instructions fs-6 text-danger">
+                                        Please upload a file in JPEG, JPG,PNG format with a maximum size of 2MB.</p>
+                                    <hr>
+                        </div>
+                        <div class="file-upload-contnr">
                             <div class="p-info">
-                                <label class="required" for="subject">Subject Studied</label>
-                                <input type="text" class="input" id="subject" name="subject" autocomplete="off">
+                                <div>
+                                    <label class="lbl required" for="file-upload">Upload
+                                        Photo</label>
+                                    <label for="file-upload" class="custom-file-upload">
+                                        <i class="fa fa-cloud-upload"></i> Choose File
+                                    </label>
+                                    <input onchange="handleChange(this)" id="file-upload" type="file" class="input"
+                                        name="photofile">
+                                    <div class="text-danger fs-6" style="font-style: italic;" class="text-danger"
+                                        id="FileError"></div>
+                                </div>
                             </div>
                             <div class="p-info">
-                                <label class="required" for="cgpa">CGPA</label>
-                                <input type="text" class="input" id="cgpa" name="cgpa" autocomplete="off">
-                            </div>
-                            <div class="p-info">
-                                <label class="required" for="percentage-marks-secured">Percentage Of Marks
-                                    Secured</label>
-                                <input type="text" class="input" id="percentage-marks-secured" name="percentMarks"
-                                    autocomplete="off">
-                            </div>
-                            <div class="p-info">
-                                <label class="required" for="total-marks">Subject's Total Credit Score</label>
-                                <input type="number" class="input" id="total-marks" name="totalMarks"
-                                    autocomplete="off">
-                            </div>
-                            <div class="p-info">
-                                <label class="required" for="total-marks-secured">Total Credit Secured On
-                                    Subject</label>
-                                <input type="number" class="input" id="total-marks-secured" name="totalMarksSecured"
-                                    autocomplete="off">
+                                <div>
+                                    <label class="lbl required" for="file-upload">Upload Signature</label>
+                                    <label for="sig-upload" class="custom-file-upload " class="required">
+                                        <i class="fa fa-cloud-upload"></i> Choose File
+                                    </label>
+                                    <input onchange="handleSignChange(this)" id="sig-upload" type="file" class="input"
+                                        name="sigfile">
+                                </div>
+                                <div class="text-danger fs-6" style="font-style: italic;" id="sigError"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- Academic information end -->
-
-                    <!-- DISCIPLINE SECTION start-->
-                    <div class="tab">
-                        <div class="descipline-info">
-                            <div>
-                                <h1 class="fs-4">DISCIPLINE SECTION<h1>
-                                        <hr>
-                            </div>
-                            <div class="descipline-info-contnr">
-                                <div class="p-info">
-                                    <label class="required" for="univName">University Name</label>
-                                    <select class="selectField" id="univName" name="univName" style="margin-top: 6px;">
-                                        <option value="">Select University</option>
-                                        <!-- university name -->
-                                    </select>
-                                </div>
-                                <div class="p-info">
-                                    <label class="required" for="clgName">College Name</label>
-                                    <select id="clgName" name="clgName" style="margin-top: 6px;">
-                                        <option value="" selected>Selest College</option>
-                                        <!-- college Name -->
-                                    </select>
-                                </div>
-                                <div class="p-info">
-                                    <label class="required" class="required" for="stream">Stream</label>
-                                    <select id="stream" name="stream" style="margin-top: 6px;">
-                                        <option value="" selected>Select Stream</option>
-                                        <!-- course stream -->
-                                    </select>
-                                </div>
-                                <div class="p-info">
-                                    <label class="required" for="courseType">Course Type</label>
-                                    <select class="selectField" id="courseType" name="courseType"
-                                        style="margin-top: 6px;">
-                                        <option value="" selected>Select Course Type</option>
-                                        <option value="Regular">Regular</option>
-                                        <option value="Distance">Distance</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FILE SECTION start-->
-                        <div class="file-upload">
-                            <div>
-                                <h1 class="fs-4">FILE SECTION<h1>
-                                        <p class="file-instructions fs-6 text-danger">
-                                            Please upload a file in JPEG, JPG,PNG format with a maximum size of 2MB.</p>
-                                        <hr>
-                            </div>
-                            <div class="file-upload-contnr">
-                                <div class="p-info">
-                                    <div>
-                                        <label class="lbl required" for="file-upload">Upload
-                                            Photo</label>
-                                        <label for="file-upload" class="custom-file-upload">
-                                            <i class="fa fa-cloud-upload"></i> Choose File
-                                        </label>
-                                        <input onchange="handleChange(this)" id="file-upload" type="file" class="input"
-                                            name="photofile">
-                                        <div class="text-danger fs-6" style="font-style: italic;" class="text-danger"
-                                            id="FileError"></div>
-                                    </div>
-                                </div>
-                                <div class="p-info">
-                                    <div>
-                                        <label class="lbl required" for="file-upload">Upload Signature</label>
-                                        <label for="sig-upload" class="custom-file-upload " class="required">
-                                            <i class="fa fa-cloud-upload"></i> Choose File
-                                        </label>
-                                        <input onchange="handleSignChange(this)" id="sig-upload" type="file"
-                                            class="input" name="sigfile">
-                                    </div>
-                                    <div class="text-danger fs-6" style="font-style: italic;" id="sigError"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- FILE SECTION end-->
-                    </div>
-                    <!-- DISCIPLINE SECTION end-->
-
+                    <!-- FILE SECTION end-->
                 </div>
-                <div style="overflow:auto; margin-bottom: 20px;">
-                    <div style="text-align: center;">
-                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                    </div>
+                <!-- DISCIPLINE SECTION end-->
+
+            </div>
+            <div style="overflow:auto; margin-bottom: 20px;">
+                <div style="text-align: center;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
                 </div>
-            </form>
-            <script>
-                const course = '<%=Course[1] %>';
-                const collegeData = '<%- JSON.stringify(clgOpen) %>';
-                const objData = JSON.parse(collegeData);
+            </div>
+        </form>
+        <script>
+            const course = '<%=Course[1] %>';
+            const collegeData = '<%- JSON.stringify(clgOpen) %>';
+            const objData = JSON.parse(collegeData);
 
-                // const univName = objData.map((university) => university.university);  // university array
+            // const univName = objData.map((university) => university.university);  // university array
 
-                // 
-                const univName = objData.filter((university) => {
-                    if (university.courseType === course) {
-                        return university.university;
+            // 
+            const univName = objData.filter((university) => {
+                if (university.courseType === course) {
+                    return university.university;
+                }
+            })
+
+            const univArray = univName.map((university) => university.university);  // university array
+
+            const university = [...new Set(univArray)];   // removing duplicate
+
+
+            university.map((university) => {
+                let optionTag = document.createElement("option");
+                optionTag.value = university;
+                optionTag.innerText = university;
+
+                document.getElementById("univName").appendChild(optionTag);
+            });
+
+            const collegeField = document.getElementById("clgName");
+            const universityName = document.getElementById("univName");
+
+            universityName.addEventListener('change', () => {
+                // console.log(universityName.value);
+
+                const collegeObj = objData.filter((name) => {
+                    removeEvements();
+
+                    if (name.university == universityName.value && name.courseType === course) {
+                        // console.log(name.collegeName);
+                        return name.collegeName;
                     }
-                })
+                });
+                // console.log(collegeObj);
 
-                const univArray = univName.map((university) => university.university);  // university array
+                const collegeArray = collegeObj.map((college) => college.collegeName);  // university array
+                const college = [...new Set(collegeArray)];
 
-                const university = [...new Set(univArray)];   // removing duplicate
-
-
-                university.map((university) => {
+                college.map((college) => {
                     let optionTag = document.createElement("option");
-                    optionTag.value = university;
-                    optionTag.innerText = university;
+                    optionTag.value = college;
+                    optionTag.classList = "coll-item";
+                    optionTag.innerText = college;
 
-                    document.getElementById("univName").appendChild(optionTag);
+                    collegeField.appendChild(optionTag);
+                });
+            })
+
+            function removeEvements() {
+                let items = document.querySelectorAll(".coll-item");
+                items.forEach((item) => {
+                    item.remove();
+                })
+            }
+
+            clgName.addEventListener("change", () => {
+                // console.log(clgName.value);
+
+                const clgCourse = objData.filter((name) => {
+                    removeCourse();
+                    if (name.collegeName === clgName.value && name.courseType === course) {
+                        // console.log(name.course);
+                        return name.course;
+                    }
                 });
 
-                const collegeField = document.getElementById("clgName");
-                const universityName = document.getElementById("univName");
+                const courseArray = clgCourse.map((courses) => {
+                    // console.log(courses);
+                    courses.course.map((crs) => {
+                        // console.log(crs);
+                        const courseOption = document.createElement('option');
+                        courseOption.classList = "course-item";
+                        courseOption.value = crs;
+                        courseOption.innerText = crs;
 
-                universityName.addEventListener('change', () => {
-                    // console.log(universityName.value);
-
-                    const collegeObj = objData.filter((name) => {
-                        removeEvements();
-
-                        if (name.university == universityName.value && name.courseType === course) {
-                            // console.log(name.collegeName);
-                            return name.collegeName;
-                        }
+                        document.getElementById("stream").appendChild(courseOption);
                     });
-                    // console.log(collegeObj);
+                });
 
-                    const collegeArray = collegeObj.map((college) => college.collegeName);  // university array
-                    const college = [...new Set(collegeArray)];
+                // const ClgCourse = [...new Set(courseArray)];  // Unique course
+                // console.log(ClgCourse);
 
-                    college.map((college) => {
-                        let optionTag = document.createElement("option");
-                        optionTag.value = college;
-                        optionTag.classList = "coll-item";
-                        optionTag.innerText = college;
+                // console.log(courseArray);
 
-                        collegeField.appendChild(optionTag);
-                    });
+
+
+                // ClgCourse.map((course) => {
+                //     // removeCourse();
+                //     const courseOption = document.createElement('option');
+                //     courseOption.classList = "course-item";
+                //     courseOption.value = course;
+                //     courseOption.innerText = course;
+
+                //     document.getElementById("stream").appendChild(courseOption);
+                // });
+            })
+
+            function removeCourse() {
+                const items = document.querySelectorAll('.course-item');
+                items.forEach((item) => {
+                    item.remove();
                 })
+            }
+        </script>
+        <script src="/application.js"></script>
+    </div>
+</body>
 
-                function removeEvements() {
-                    let items = document.querySelectorAll(".coll-item");
-                    items.forEach((item) => {
-                        item.remove();
-                    })
-                }
-
-                clgName.addEventListener("change", () => {
-                    // console.log(clgName.value);
-
-                    const clgCourse = objData.filter((name) => {
-                        removeCourse();
-                        if (name.collegeName === clgName.value && name.courseType === course) {
-                            // console.log(name.course);
-                            return name.course;
-                        }
-                    });
-
-                    const courseArray = clgCourse.map((courses) => {
-                        // console.log(courses);
-                        courses.course.map((crs) => {
-                            // console.log(crs);
-                            const courseOption = document.createElement('option');
-                            courseOption.classList = "course-item";
-                            courseOption.value = crs;
-                            courseOption.innerText = crs;
-
-                            document.getElementById("stream").appendChild(courseOption);
-                        });
-                    });
-
-                    // const ClgCourse = [...new Set(courseArray)];  // Unique course
-                    // console.log(ClgCourse);
-
-                    // console.log(courseArray);
-
-
-
-                    // ClgCourse.map((course) => {
-                    //     // removeCourse();
-                    //     const courseOption = document.createElement('option');
-                    //     courseOption.classList = "course-item";
-                    //     courseOption.value = course;
-                    //     courseOption.innerText = course;
-
-                    //     document.getElementById("stream").appendChild(courseOption);
-                    // });
-                })
-
-                function removeCourse() {
-                    const items = document.querySelectorAll('.course-item');
-                    items.forEach((item) => {
-                        item.remove();
-                    })
-                }
-            </script>
-            <script src="/application.js"></script>
-        </div>
-    </body>
-
-    </html>
+</html>

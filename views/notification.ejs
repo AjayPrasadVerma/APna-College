@@ -1,54 +1,61 @@
-<%- include('./partials/header'); %>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<!DOCTYPE html>
+<html lang="en">
 
-        body {
-            background-image: repeating-linear-gradient(90deg, #eee, #eee);
-            font-family: 'Barlow', sans-serif;
-        }
+<head>
+    <%- include('./partials/header'); %>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-        .title {
-            text-align: center;
-            margin-top: 10px;
-            color: #fff;
-            border-radius: 7px;
-            font-weight: bolder;
-            box-shadow: 0 2px 5px #ccc;
-            font-size: 1.5em;
-        }
+            body {
+                background-image: repeating-linear-gradient(90deg, #eee, #eee);
+                font-family: 'Barlow', sans-serif;
+            }
 
-        .notification-container>p {
-            margin: 1px;
-            padding: 10px;
-            background: #fff;
-            border-radius: 7px;
-            box-shadow: 0 2px 5px #ccc;
-        }
+            .title {
+                text-align: center;
+                margin-top: 10px;
+                color: #fff;
+                border-radius: 7px;
+                font-weight: bolder;
+                box-shadow: 0 2px 5px #ccc;
+                font-size: 1.5em;
+            }
 
-        .notification-container>p:hover {
-            color: #efba0e;
-        }
+            .notification-container>p {
+                margin: 1px;
+                padding: 10px;
+                background: #fff;
+                border-radius: 7px;
+                box-shadow: 0 2px 5px #ccc;
+            }
 
-        .container {
-            padding-bottom: 30px;
-        }
-    </style>
+            .notification-container>p:hover {
+                color: #efba0e;
+            }
 
-    <body>
-        <div class="container">
-            <div class="title bg-warning">
-                <p>All College Notification for UG and PG</p>
-            </div>
-            <div class="notification-container">
-                <% clgNotice.map((college)=>{ %>
-                    <p>
-                        <%= college.notice %>
-                    </p>
-                    <% }) %>
-            </div>
+            .container {
+                padding-bottom: 30px;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title bg-warning">
+            <p>All College Notification for UG and PG</p>
         </div>
-    </body>
+        <div class="notification-container">
+            <% clgNotice.map((college)=>{ %>
+                <p>
+                    <%= college.notice %>
+                </p>
+                <% }) %>
+        </div>
+    </div>
+</body>
+
+</html>

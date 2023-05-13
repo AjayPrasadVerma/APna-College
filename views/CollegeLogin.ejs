@@ -1,77 +1,83 @@
-<%- include('./partials/header'); %>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+<!DOCTYPE html>
+<html lang="en">
 
-        body {
-            background-image: repeating-linear-gradient(90deg, #eee, #eee);
-        }
+<head>
+    <%- include('./partials/header'); %>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
 
-        h1 {
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+            body {
+                display: block;
+                background-image: repeating-linear-gradient(90deg, #eee, #eee);
+            }
 
-        input[type=text],
-        input[type=password] {
-            margin: 10px 0 0px 0;
-            /* width: 80%; */
-            border: 1px solid #B7C4CF;
-            border-radius: 5px;
-            text-align: left;
-            color: #809db5;
-        }
+            h1 {
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 20px;
+            }
 
-        input[type=text]:focus,
-        input[type=password]:focus {
-            border-color: #063860;
-        }
+            input[type=text],
+            input[type=password] {
+                margin: 10px 0 0px 0;
+                /* width: 80%; */
+                border: 1px solid #B7C4CF;
+                border-radius: 5px;
+                text-align: left;
+                color: #809db5;
+            }
 
-        ::placeholder {
-            color: #04AA6D;
-            opacity: 0.4;
-            text-transform: capitalize;
-        }
+            input[type=text]:focus,
+            input[type=password]:focus {
+                border-color: #063860;
+            }
 
-        input[type=text] {
-            margin-left: 13px;
-        }
+            ::placeholder {
+                color: #04AA6D;
+                opacity: 0.4;
+                text-transform: capitalize;
+            }
 
-        input[type=submit] {
-            background-color: #04AA6D;
-            color: #ffffff;
-            margin-top: 30px;
-        }
+            input[type=text] {
+                margin-left: 13px;
+            }
 
-        input[type=submit]:hover {
-            opacity: 0.9;
-        }
+            input[type=submit] {
+                background-color: #04AA6D;
+                color: #ffffff;
+                margin-top: 30px;
+            }
 
-        .form-container {
-            display: flex;
-            justify-content: center;
-        }
+            input[type=submit]:hover {
+                opacity: 0.9;
+            }
 
-        #sub-container {
-            margin: 80px auto auto auto;
-            padding: 40px 50px;
-            background: #fff;
-            border-radius: 7px;
-            box-shadow: 0 2px 5px #ccc;
-        }
-    </style>
+            .form-container {
+                display: flex;
+                justify-content: center;
+            }
 
+            #sub-container {
+                margin: 80px auto auto auto;
+                padding: 40px 50px;
+                background: #fff;
+                border-radius: 7px;
+                box-shadow: 0 2px 5px #ccc;
+            }
+        </style>
+</head>
+
+<body>
     <div id="header">
         <img class="img-responsive" src="./image/c-logo1.png" alt="logo" draggable="false">
         <span class="title">Apna College</span>
     </div>
 
     <%- include('./partials/navbar'); %>
-        </body>
         <div>
             <div class="form-container">
                 <div id="sub-container">
@@ -139,5 +145,6 @@
             }
         </script>
         <script src="nav.js"></script>
+</body>
 
-        </html>
+</html>

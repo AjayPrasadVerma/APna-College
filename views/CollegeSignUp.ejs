@@ -1,285 +1,292 @@
-<%- include('./partials/header'); %>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+<!DOCTYPE html>
+<html lang="en">
 
-        body {
-            background-image: repeating-linear-gradient(90deg, #eee, #eee);
+<head>
+    <%- include('./partials/header'); %>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
 
-        }
+            body {
+                background-image: repeating-linear-gradient(90deg, #eee, #eee);
+                display: block;
+            }
 
-        h1 {
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+            h1 {
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 20px;
+            }
 
-        input[type=text],
-        input[type=password] {
-            /* width: 80%; */
-            border: 1px solid #B7C4CF;
-            border-radius: 5px;
-            color: #809db5;
-            font-size: 18px;
-            width: 100%;
-        }
+            input[type=text],
+            input[type=password] {
+                /* width: 80%; */
+                border: 1px solid #B7C4CF;
+                border-radius: 5px;
+                color: #809db5;
+                font-size: 18px;
+                width: 100%;
+            }
 
-        ::placeholder {
-            color: #04AA6D;
-            opacity: 0.4;
-            text-transform: capitalize;
-        }
+            ::placeholder {
+                color: #04AA6D;
+                opacity: 0.4;
+                text-transform: capitalize;
+            }
 
-        input[type=text]:focus,
-        input[type=password]:focus {
-            border-color: #063860;
-        }
+            input[type=text]:focus,
+            input[type=password]:focus {
+                border-color: #063860;
+            }
 
-        input[type=submit] {
-            background-color: #04AA6D;
-            color: #ffffff;
-            margin-top: 30px;
-        }
+            input[type=submit] {
+                background-color: #04AA6D;
+                color: #ffffff;
+                margin-top: 30px;
+            }
 
-        input[type=submit]:hover {
-            background-color: #039560;
-        }
+            input[type=submit]:hover {
+                background-color: #039560;
+            }
 
-        .form-container {
-            display: flex;
-            justify-content: center;
-        }
+            .form-container {
+                display: flex;
+                justify-content: center;
+            }
 
-        #sub-container {
-            margin: 5px auto auto auto;
-            /* width: 50%; */
-            width: 630px;
-            padding: 40px 50px;
-            background: #fff;
-            border-radius: 7px;
-            box-shadow: 0 2px 5px #ccc;
-        }
-
-        @media (max-width:650px) {
             #sub-container {
-                width: 90%;
+                margin: 5px auto auto auto;
+                /* width: 50%; */
+                width: 630px;
+                padding: 40px 50px;
+                background: #fff;
+                border-radius: 7px;
+                box-shadow: 0 2px 5px #ccc;
             }
-        }
 
-        .c-info {
-            margin-top: 15px;
-        }
+            @media (max-width:650px) {
+                #sub-container {
+                    width: 90%;
+                }
+            }
 
-        .list {
-            list-style-type: none;
-            position: absolute;
-            overflow-y: auto;
-            border-radius: 7px;
-            margin-left: -31px;
-            margin-right: 31px;
-            width: inherit;
-        }
+            .c-info {
+                margin-top: 15px;
+            }
 
-        .list-item {
-            background-color: #eee;
-            padding: 7px;
-            cursor: pointer;
-        }
+            .list {
+                list-style-type: none;
+                position: absolute;
+                overflow-y: auto;
+                border-radius: 7px;
+                margin-left: -31px;
+                margin-right: 31px;
+                width: inherit;
+            }
 
-        .list-item:hover {
-            background-color: #ccc;
-        }
-    </style>
+            .list-item {
+                background-color: #eee;
+                padding: 7px;
+                cursor: pointer;
+            }
 
-    <body>
-        <div id="header">
-            <img class="img-responsive" src="./image/c-logo1.png" alt="logo" draggable="false">
-            <span class="title">Apna College</span>
-        </div>
+            .list-item:hover {
+                background-color: #ccc;
+            }
+        </style>
+</head>
 
-        <%- include('./partials/navbar'); %>
-    </body>
-    <div>
-        <div class="form-container">
-            <div id="sub-container">
-                <h1 class="fs-3">SignUp</h1>
-                <form onsubmit="return handleSubmit();" action="/collegesignup" method="post">
-                    <p style="color: #04AA6D; text-align: center;">
-                        <%= message %>
-                    </p>
-                    <input type="hidden" name="university" id="university" value="">
-                    <div class="c-info">
-                        <label class="required" for="instutename">Institute
-                            Name</label>
-                        <input type="text" name="instute" id="instutename" placeholder="University/Collegen Name"
-                            autocomplete="off">
-                        <ul class="list"></ul>
-                    </div>
-                    <div class="c-info">
-                        <label class="required" for="username">Username</label>
-                        <input type="text" name="username" id="loginId" placeholder="College Code" autocomplete="off">
-                    </div>
-                    <div class="c-info">
-                        <label class="required" for="password">Password</label>
-                        <input type="password" name="password" id="password" placeholder="password" autocomplete="off">
-                    </div>
-
-                    <div class="c-info">
-                        <label class="required" for="cpassword">Confirm Pasword</label>
-                        <input type="password" name="cpassword" id="cpassword" placeholder="Confirm password"
-                            autocomplete="off">
-                    </div>
-                    <div style="text-align: center;">
-                        <input type="submit" id="btn" value="Sign Up" data-bs-toggle="modal">
-                    </div>
-                </form>
-                <div style="text-align: center; margin-top: 20px;">
-                    <a style="text-decoration: none;" href="/Collegelogin">Login</a>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade" id="login" data-bs-backdrop="static" tabindex="-1" aria-labelledby="loginLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header bg-danger" style="height:40px; color: white;">
-                        <h5 class="modal-title fs-5 " id="exampleModalLabel">warning!</h5>
-                        <button onclick="handleClick()" type="button" class="btn-close shadow-none"
-                            data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-danger">
-
-                    </div>
-                </div>
-            </div>
-        </div>
+<body>
+    <div id="header">
+        <img class="img-responsive" src="./image/c-logo1.png" alt="logo" draggable="false">
+        <span class="title">Apna College</span>
     </div>
-    <script>
-        const btn = document.getElementById('btn');
-        const inp = document.getElementById("loginId");
-        const instute = document.getElementById("instutename");
-        const pass = document.getElementById("password");
-        const cpass = document.getElementById("cpassword");
-        const msg = document.querySelector(".modal-body");
 
-        let collegeJSON = '<%- JSON.stringify(college) %>';
-        const objData = JSON.parse(collegeJSON);
+    <%- include('./partials/navbar'); %>
+        <div>
+            <div class="form-container">
+                <div id="sub-container">
+                    <h1 class="fs-3">SignUp</h1>
+                    <form onsubmit="return handleSubmit();" action="/collegesignup" method="post">
+                        <p style="color: #04AA6D; text-align: center;">
+                            <%= message %>
+                        </p>
+                        <input type="hidden" name="university" id="university" value="">
+                        <div class="c-info">
+                            <label class="required" for="instutename">Institute
+                                Name</label>
+                            <input type="text" name="instute" id="instutename" placeholder="University/Collegen Name"
+                                autocomplete="off">
+                            <ul class="list"></ul>
+                        </div>
+                        <div class="c-info">
+                            <label class="required" for="username">Username</label>
+                            <input type="text" name="username" id="loginId" placeholder="College Code"
+                                autocomplete="off">
+                        </div>
+                        <div class="c-info">
+                            <label class="required" for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="password"
+                                autocomplete="off">
+                        </div>
 
-        // console.log(objData);
+                        <div class="c-info">
+                            <label class="required" for="cpassword">Confirm Pasword</label>
+                            <input type="password" name="cpassword" id="cpassword" placeholder="Confirm password"
+                                autocomplete="off">
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" id="btn" value="Sign Up" data-bs-toggle="modal">
+                        </div>
+                    </form>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a style="text-decoration: none;" href="/Collegelogin">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="login" data-bs-backdrop="static" tabindex="-1" aria-labelledby="loginLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header bg-danger" style="height:40px; color: white;">
+                            <h5 class="modal-title fs-5 " id="exampleModalLabel">warning!</h5>
+                            <button onclick="handleClick()" type="button" class="btn-close shadow-none"
+                                data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-danger">
 
-        const collegeName = objData.map(college => college.Coll_Name.toUpperCase());
-        const collegeCode = objData.map(college => college.Coll_Code.toUpperCase());
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const btn = document.getElementById('btn');
+            const inp = document.getElementById("loginId");
+            const instute = document.getElementById("instutename");
+            const pass = document.getElementById("password");
+            const cpass = document.getElementById("cpassword");
+            const msg = document.querySelector(".modal-body");
 
-        // console.log(collegeCode);
-        // collegeCode.map((cose) => {
-        //     console.log(cose);
-        // })
+            let collegeJSON = '<%- JSON.stringify(college) %>';
+            const objData = JSON.parse(collegeJSON);
 
-        function handleSubmit() {
+            // console.log(objData);
 
-            if (instute.value == "" || inp.value == "" || pass.value == "") {
-                msg.innerHTML = "All filed are required!";
-                btn.setAttribute("data-bs-target", "#login");
-                btn.dispatchEvent(new Event("click"));
-                return false;
-            }
+            const collegeName = objData.map(college => college.Coll_Name.toUpperCase());
+            const collegeCode = objData.map(college => college.Coll_Code.toUpperCase());
 
-            if (pass.value != cpass.value) {
-                msg.innerHTML = "Password not matched!";
-                btn.setAttribute("data-bs-target", "#login");
-                btn.dispatchEvent(new Event("click"));
-                return false;
-            }
+            // console.log(collegeCode);
+            // collegeCode.map((cose) => {
+            //     console.log(cose);
+            // })
 
-            const foundColl = collegeName.filter((name) => (name == instute.value));
+            function handleSubmit() {
 
+                if (instute.value == "" || inp.value == "" || pass.value == "") {
+                    msg.innerHTML = "All filed are required!";
+                    btn.setAttribute("data-bs-target", "#login");
+                    btn.dispatchEvent(new Event("click"));
+                    return false;
+                }
 
-            if (foundColl != instute.value) {
-                msg.innerHTML = "Please select college form search!";
-                btn.setAttribute("data-bs-target", "#login");
-                btn.dispatchEvent(new Event("click"));
-                return false;
-            }
+                if (pass.value != cpass.value) {
+                    msg.innerHTML = "Password not matched!";
+                    btn.setAttribute("data-bs-target", "#login");
+                    btn.dispatchEvent(new Event("click"));
+                    return false;
+                }
 
-            const foundCode = collegeCode.filter((code) => (code == inp.value.toUpperCase()));
-            console.log(inp.value.toUpperCase());
-            // console.log(foundCode != inp.value.toUpperCase());
-
-            if (foundCode != inp.value.toUpperCase()) {
-                msg.innerHTML = "Invalid Code!";
-                btn.setAttribute("data-bs-target", "#login");
-                btn.dispatchEvent(new Event("click"));
-                return false;
-            }
-        }
-
-        function handleClick() {
-            btn.removeAttribute("data-bs-target");
-        }
+                const foundColl = collegeName.filter((name) => (name == instute.value));
 
 
-        //--------------------------- college search start ------------------------------
+                if (foundColl != instute.value) {
+                    msg.innerHTML = "Please select college form search!";
+                    btn.setAttribute("data-bs-target", "#login");
+                    btn.dispatchEvent(new Event("click"));
+                    return false;
+                }
 
-        // console.log(collegeName);
+                const foundCode = collegeCode.filter((code) => (code == inp.value.toUpperCase()));
+                console.log(inp.value.toUpperCase());
+                // console.log(foundCode != inp.value.toUpperCase());
 
-        let sortedName = collegeName.sort();
-        // console.log(sortedName);
-
-
-        let input = document.getElementById("instutename");
-        let listag = document.querySelector(".list");
-
-        input.addEventListener('keyup', (event) => {
-
-            removeEvements();
-
-            for (let i of sortedName) {
-                // console.log(i);
-                // convert input in lowercase and compare with each string
-
-                if (i.toLowerCase().startsWith(input.value.toLowerCase()) && input.value != "") {
-                    let listItem = document.createElement("li");
-                    listItem.classList.add("list-item");
-
-                    listItem.setAttribute("onclick", "displayName('" + i + "')")
-                    listag.style.height = "150px";
-
-                    let word = "<b>" + i.substr(0, input.value.length) + "</b>";
-
-                    word += i.substr(input.value.length); // concating next String of matching value
-
-                    listItem.innerHTML = word;
-                    document.querySelector(".list").appendChild(listItem);
+                if (foundCode != inp.value.toUpperCase()) {
+                    msg.innerHTML = "Invalid Code!";
+                    btn.setAttribute("data-bs-target", "#login");
+                    btn.dispatchEvent(new Event("click"));
+                    return false;
                 }
             }
-        })
 
-        function displayName(value) {
-            input.value = value;
+            function handleClick() {
+                btn.removeAttribute("data-bs-target");
+            }
 
-            objData.filter((obj) => {
-                if (obj.Coll_Name.toLowerCase() == input.value.toLowerCase()) {
-                    document.getElementById("university").value = obj.university;
-                    console.log(obj.university);
+
+            //--------------------------- college search start ------------------------------
+
+            // console.log(collegeName);
+
+            let sortedName = collegeName.sort();
+            // console.log(sortedName);
+
+
+            let input = document.getElementById("instutename");
+            let listag = document.querySelector(".list");
+
+            input.addEventListener('keyup', (event) => {
+
+                removeEvements();
+
+                for (let i of sortedName) {
+                    // console.log(i);
+                    // convert input in lowercase and compare with each string
+
+                    if (i.toLowerCase().startsWith(input.value.toLowerCase()) && input.value != "") {
+                        let listItem = document.createElement("li");
+                        listItem.classList.add("list-item");
+
+                        listItem.setAttribute("onclick", "displayName('" + i + "')")
+                        listag.style.height = "150px";
+
+                        let word = "<b>" + i.substr(0, input.value.length) + "</b>";
+
+                        word += i.substr(input.value.length); // concating next String of matching value
+
+                        listItem.innerHTML = word;
+                        document.querySelector(".list").appendChild(listItem);
+                    }
                 }
-            });
-
-            removeEvements();
-            listag.style.height = "0";
-        }
-
-        function removeEvements() {
-            let items = document.querySelectorAll(".list-item");
-            items.forEach((item) => {
-                item.remove();
-                listag.style.height = "0";
             })
-        }
-         // college search end
-    </script>
-    <script src="nav.js"></script>
 
-    </html>
+            function displayName(value) {
+                input.value = value;
+
+                objData.filter((obj) => {
+                    if (obj.Coll_Name.toLowerCase() == input.value.toLowerCase()) {
+                        document.getElementById("university").value = obj.university;
+                        console.log(obj.university);
+                    }
+                });
+
+                removeEvements();
+                listag.style.height = "0";
+            }
+
+            function removeEvements() {
+                let items = document.querySelectorAll(".list-item");
+                items.forEach((item) => {
+                    item.remove();
+                    listag.style.height = "0";
+                })
+            }
+         // college search end
+        </script>
+        <script src="nav.js"></script>
+</body>
+
+</html>

@@ -1,10 +1,17 @@
-<%- include('./partials/header'); %>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body>
+<head>
 
+    <%- include('./partials/header'); %>
+
+</head>
+
+<body>
+    <div>
         <div id="header" class="bg-success1">
             <img class="img-responsive" src="./image/c-logo1.png" alt="logo" draggable="false">
-            <span class="title">Apna College</span>
+            <span class="web-name">Apna College</span>
         </div>
 
         <%- include('./partials/navbar'); %>
@@ -77,7 +84,7 @@
                         <div id="signup">New User? <a href="/signup" class="link-info">Sign Up</a></div>
                     </div> <!-- container id end -->
                 </div> <!-- end-login -->
-                <div id="greetBorder" style="display: none;">
+                <div id="greetBorder">
                     <div class="grt">
                         Welcome to the officialwebsite of college Registration
                     </div>
@@ -124,11 +131,10 @@
                 </div>
                 <!-- notice end -->
                 <!-- dashbord start -->
-                <hr>
                 <div class="notice-msg">
                     <div class="bdr"></div>Dashboard Details<div class="bdr"></div>
                 </div>
-                <div class="daghbord">
+                <div class="dashbord">
                     <div class="dash-container">
 
                         <div class="university title">
@@ -187,25 +193,25 @@
                 </div>
                 <!-- dashbord end -->
             </div>
+    </div>
+    <script>
 
-            <script>
+        const err = document.getElementById("error");
+        const serErr = '<%= logmessage %>';
 
-                const err = document.getElementById("error");
-                const serErr = '<%= logmessage %>';
+        if (serErr) {
 
-                if (serErr) {
+            err.style.backgroundColor = "#F2DEDE";
+            err.innerText = serErr;
+        }
+        else {
+            err.style.backgroundColor = "";
+            err.innerText = "";
+        }
+    </script>
 
-                    err.style.backgroundColor = "#F2DEDE";
-                    err.innerText = serErr;
-                }
-                else {
-                    err.style.backgroundColor = "";
-                    err.innerText = "";
-                }
-            </script>
+    <script src="/nav.js"></script>
+    <%- include('./partials/footer'); %>
+</body>
 
-            <script src="/nav.js"></script>
-            <%- include('./partials/footer'); %>
-    </body>
-
-    </html>
+</html>
