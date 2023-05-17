@@ -73,67 +73,71 @@
 </head>
 
 <body>
-
-    <div id="header" style="background-color: #3168ba;color: #043785;">
-        <img src="./image/c-logo1.png" alt="logo">
-        <span>Apna College</span>
-    </div>
-
-    <%- include('./partials/navbar') %>
-
-        <div class="sign-container">
-            <div id="container" class="">
-                <form onsubmit="return handleOnsunmitEvent()" action="/signup" method="post" autocomplete="off">
-                    <p id="serror" class="text-danger"
-                        style="  padding: 5px 20px; margin-top:-37px; position: relative; border-radius: 5px;">
-                        <%= message %>
-                    </p>
-                    <h2 class="text-warning">STUDENT SIGN UP</h2>
-                    <div class="inp form-group">
-                        <input type="text" name="name" placeholder="Name" id="name" name="name"
-                            class="form-control shadow-none text-info" minlength="" autocomplete="on">
-                    </div>
-
-                    <div class="inp form-group">
-                        <input type="email" placeholder="Email Id" name="username" inputmode="email" id="email"
-                            name="email" class="form-control shadow-none text-info " autocomplete="on">
-                    </div>
-
-                    <div class="inp form-group">
-                        <input type="text" placeholder="Enter 10digit Mobile No" inputmode="numeric" name="mobile"
-                            maxlength="10" id="mobile" class="form-control shadow-none text-info">
-                    </div>
-
-                    <div class="inp form-group">
-                        <input type="password" placeholder="Password" id="inputPassword" name="password"
-                            class="form-control shadow-none text-info" minlength="">
-                    </div>
-
-                    <div class="inp form-group">
-                        <input type="password" placeholder="Confirm Password" id="cpass"
-                            class="form-control shadow-none text-info">
-                    </div>
-                    <div class="form-status text-info" id="fmsg">
-                    </div>
-                    <div class="form-status text-success" ;>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="submit" name="submit" value="Sign Up">
-                    </div>
-                </form>
-                <div id="signup"><a href="/" class="link-info">Login</a></div>
-            </div>
+    <div>
+        <div id="header" style="background-color: #3168ba;color: #043785;">
+            <img src="./image/c-logo1.png" alt="logo">
+            <span>Apna College</span>
         </div>
+
+        <%- include('./partials/navbar') %>
+
+            <div class="sign-container">
+                <div id="container" class="">
+                    <form onsubmit="return handleOnsunmitEvent()" action="/signup" method="post" autocomplete="off">
+                        <p id="serror" class="text-danger"
+                            style="  padding: 5px 20px; margin-top:-37px; position: relative; border-radius: 5px;">
+                            <%= message %>
+                        </p>
+                        <h2 class="text-warning">STUDENT SIGN UP</h2>
+                        <div class="inp form-group">
+                            <input type="text" name="name" placeholder="Name" id="name" name="name"
+                                class="form-control shadow-none text-info" minlength="" autocomplete="on">
+                        </div>
+
+                        <div class="inp form-group">
+                            <input type="email" placeholder="Email Id" name="username" inputmode="email" id="email"
+                                name="email" class="form-control shadow-none text-info " autocomplete="on">
+                        </div>
+
+                        <div class="inp form-group">
+                            <input type="text" placeholder="Enter 10digit Mobile No" inputmode="numeric" name="mobile"
+                                maxlength="10" id="mobile" class="form-control shadow-none text-info">
+                        </div>
+
+                        <div class="inp form-group">
+                            <input type="password" placeholder="Password" id="inputPassword" name="password"
+                                class="form-control shadow-none text-info" minlength="">
+                        </div>
+
+                        <div class="inp form-group">
+                            <input type="password" placeholder="Confirm Password" id="cpass"
+                                class="form-control shadow-none text-info">
+                        </div>
+                        <div class="form-status text-info" id="fmsg">
+                        </div>
+                        <div class="form-status text-success" ;>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" name="submit" value="Sign Up">
+                        </div>
+                    </form>
+                    <div id="signup"><a href="/" class="link-info">Login</a></div>
+                </div>
+            </div>
+    </div>
+    <script src="nav.js"></script>
+    <!-- <script src="signup.js"></script> -->
+    <%- include('./partials/footer'); %>
+
         <script>
             // handleOnsunmitEvent();
 
             function isValid() {
 
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const emailPattern = /^[a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-\.]+\.[a-zA-Z]{2,}$/;
                 const namePattern = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
                 const mobilePattern = /^(\+91|0)?[6789]\d{9}$/;
-
                 let Name = document.getElementById("name");
                 let Email = document.getElementById("email");
                 let Mobile = document.getElementById("mobile");
@@ -184,9 +188,6 @@
                 return isValid();
             }
         </script>
-        <script src="nav.js"></script>
-        <!-- <script src="signup.js"></script> -->
-        <%- include('./partials/footer'); %>
 </body>
 
 </html>

@@ -494,19 +494,17 @@ app.post("/clgapplication", async (req, res) => {
     }
 })
 
-app.post("/clgappdelete", (req, res) => {
+app.post("/clgappdelete", async (req, res) => {
 
-    clgAppliModel.findByIdAndRemove(req.body.delInp, function (err) {
-        if (err) {
-            console.log(err);
-            res.redirect("//college/collegeprofile");
-        }
-        else {
-            console.log("Record Successfully deleted .......");
-            res.redirect("/college/collegeprofile");
-        }
-    });
-})
+    try {
+        const removedDocument = await clgAppliModel.findByIdAndRemove(req.body.delInp);
+        console.log("Record Successfully deleted .......");
+        res.redirect("/college/collegeprofile");
+    } catch (err) {
+        console.log(err);
+        res.redirect("/college/collegeprofile");
+    }
+});
 
 //------------------------- Instute part end ----------
 //   ---------------------- application start -----------
