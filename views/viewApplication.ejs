@@ -77,7 +77,7 @@
         <div class="title">
             <p>All Student Application</p>
         </div>
-        <div class="table-container">
+        <div id="pgTable" class="table-container">
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -127,7 +127,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="table-container">
+        <div id="ugTable" class="table-container">
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -183,6 +183,26 @@
 
         function openPopup(id) {
             window.open('/student/print?id=' + id, 'popupWindow', features);
+        }
+
+        const ugApplication = '<%=  JSON.stringify(ugApplication) %>';
+        const pgApplication = '<%=  JSON.stringify(pgApplication) %>';
+
+        // console.log(ugApplication.length === 2);
+        // console.log(pgApplication.length === 2);
+
+        const pgtables = document.getElementById('pgTable');
+        const ugtables = document.getElementById('ugTable');
+
+        if (ugApplication.length === 2) {
+
+            ugtables.style.display = 'none';
+        }
+
+        if (pgApplication.length === 2) {
+
+            pgtables.style.display = 'none'
+
         }
     </script>
 </body>
